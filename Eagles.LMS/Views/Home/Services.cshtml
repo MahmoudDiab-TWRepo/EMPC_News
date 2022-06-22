@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    UnitOfWork ctx = new UnitOfWork();
+
+    var services = ctx.ServiceManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).ToList();
+    bool en = true;
+
+    if (Request.Cookies["Language"] != null)
+    {
+        en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+
+    }
+    if (en == true)
+    {
+        services = services.Where(s => s.TitleEnglish != null).ToList();
+    }
+    else
+    {
+        services = services.Where(s => s.TitleArabic != null).ToList();
+
+    }
+}
+
+@section metatags{
+    <meta name="keywords" id="metaKeyword" content="empcnews Services, Services, news, empc, " />
+    <meta name="description" id="metaDesc" content="Non-stop news coverage of the most important local and international events" />
+    <link rel="canonical" id="canonicalUrl" href="https://www.empcnews.com" />
+}
+
+@section EndHeader{
+    <style>
+        .menu li a.active-a4 {
+            color: #af7a2c;
+            border-bottom: 1px solid #fff0;
+            font-weight: 500;
+        }
+    </style>
+}
+<div class="header-bc">
+
+    <div class="ClassImaesBG">
+        <img src="~/assets_NewPublic/images/bg/NEWBG/ServiceNewGB.jpg" />
+    </div>
+    <div class="PageTitleCOnt">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-8">
+
+                    <div class="title-header">
+
+                        <h3>@Resources.Global.services</h3>
+
+                        <div class="breadcrumbs">
+                            <ul>
+                                <li><a href="/Home">@Resources.Global.Home</a> > </li>
+                                <li>@Resources.Global.services</li>
+                            </ul>
+                        </div>
+                        <!--end breadcrumb-->
+
+                    </div>
+                    <!--end title-header-->
+
+                </div>
+                <!--end col-6-->
+
+
+
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+    </div>
+
+
+</div>
+<!--end header-bc-->
+
+
+<div class="servpagenew">
+    <div class="container">
+        <div class="row">
+            @foreach (var service in services)
+            {
+
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="servItemnew">
+                        <div>
+                            <div class="images">
+                                @*<img src="@service.MainImage">*@
+
+                                @if (!string.IsNullOrEmpty(service.MainImage))
+                                {
+                                    <div class=" imagsBG" style="background-image: url(@service.MainImage)"></div>
+                                }
+                                else
+                                {
+
+                                    <div class=" imagsBG" style="background-image: url(/assets_NewPublic/images/f14.jpeg)"></div>
+                                }
+
+
+                            </div>
+                            <div class="discription">
+                                @if (en)
+                                {
+
+
+                                    <h2>@service.TitleEnglish</h2>
+                                    <div class="ContentPargraph">
+                                        <p>@Html.Raw(@service.ShortDescriptionEnglish)</p>
+                                    </div>
+
+                                }
+                                else
+                                {
+
+                                    <h2>@service.TitleArabic</h2>
+                                    <div class="ContentPargraph">
+                                        <p>@Html.Raw(@service.ShortDescriptionArabic)</p>
+                                    </div>
+
+                                }
+                                <a href="/Home/ServicesDetails/@service.Id"> @Resources.Global.ReadMore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+

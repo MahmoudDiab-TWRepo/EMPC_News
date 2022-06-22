@@ -1,0 +1,1105 @@
+﻿
+
+@using Eagles.LMS.App_GlobalResources
+
+@{
+
+    ViewBag.Title = "Home";
+
+    string host = Request.Url.Host;
+
+    bool en = true;
+
+    if (Request.Cookies["Language"] != null)
+    {
+        en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+
+    }
+}
+@section metatags{
+    <meta name="keywords" id="metaKeyword" content="empcnews, news, Home, empc, " />
+    <meta name="description" id="metaDesc" content="Non-stop news coverage of the most important local and international events" />
+    <link rel="canonical" id="canonicalUrl" href="https://www.empcnews.com" />
+}
+
+@using Eagles.LMS.BLL
+@using Eagles.LMS.App_GlobalResources
+
+@{
+    UnitOfWork ctx = new UnitOfWork();
+    var setting = ctx.SettingsManager.GetAll().FirstOrDefault();
+    var aboutUs = ctx.AboutUsManager.GetAll().FirstOrDefault();
+    var _contactUs = ctx.ContactUsManager.GetAll().FirstOrDefault();
+    var allSliders = new List<Slider>();
+    var services = new List<Service>();
+    var _relatedWerbsites = new List<RelatedWebSite>();
+    var _Clients = new List<Client>();
+    var _galaries = new List<Album>();
+    var _locations = new List<Location>();
+    var _news = new List<New>();
+
+    var allPictures = ctx.GalaryManager.GetAll().Select(s => s.AlbumId).Distinct();
+
+    if (en == true)
+    {
+        allSliders = ctx.SliderManager.GetAllBind().OrderBy(S => S.Order).Where(s => s.TitleEnglish != null).ToList();
+        services = ctx.ServiceManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleEnglish != null).ToList();
+        _news = ctx.NewManager.GetAll().Where(s => s.ShowInHomePage && s.Status == EntityStatus.Approval).OrderByDescending(S => S.Order).Where(s => s.TitleEnglish != null).ToList();
+        _locations = ctx.LocationManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleEnglish != null).ToList();
+        //var _galaries = ctx.GalaryManager.GetAllBind().OrderBy(S => S.Order).ToList();
+
+        _galaries = _galaries = ctx.AlbumManager.GetAll().OrderByDescending(s => s.Id).Where(s => allPictures.Contains(s.Id) && s.TitleEnglish != null).ToList();
+        //var _galaries = ctx.GalaryManager.GetAll().Where(s => s.IsImage).OrderByDescending(s => s.Id).ToList();
+        _Clients = ctx.ClientsManager.GetAllBind().OrderByDescending(s => s.Id).Where(s => s.NameEnglish != null).ToList();
+        _relatedWerbsites = ctx.RelatedWebSiteManager.GetAllBind().OrderByDescending(s => s.Id).Where(s => s.TitleEnglish != null).ToList();
+    }
+    else
+    {
+        allSliders = ctx.SliderManager.GetAllBind().OrderBy(S => S.Order).Where(s => s.TitleArabic != null).ToList();
+        services = ctx.ServiceManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
+        _news = ctx.NewManager.GetAll().Where(s => s.ShowInHomePage && s.Status == EntityStatus.Approval).OrderByDescending(S => S.Order).Where(s => s.TitleArabic != null).ToList();
+        _locations = ctx.LocationManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
+        //var _galaries = ctx.GalaryManager.GetAllBind().OrderBy(S => S.Order).ToList();
+        _galaries = _galaries = ctx.AlbumManager.GetAll().OrderByDescending(s => s.Id).Where(s => allPictures.Contains(s.Id) && s.TitleArabic != null).ToList();
+        _Clients = ctx.ClientsManager.GetAllBind().OrderByDescending(s => s.Id).Where(s => s.NameArabic != null).ToList();
+        _relatedWerbsites = ctx.RelatedWebSiteManager.GetAllBind().OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
+    }
+}
+
+
+
+
+@section EndHeader{
+    <style>
+        .menu li a.active-a1 {
+            color: #af7a2c;
+            border-bottom: 1px solid #fff0;
+            font-weight: 500;
+        }
+    </style>
+}
+
+
+
+@*<iframe width="500" height="600" src="{{https://www.youtube.com/embed/nGnX6GkrOgk }}?playlist={{nGnX6GkrOgk}}&controls=1&autoplay=1&loop=1&rel=0&showinfo=0&mute=1" frameborder="0" allow='autoplay' allowfullscreen></iframe>*@
+
+
+
+@if (setting.ShowSliders)
+{
+
+    <!--slider-->
+    <div class="hero-wrap">
+        <div class="home-slider owl-carousel">
+
+            @*<div class="slider-item">
+                    <div class="video_background">
+                        <div class="video_foreground">
+                                // https://www.youtube.com/embed/qyh-MsFbzo0
+                            <iframe src="https://www.youtube.com/embed/W0LHTWG-UmQ?playlist=W0LHTWG-UmQ&controls=0&autoplay=1&loop=1&rel=0&showinfo=0&mute=1" frameborder="0" allow='autoplay' allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>*@
+
+
+            @foreach (var slider in allSliders)
+            {
+
+
+
+                if (slider.IsImage)
+                {
+
+                    <div class="slider-item" style="background-image: url(@slider.Image);">
+                        <div class="overlay">
+                            <div class="container">
+                                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                    <div class="col-md-12 ftco-animate">
+                                        <div class="text w-100 ">
+
+                                            @if (en)
+                                            {
+                                                if (!string.IsNullOrEmpty(slider.TitleEnglish))
+                                                {
+                                                    <div class="overflowtext">
+                                                        <h1 class="mb-3">@Html.Raw(@slider.TitleEnglish)</h1>
+                                                    </div>
+                                                }
+                                                if (!string.IsNullOrEmpty(slider.DescriptionEnglish))
+                                                {
+                                                    <div class="overflowtext">
+                                                        <h2>@slider.DescriptionEnglish</h2>
+                                                    </div>
+                                                }
+                                                if (!string.IsNullOrEmpty(slider.Link))
+                                                {
+                                                    <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (!string.IsNullOrEmpty(slider.TitleArabic))
+                                                {
+                                                    <div class="overflowtext">
+                                                        <h1 class="mb-3">@Html.Raw(@slider.TitleArabic)</h1>
+                                                    </div>
+                                                }
+                                                if (!string.IsNullOrEmpty(slider.DescriptionArabic))
+                                                {
+                                                    <div class="overflowtext">
+                                                        <h2>@slider.DescriptionArabic</h2>
+                                                    </div>
+
+
+
+                                                }
+                                                if (!string.IsNullOrEmpty(slider.Link))
+                                                {
+                                                    <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                else
+                {
+
+                    <div class="slider-item">
+                        <div class="video_background">
+                            <div class="video_foreground">
+                                <iframe src="https://www.youtube.com/embed/@slider.Iframe?rel=0&mute=1"></iframe>
+                                @*<iframe src="https://www.youtube.com/embed/@slider.Iframe?playlist=@slider.Iframe&controls=1&autoplay=1&loop=1&rel=0&showinfo=0&mute=1 " frameborder="0" allow='autoplay' allowfullscreen></iframe>*@
+                            </div>
+                        </div>
+
+                        <div class="overlay">
+                            <div class="container">
+                                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                    <div class="col-md-12 ftco-animate">
+                                        <div class="text w-100 ">
+
+                                            @if (en)
+                                            {
+                                                if (!string.IsNullOrEmpty(slider.TitleEnglish))
+                                                {
+                                                    <div class="overflowtext">
+                                                        <h1 class="mb-3">@Html.Raw(@slider.TitleEnglish)</h1>
+                                                    </div>
+
+                                                }
+                                                if (!string.IsNullOrEmpty(slider.DescriptionEnglish))
+                                                {
+                                                    <div class="overflowtext">
+                                                        <h2>@slider.DescriptionEnglish</h2>
+                                                    </div>
+
+                                                }
+                                                if (!string.IsNullOrEmpty(slider.Link))
+                                                {
+                                                    <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.watchMore</a>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (!string.IsNullOrEmpty(slider.TitleArabic))
+                                                {
+                                                    <div class="overflowtext">
+                                                        <h1 class="mb-3">@Html.Raw(@slider.TitleArabic)</h1>
+                                                    </div>
+
+                                                }
+                                                if (!string.IsNullOrEmpty(slider.DescriptionArabic))
+                                                {
+                                                    <div class="overflowtext">
+                                                        <h2>@slider.DescriptionArabic</h2>
+                                                    </div>
+
+
+                                                }
+                                                if (!string.IsNullOrEmpty(slider.Link))
+                                                {
+                                                    <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.watchMore</a>
+                                                }
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    @*<div class="slider-item">
+                            <video id="video" preload autoplay width="100%" muted>
+                                <source src="@slider.Image" type='video/mp4' />
+                            </video>
+                        </div>*@
+                }
+            }
+
+        </div>
+    </div>
+    <!--end slider-->
+}
+
+@if (setting.ShowNews)
+{
+    <div class="newNewsSec">
+        <div class="overlay">
+            <div class="container">
+                <div class="titile">
+                    <h2>@Html.ActionLink(@Resources.Global.Latestnews, "News", "Home")</h2>
+
+                    <div class="cubics">
+                        <span class="cubicItem smallcub"></span>
+                        <span class="cubicItem Bigcub"></span>
+                        <span class="cubicItem smallcub"></span>
+                    </div>
+
+
+                    <p>@Resources.Global.LatestNewsParg</p>
+                </div>
+                <div class="NewNewsCont">
+                    <div class="row otherrow">
+                        @*@foreach (var _new in _news)*@
+                        @for (int i = 0; i < _news.Count; i++)
+                        {
+
+
+
+                            <div class=" othercol">
+                                <div class="newsItem newsItemBig">
+                                    @*<div class="imags" style="background-image: url(@_news[i].MainImage)"></div>*@
+
+                                    <div class="Images">
+                                        @if (!string.IsNullOrEmpty(@_news[i].MainImage))
+                                        {
+                                            <img src="@_news[i].MainImage" />
+
+                                        }
+                                        else
+                                        {
+                                            <img src="~/assets_NewPublic/images/f14.jpeg" />
+                                            @*<img src="@_news[i].MainImage" />*@
+                                        }
+
+                                    </div>
+                                    <div class="newsDetails">
+                                        <div class="newdtcont">
+                                            <div class="marknew">
+                                                @if (en)
+                                                {
+
+                                                    if (!string.IsNullOrEmpty(@_news[i].NotsEnglish))
+                                                    {
+                                                        <span>@_news[i].NotsEnglish</span>
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                    if (!string.IsNullOrEmpty(@_news[i].NotsArabic))
+                                                    {
+                                                        <span>@_news[i].NotsArabic</span>
+                                                    }
+
+                                                }
+
+                                            </div>
+                                            <div class="newsTitle">
+                                                @if (en)
+                                                {
+                                                    <a href="/Home/NewsDetails/@_news[i].Id">
+
+                                                        @_news[i].TitleEnglish
+
+                                                    </a>
+                                                }
+                                                else
+                                                {
+
+                                                    <a href="/Home/NewsDetails/@_news[i].Id">
+
+                                                        @_news[i].TitleArabic
+
+                                                    </a>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            if (i == 6)
+                            {
+                                break;
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+@if (setting.ShowServices)
+{
+
+
+    <section class="locations " style="background-image: url(/assets_NewPublic/images/bg/servicecover.jpg); ">
+
+
+        <div class="opacity-groub"></div>
+
+        <div class="container">
+            <div class="row justify-content-center mb-3 pb-3">
+
+
+                <div class="col-md-12 heading-section text-center ftco-animate">
+
+                    <!--                    <div class="red-line"></div>-->
+
+
+                    <h2 class="mb-4 headh2">@Html.ActionLink(@Resources.Global.services, "Services", "Home")</h2>
+
+                    <p class="headp">
+                        @Resources.Global.ServicesParg
+
+                    </p>
+
+
+                </div>
+                <!--end col-12-->
+
+
+
+                <div class="cleaner-h4"></div>
+
+
+                <div class="carousel-locatonsss owl-carousel ">
+                    @foreach (var service in services)
+                    {
+                        <div class="item">
+                            <div class="col-md-12">
+
+                                <div class="pyrimidis-title">
+                                    <div class="img-div">
+                                        <div class="ImageItemServce">
+                                            @if (!string.IsNullOrEmpty(@service.MainImage))
+                                            {
+
+                                                <div class="imags" style="background-image: url(@service.MainImage)"></div>
+
+                                            }
+                                            else
+                                            {
+
+                                                <div class="imags" style="background-image: url(/assets_NewPublic/images/f14.jpeg)"></div>
+
+                                            }
+
+
+                                            <a class="linkServ" href="/Home/ServicesDetails/@service.Id">
+                                            </a>
+                                        </div>
+                                        @*<a href="/Home/ServicesDetails/@service.Id">
+                                                <img src="@service.MainImage" class="img-pyrimid" />
+                                            </a>*@
+
+                                    </div>
+                                    <div class="contlocation">
+                                        <div class="forflex">
+                                            <a href="/Home/ServicesDetails/@service.Id">
+                                                @if (en)
+                                                {
+                                                    <h4>@service.TitleEnglish</h4>
+                                                    <div class="ContentPargraph">
+                                                        <p>
+                                                            @Html.Raw(@service.ShortDescriptionEnglish)
+                                                        </p>
+                                                    </div>
+
+                                                }
+                                                else
+                                                {
+                                                    <h4>@service.TitleArabic</h4>
+                                                    <div class="ContentPargraph">
+                                                        <p>
+                                                            @Html.Raw(@service.ShortDescriptionArabic)
+                                                        </p>
+                                                    </div>
+
+                                                }
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!--end img-div-->
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+
+
+    </section>
+    <!-- End services section  locationServices-->
+}
+
+
+@if (setting.ShowLocations)
+{
+    <div class="newSerivcess" style="background-image: url(/assets_NewPublic/images/bg/LocationBG.jpg);">
+        <div class="overlay">
+            <div class="container">
+                <div class="titile">
+                    <h2>@Html.ActionLink(@Resources.Global.Locations, "Locations", "Home")</h2>
+                    <p>@Resources.Global.LocationParg</p>
+                </div>
+                <div class="newsrcont">
+                    <div class="carousel-NewServices owl-carousel ftco-owl">
+                        @foreach (var location in _locations)
+                        {
+
+
+                            <div class="item">
+                                <div class="servItem">
+                                    <div class="ServCont">
+                                        <div class="icon">
+                                            @if (!string.IsNullOrEmpty(location.MainImage))
+                                            {
+                                                <img src="@location.IconImage">
+
+                                            }
+                                            else
+                                            {
+                                                <img src="~/assets_NewPublic/images/f14.jpeg" />
+                                            }
+
+                                        </div>
+                                        @if (en)
+                                        {
+
+
+                                            <div class="title">
+                                                <h2>@location.TitleEnglish</h2>
+                                            </div>
+
+
+                                            <div class="Discription">
+                                                <p>@Html.Raw(@location.ShortDescriptionEnglish)</p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="title">
+                                                <h2>@location.TitleArabic</h2>
+
+                                            </div>
+
+
+                                            <div class="Discription">
+                                                <p>@Html.Raw(@location.ShortDescriptionArabic)</p>
+                                            </div>
+                                        }
+                                        <div class="lingoto">
+                                            <a href="/Home/LocationDetails/@location.Id">
+                                                <i class="ion-ios-arrow-forward"></i>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@if (setting.ShowGalaryPhotos)
+{
+    <div class="newLatestNews" style="background-image:url(/assets_NewPublic/images/bg/GallaryBG.jpg)">
+        <div class="overlay">
+            <div class=" text-center ftco-animate">
+
+                <!--                    <div class="red-line"></div>-->
+
+                <h2 class="mb-4 headh2">
+                    @Html.ActionLink(@Resources.Global.Gallery, "Albums", "Home")
+                </h2>
+                <p class="headp">@Resources.Global.GallaryParg</p>
+            </div>
+            <div class="container">
+                <div class="newlatscont">
+
+
+                    <div class="row otherrow">
+                        @*@foreach (var galary in _galaries)
+                                    {
+                                        <div class=" othercoll">
+                                            <div class="imagesmnewscont smallImages">
+                                                <div class="imags ">
+                                                    <img src="@galary.Image">
+                                                </div>
+                                                <div class="discription">
+                                                    @if (en)
+                                                    {
+                                                        <a href="/Home/Picture/@galary.Id">@galary.TitleEnglish</a>
+                            location
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="/Home/Picture/@galary.Id">@galary.TitleArabic</a>
+
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }*@
+
+                        @for (int i = 0; i < _galaries.Count; i++)
+                        {
+
+
+                            if (@_galaries[i].Galaries.FirstOrDefault().IsImage)
+                            {
+                                <div class=" othercoll">
+                                    <div class="imagesmnewscont smallImages">
+                                        @*<div class="imags imagsBG" style="background-image: url(@_galaries[i].Image)"></div>*@
+
+                                        <a href="/Home/Picture/@_galaries[i].Id" class="imags " style=" cursor: crosshair;">
+                                            <div class=" imagsBG" style="background-image: url(@_galaries[i].Image)"></div>
+                                        </a>
+                                        <div class="discription" style=" cursor: crosshair;">
+                                            @if (en)
+                                            {
+                                                <a href="/Home/Picture/@_galaries[i].Id">@_galaries[i].TitleEnglish</a>
+
+                                            }
+                                            else
+                                            {
+                                                <a href="/Home/Picture/@_galaries[i].Id">@_galaries[i].TitleArabic</a>
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+
+                                <div class=" othercoll">
+                                    <div class="imagesmnewscont smallImages videioGallaryItem">
+                                        @*<div class="imags imagsBG" style="background-image: url(@_galaries[i].Image)"></div>*@
+
+                                        <a href="/Home/VideoDetails/@_galaries[i].Id" class="imags ">
+                                            <div class=" imagsBG" style="background-image: url(@_galaries[i].Image)"></div>
+                                            @*<img src="@_galaries[i].Image">*@
+
+
+                                        </a>
+
+                                        <div class="iconVideooo">
+
+                                            <a href="/Home/VideoDetails/@_galaries[i].Id" class="">
+                                                <i class="fas fa-play" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                        <div class="discription">
+                                            @if (en)
+                                            {
+                                                <a href="/Home/VideoDetails/@_galaries[i].Id">@_galaries[i].TitleEnglish</a>
+
+                                            }
+                                            else
+                                            {
+                                                <a href="/Home/VideoDetails/@_galaries[i].Id">@_galaries[i].TitleArabic</a>
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+
+
+
+                            if (i == 7)
+                            {
+                                break;
+                            }
+                        }
+
+
+
+
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (setting.ShowAboutUs)
+{
+    <section class="who">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="border-top"></div>
+                    <div class="border-top-1"></div>
+                    <div class="wearecont">
+                        <div class="images">
+                            @*<img src="@aboutUs.Image" class="img-responsive img-who" />*@
+                            <div class=" imagsBG" style="background-image: url(@aboutUs.Image)"></div>
+                        </div>
+                        <div class="buttonpopupvedio" style="display:none">
+                            @*<button type="button" class="btnvediopopup" data-toggle="modal" data-target="#VedioPopup">
+                                    <i class="fas fa-play"></i>
+                                </button>*@
+
+                            <a href="@aboutUs.YouTubeFrame" class="btnvediopopup" data-type="iframe" tabindex="0">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <!--end col-6-->
+
+
+                <div class="col-md-6 col-sm-12 col-xs-12">
+
+
+                    <!--                    <div class="red-line1"></div>-->
+
+                    <div class="overflowheightabout">
+                        @if (en)
+                        {
+                            <h2 class="headh2">@aboutUs.TitleEnglish</h2>
+
+
+                            <p class="headp1">
+                                @Html.Raw(@aboutUs.DescriptionEnglish)
+                            </p>
+                        }
+                        else
+
+                        {
+                            <h2 class="headh2">@aboutUs.TitleArabic</h2>
+
+                            <p class="headp1">
+                                @Html.Raw(@aboutUs.DescriptionArabic)
+                            </p>
+                        }
+                    </div>
+
+                    <Div class="width-btn-who AboutBTNHOME">
+                        <a href="/Home/AboutUs" class="btn btn-danger btn-block btn-theme"> @Resources.Global.ReadMore</a>
+                    </Div>
+                    <!--end width-btn-->
+
+
+                </div>
+
+
+            </div>
+            <!--end row-->
+        </div>
+        <!--end conatiner-->
+    </section>
+    <!--end who-->
+}
+
+
+<div class="Custommr" style="">
+    <div class="overlay">
+        <div class="titile">
+            <h2 class="mb-4 headh2">@Resources.Global.Clients</h2>
+            <p class="headp">@Resources.Global.ClientsPargrapgh</p>
+        </div>
+        <div class="container">
+            <div class="castomerContent">
+                <div class="carousel-CustomerNew owl-carousel">
+
+                    @foreach (var Client in _Clients)
+                    {
+                        <div class="item">
+                            <div class="CustomerItem">
+                                <div class="images">
+                                    <img src="@Client.Image" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*<div class="item">
+                            <div class="CustomerItem">
+                                <div class="images">
+                                    <img src="~/assets_NewPublic/images/newimg/logocap.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="CustomerItem">
+                                <div class="images">
+                                    <img src="~/assets_NewPublic/images/newimg/logocap.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="CustomerItem">
+                                <div class="images">
+                                    <img src="~/assets_NewPublic/images/newimg/logocap.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="CustomerItem">
+                                <div class="images">
+                                    <img src="~/assets_NewPublic/images/newimg/logocap.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="CustomerItem">
+                                <div class="images">
+                                    <img src="~/assets_NewPublic/images/newimg/logocap.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="CustomerItem">
+                                <div class="images">
+                                    <img src="~/assets_NewPublic/images/newimg/logocap.png" />
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+@if (setting.ShowRelatedWebSites)
+{
+
+
+
+    <div class="relatedwebsite" style="background-image: url(/assets_NewPublic/images/bg/ProductionCity.jpg);">
+        <div class="overlay">
+            <div class="TitleSec">
+                <h2>@Resources.Global.Relatedwebsites</h2>
+            </div>
+            <div class="container">
+                <div class="relatedCOntent">
+                    <div class="row">
+                        @*@foreach (var related_web in _relatedWerbsites)*@
+                        @for (int i = 0; i < _relatedWerbsites.Count; i++)
+                        {
+
+
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 relatedCOntentItemSec">
+                                <div class="relateditem">
+                                    <div class="leftside">
+                                        <div class="imags">
+                                            @*<img src="@_relatedWerbsites[i].Image">*@
+                                            <div class=" imagsBG" style="background-image: url(@_relatedWerbsites[i].Image)"></div>
+                                        </div>
+                                    </div>
+                                    <div class="rightside">
+                                        <div class="wecont">
+                                            <div class="reldetright">
+                                                @if (en)
+                                                {
+                                                    <h2>@_relatedWerbsites[i].TitleEnglish</h2>
+                                                    <p>@Html.Raw(@_relatedWerbsites[i].DescriptionEnglish)</p>
+                                                }
+                                                else
+                                                {
+                                                    <h2>@_relatedWerbsites[i].TitleArabic</h2>
+                                                    <p>@Html.Raw(@_relatedWerbsites[i].DescriptionArabic)</p>
+                                                }
+                                                <div class="btns">
+                                                    <a target="_blank" href="@_relatedWerbsites[i].Link" class="theme-btn" tabindex="0"> @Resources.Global.MoreDetails</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            if (i == 1)
+                            {
+                                break;
+                            }
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+
+
+
+
+@if (setting.ShowContactUs)
+{
+
+    <section class="map-loading">
+
+        <div class="opacity-map">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!--                        <div class="red-line"></div>-->
+
+                        <h2 class="mb-4 headh2"> @Resources.Global.ContactUs</h2>
+
+
+
+                        <div class="location-map">
+                            <i class="fa fa-map-marker"></i>
+                            <h3>@Resources.Global.address</h3>
+                            @if (en)
+                            {
+
+
+                                <p>@_contactUs.AddressEnglish</p>
+                            }
+                            else
+                            {
+
+                                <p>@_contactUs.AddressArabic</p>
+
+
+                            }
+
+                        </div>
+                        <!--end location-map-->
+
+                        <div class="cleaner-h3"></div>
+
+
+                        <div class="location-map">
+                            <i class="fa fa-phone"></i>
+                            <h3>@Resources.Global.HatefPhone</h3>
+                            @if (en)
+                            {
+
+
+                                <p>@_contactUs.Phone</p>
+                            }
+                            else
+                            {
+
+                                <p style=" direction: ltr;">@_contactUs.Phone</p>
+
+
+                            }
+
+
+                        </div>
+                        <!--end location-map-->
+
+                        <div class="cleaner-h3"></div>
+
+                        <div class="location-map">
+                            <i class="fa fa-envelope"></i>
+                            <h3>@Resources.Global.Email</h3>
+                            <p>@_contactUs.Email</p>
+
+                        </div>
+                        <!--end location-map-->
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1726.7709238441291!2d31.21595155872192!3d30.049999200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145841fe81fb8d79%3A0x7292c22730b866c5!2sMedia%20Services%20Center%20EMPC!5e0!3m2!1sen!2seg!4v1647522850851!5m2!1sen!2seg"
+                width="100%" height="100%" style="border:0;" allowfullscreen=""></iframe>
+
+
+
+    </section>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section EndBody{
+    @*<script>
+            var coverflow = $("#coverflow").flipster({
+                style: 'carousel',
+                spacing: -0.3,
+                nav: true,
+                buttons: true,
+            });
+        </script>*@
+}
+
