@@ -4,6 +4,7 @@
 @{
     UnitOfWork ctx = new UnitOfWork();
     var setting = ctx.SettingsManager.GetAll().FirstOrDefault();
+    var SEO = ctx.SEOManager.GetAll().FirstOrDefault();
     string UserID;
     User user = null;
     if (Session["User_Key"] != null)
@@ -23,7 +24,7 @@
     }
 
     var _contactUs = ctx.ContactUsManager.GetAll().FirstOrDefault();
-    var _services = ctx.ServiceManager.GetAll().Where(s=>s.Status==EntityStatus.Approval).OrderByDescending(s => s.Id).ToList();
+    var _services = ctx.ServiceManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).ToList();
     var _galaries = ctx.GalaryManager.GetAll().Where(s => s.IsImage).OrderByDescending(s => s.Order).ToList();
     var allSocialMedia = ctx.SocialMediaManager.GetAll().ToList();
 
@@ -33,21 +34,22 @@
 <html>
 
 <head>
-
-    @*<title></title>*@
-    <title>EMPC - @ViewBag.Title</title>
+    <!-- Google Tag Manager -->
+    @Html.Raw(@SEO.GoogleTageManager)
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 
 
 
+    @RenderSection("PageTitle", required: false)
+    @RenderSection("metatags", required: false)
     @if (!string.IsNullOrEmpty(setting.MegaTags))
     {
         <meta name="viewport" content="@setting.MegaTags">
     }
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    @RenderSection("metatags", required: false)
 
 
 
@@ -83,18 +85,15 @@
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1P3SFNELG1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
-        gtag('config', 'G-1P3SFNELG1');
-    </script>
+    @Html.Raw(@SEO.GoogleTageAnalitics)
+
 
 </head>
 
 <body>
+    @Html.Raw(@SEO.GoogleTageSearch)
+
     <nav class="navbar visible-xs">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -128,7 +127,6 @@
 
                     }
 
-                    <!--        <li><a href="News.html"> NEWS & Events </a></li>-->
 
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.NewsEvents  </a>
@@ -143,6 +141,7 @@
                             }
                             @if (setting.ShowCitizen)
                             {
+                            
                                 <li><a href="/Home/Citizen"> @Resources.Global.Citizen</a></li>
                             }
 
@@ -171,7 +170,7 @@
                         <li><a href="/Home/ContactUsHome">@Resources.Global.ContactUs</a></li>
 
                     }
-                    @*<li><a href="/Home/Booking">@Resources.Global.Booking</a></li>*@
+                    <li><a href="/Home/Booking">@Resources.Global.Booking</a></li>
                     @if (en)
                     {
                         <li><a href="/Home/ChangeLanguage?SelectedLanguage=ar-EG&redirect=@url">@Resources.Global.Arabic</a></li>
@@ -203,54 +202,117 @@
             <a style="background: #1d1f4f;width: 40px;display: block;height: 40px;">1</a>
         </li>*@
 
-                @*@if (allSocialMedia != null && allSocialMedia.Any())
-        {
-            foreach (var social in allSocialMedia)
-            {
-                <li>
-                    <a title="@social.NameEnglish" href="@social.Link" target="_blank">
-                        <img src="@social.Image" />
-                    </a>
-                </li>
+                @if (allSocialMedia != null && allSocialMedia.Any())
+                {
+                    foreach (var social in allSocialMedia)
+                    {
 
-            }
-        }*@
 
-                <li>
-                    <a href="#" style="background: #3d53aa;" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" style="background: #03A9F4;" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" style="background: #0077B5;" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" style="background: #29A71A;" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" style="background: #af7a2c;" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" style="background: #dc3545;" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" style="background: #000;" target="_blank">
-                        <i class="fab fa-dailymotion"></i>
-                    </a>
-                </li>
+                        if (@social.Link.ToLower().Contains("facebook"))
+                        {
+                            <li>
+                                <a href="@social.Link" title="@social.NameEnglish" style="background: #3d53aa;" target="_blank">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                        }
+                        if (@social.Link.ToLower().Contains("twitter"))
+                        {
+                            <li>
+                                <a href="@social.Link" title="@social.NameEnglish" style="background: #03A9F4;" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                        }
+                        if (@social.Link.ToLower().Contains("linkedin"))
+                        {
+                            <li>
+                                <a href="@social.Link" title="@social.NameEnglish" style="background: #0077B5;" target="_blank">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                        }
+                        if (@social.Link.ToLower().Contains("whatsapp"))
+                        {
+                            <li>
+                                <a href="@social.Link" title="@social.NameEnglish" style="background: #29A71A;" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+                        }
+                        if (@social.Link.ToLower().Contains("instagram"))
+                        {
+                            <li>
+                                <a href="@social.Link" title="@social.NameEnglish" style="background: #af7a2c;" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                        }
+                        if (@social.Link.ToLower().Contains("youtube"))
+                        {
+                            <li>
+                                <a href="@social.Link" title="@social.NameEnglish" style="background: #dc3545;" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </li>
+                        }
+                        if (@social.Link.ToLower().Contains("dailymotion"))
+                        {
+                            <li>
+                                <a href="@social.Link" title="@social.NameEnglish" style="background: #000;" target="_blank">
+                                    <i class="fab fa-dailymotion"></i>
+                                </a>
+                            </li>
+                        }
+                        if (@social.Link.ToLower().Contains("tvz"))
+                        {
+                            <li>
+                                <a href="@social.Link" title="@social.NameEnglish" style="background: #fff;" target="_blank">
+                                    <img src="~/assets_NewPublic/images/icons/TVZ.PNG" />
+                                </a>
+                            </li>
+                        }
+
+
+                    }
+
+                }
+
+                @*<li>
+            <a href="#" style="background: #3d53aa;" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #03A9F4;" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #0077B5;" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #29A71A;" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #af7a2c;" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #dc3545;" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #000;" target="_blank">
+                <i class="fab fa-dailymotion"></i>
+            </a>
+        </li>*@
 
             </ul>
         </div>
@@ -271,55 +333,86 @@
                     {
                 <ul class="buttons">
 
-                    @*@if (allSocialMedia != null && allSocialMedia.Any())
-        {
-            foreach (var social in allSocialMedia)
-            {
-                <li>
-                    <a class="" title="@social.NameEnglish" href="@social.Link" target="_blank">
-                        <img src="@social.Image" />
-                    </a>
-                </li>
+                    @if (allSocialMedia != null && allSocialMedia.Any())
+                    {
 
-            }
-        }*@
+                        foreach (var social in allSocialMedia)
+                        {
 
 
-                    <li>
-                        <a href="#" style="background: #3d53aa;" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #03A9F4;" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #0077B5;" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #29A71A;" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #af7a2c;" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #dc3545;" target="_blank">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #000;" target="_blank">
-                            <i class="fab fa-dailymotion"></i>
-                        </a>
-                    </li>
+                            if (@social.Link.ToLower().Contains("facebook"))
+                            {
+                                <li>
+                                    <a href="@social.Link" title="@social.NameEnglish" style="background: #3d53aa;" target="_blank">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                            }
+                            if (@social.Link.ToLower().Contains("twitter"))
+                            {
+                                <li>
+                                    <a href="@social.Link" title="@social.NameEnglish" style="background: #03A9F4;" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                            }
+                            if (@social.Link.ToLower().Contains("linkedin"))
+                            {
+                                <li>
+                                    <a href="@social.Link" title="@social.NameEnglish" style="background: #0077B5;" target="_blank">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                            }
+                            if (@social.Link.ToLower().Contains("whatsapp"))
+                            {
+                                <li>
+                                    <a href="@social.Link" title="@social.NameEnglish" style="background: #29A71A;" target="_blank">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </li>
+                            }
+                            if (@social.Link.ToLower().Contains("instagram"))
+                            {
+                                <li>
+                                    <a href="@social.Link" title="@social.NameEnglish" style="background: #af7a2c;" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                            }
+                            if (@social.Link.ToLower().Contains("youtube"))
+                            {
+                                <li>
+                                    <a href="@social.Link" title="@social.NameEnglish" style="background: #dc3545;" target="_blank">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                            }
+                            if (@social.Link.ToLower().Contains("dailymotion"))
+                            {
+                                <li>
+                                    <a href="@social.Link" title="@social.NameEnglish" style="background: #000;" target="_blank">
+                                        <i class="fab fa-dailymotion"></i>
+                                    </a>
+                                </li>
+                            }
+                            if (@social.Link.ToLower().Contains("tvz"))
+                            {
+                                <li>
+                                    <a href="@social.Link" title="@social.NameEnglish" style="background: #fff;" target="_blank">
+                                        <img src="~/assets_NewPublic/images/icons/TVZ.PNG" />
+                                    </a>
+                                </li>
+                            }
+
+
+                        }
+
+
+                    }
+
+
+
 
                 </ul>
                     }
@@ -329,7 +422,7 @@
 
 
 
-
+              
 
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -427,7 +520,6 @@
 
                         }
 
-                        <!--<li><a href="News.html"> NEWS </a></li>-->
                         <li class="dropdown">
                             <a class="dropdown-toggle active-a5" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.NewsEvents  </a>
                             <ul class="dropdown-menu dropmenuNew">
@@ -511,14 +603,14 @@
     {
 
         <!-- start of wpo-site-footer-section -->
-        <footer class="wpo-site-footer" style="display">
+        <footer class="wpo-site-footer" style="">
             <div class="wpo-upper-footer">
                 <div class="container">
                     <div class="row">
                         <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 footercol">
                             <div class="widget about-widget">
                                 <div class="logo widget-title">
-                                    <a class="logo" href="index.html"><img src="@_contactUs.Logo" alt=""></a>
+                                    <a class="logo" href="/Home"><img src="@_contactUs.Logo" alt=""></a>
                                 </div>
                                 @if (en)
                                 {
@@ -532,54 +624,118 @@
                             <ul>
 
 
-                                @*@if (allSocialMedia != null && allSocialMedia.Any())
+                                @if (allSocialMedia != null && allSocialMedia.Any())
                                 {
                                     foreach (var social in allSocialMedia)
                                     {
-                                        <li>
-                                            <a href="@social.Link" title="@social.NameEnglish" target="_blank">
-                                                <img src="@social.Image" />
-                                            </a>
-                                        </li>
+
+
+                                        if (@social.Link.ToLower().Contains("facebook"))
+                                        {
+                                            <li>
+                                                <a href="@social.Link" title="@social.NameEnglish" style="background: #3d53aa;" target="_blank">
+                                                    <i class="fab fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                        }
+                                        if (@social.Link.ToLower().Contains("twitter"))
+                                        {
+                                            <li>
+                                                <a href="@social.Link" title="@social.NameEnglish" style="background: #03A9F4;" target="_blank">
+                                                    <i class="fab fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                        }
+                                        if (@social.Link.ToLower().Contains("linkedin"))
+                                        {
+                                            <li>
+                                                <a href="@social.Link" title="@social.NameEnglish" style="background: #0077B5;" target="_blank">
+                                                    <i class="fab fa-linkedin-in"></i>
+                                                </a>
+                                            </li>
+                                        }
+                                        if (@social.Link.ToLower().Contains("whatsapp"))
+                                        {
+                                            <li>
+                                                <a href="@social.Link" title="@social.NameEnglish" style="background: #29A71A;" target="_blank">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                </a>
+                                            </li>
+                                        }
+                                        if (@social.Link.ToLower().Contains("instagram"))
+                                        {
+                                            <li>
+                                                <a href="@social.Link" title="@social.NameEnglish" style="background: #af7a2c;" target="_blank">
+                                                    <i class="fab fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        }
+                                        if (@social.Link.ToLower().Contains("youtube"))
+                                        {
+                                            <li>
+                                                <a href="@social.Link" title="@social.NameEnglish" style="background: #dc3545;" target="_blank">
+                                                    <i class="fab fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                        }
+                                        if (@social.Link.ToLower().Contains("dailymotion"))
+                                        {
+                                            <li>
+                                                <a href="@social.Link" title="@social.NameEnglish" style="background: #000;" target="_blank">
+                                                    <i class="fab fa-dailymotion"></i>
+                                                </a>
+                                            </li>
+                                        }
+                                        if (@social.Link.ToLower().Contains("tvz"))
+                                        {
+                                            <li>
+                                                <a href="@social.Link" title="@social.NameEnglish" style="background: #fff;" target="_blank">
+                                                    <img src="~/assets_NewPublic/images/icons/TVZ.PNG" />
+                                                </a>
+                                            </li>
+                                        }
+
+
                                     }
-                                }*@
+
+                                }
 
 
-                                <li>
-                                    <a href="#" style="background: #3d53aa;" target="_blank">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" style="background: #03A9F4;" target="_blank">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" style="background: #0077B5;" target="_blank">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" style="background: #29A71A;" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" style="background: #af7a2c;" target="_blank">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" style="background: #dc3545;" target="_blank">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" style="background: #000;" target="_blank">
-                                        <i class="fab fa-dailymotion"></i>
-                                    </a>
-                                </li>
+                                @*<li>
+            <a href="#" style="background: #3d53aa;" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #03A9F4;" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #0077B5;" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #29A71A;" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #af7a2c;" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #dc3545;" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" style="background: #000;" target="_blank">
+                <i class="fab fa-dailymotion"></i>
+            </a>
+        </li>*@
 
 
                                 @*<li>

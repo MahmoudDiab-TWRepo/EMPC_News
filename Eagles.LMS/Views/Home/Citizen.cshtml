@@ -1,11 +1,14 @@
-﻿
+﻿@model CitizenRequist
 @{
     ViewBag.Title = "Citizen";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     UnitOfWork ctx = new UnitOfWork();
+    var SEO = ctx.SEOManager.GetAll().FirstOrDefault();
+
 
     var _Citizens = ctx.CitizensManager.GetAll().OrderByDescending(s => s.Id).ToList();
+    var _contactUs = ctx.ContactUsManager.GetAll().FirstOrDefault();
     bool en = true;
     if (Request.Cookies["Language"] != null)
     {
@@ -22,10 +25,13 @@
 
     }
 }
+@section PageTitle{
+    <title>@SEO.CitizenPageTitle</title>
+}
 @section metatags{
-    <meta name="keywords" id="metaKeyword" content="empcnews, news, citizin, empc, " />
-    <meta name="description" id="metaDesc" content="Non-stop news coverage of the most important local and international events" />
-    <link rel="canonical" id="canonicalUrl" href="https://www.empcnews.com" />
+    <meta name="keywords" content="@SEO.CitizenPageMetaKeywords " />
+    <meta name="description" id="metaDesc" content="@SEO.CitizenPageMetaDescription" />
+    <link rel="canonical" id="canonicalUrl" href="@SEO.CitizenPageCanonicalUrl" />
 }
 @section EndHeader{
     <style>
@@ -159,8 +165,7 @@
 
                     <h3><i class="fa fa-envelope" aria-hidden="true"></i></h3>
                     <h4>@Resources.Global.ContactUs</h4>
-                    <p>NewsDesk@empcnews.com</p>
-
+                    <p>@_contactUs.CitizenEmail</p>
 
                 </div>
                 <!--end adress-->
@@ -169,95 +174,130 @@
             <div class="col-lg-12">
                 <div class="CitizenFormSend">
                     <div class="container sendmessage">
-                        <form action="#" method="post">
-                            <div class="row">
+                        @using (Html.BeginForm("Citizen", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
 
-                                <div class="col-md-12">
-                                    <div class="TitleForm">
-                                        <h3>@Resources.Global.SendNews</h3>
+                            <form action="#" method="post">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="TitleForm">
+                                            <h3>@Resources.Global.SendNews</h3>
+                                        </div>
+
                                     </div>
 
-                                </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>@Resources.Global.FirstName</label>
+                                            @Html.TextBoxFor(s => s.FirstName, null, new
+                                           {
+                                               @class = "",
+                                               placeholder = "First Name",
+                                               @required = "rquired"
+                                           })
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>@Resources.Global.FirstName</label>
-                                        <input type="text" placeholder='@Resources.Global.FirstName' />
+
+                                            @*<input type="text" placeholder='@Resources.Global.FirstName' />*@
+                                        </div>
                                     </div>
+                                    <!--end col-6-->
 
-
-
-                                </div>
-                                <!--end col-6-->
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>@Resources.Global.LastName</label>
-                                        <input type="text" placeholder='@Resources.Global.LastName' />
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>@Resources.Global.LastName</label>
+                                            @Html.TextBoxFor(s => s.LastName, null, new
+                                           {
+                                               @class = "",
+                                               placeholder = "Last Name",
+                                               @required = "rquired"
+                                           })
+                                            @*<input type="text" placeholder='@Resources.Global.LastName' />*@
+                                        </div>
                                     </div>
-                                </div>
-                                <!--end col-6-->
+                                    <!--end col-6-->
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>@Resources.Global.EmailAddess</label>
-                                        <input type="text" placeholder='@Resources.Global.EmailAddess' />
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>@Resources.Global.EmailAddess</label>
+                                            @Html.TextBoxFor(s => s.Email, null, new
+                                           {
+                                               @class = "",
+                                               placeholder = "Email",
+                                               type = "email",
+                                               @required = "rquired"
+                                           })
+                                            @*<input type="text" placeholder='@Resources.Global.EmailAddess' />*@
+                                        </div>
                                     </div>
-                                </div>
-                                <!--end col-6-->
+                                    <!--end col-6-->
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>@Resources.Global.phoneNumber</label>
-                                        <input type="text" placeholder='@Resources.Global.phoneNumber' />
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>@Resources.Global.phoneNumber</label>
+                                            @Html.TextBoxFor(s => s.Phone, null, new
+                                           {
+                                               @class = "",
+                                               placeholder = "Phone",
+                                               @required = "rquired"
+                                           })
+                                            @*<input type="text" placeholder='@Resources.Global.phoneNumber' />*@
+                                        </div>
+
+
                                     </div>
+                                    <!--end col-6-->
 
 
-                                </div>
-                                <!--end col-6-->
-
-
-                                <div class="col-xs-12 col-md-12">
-                                    <div class="form-group">
-                                        <label>@Resources.Global.UploadImagesOrVideo </label>
-                                        <div class="input-group image-preview">
-                                            <input type="text" class=" image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                                            <div class="input-group-btn">
-                                                <div class="btn btn-default image-preview-input">
-                                                    <span class="glyphicon glyphicon-folder-open"></span>
-                                                    <span class="image-preview-input-title">@Resources.Global.Browse</span>
-                                                    <input type="file" name="input-file-preview" /> <!-- rename it -->
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="form-group">
+                                            <label>@Resources.Global.UploadImagesOrVideo </label>
+                                            <div class="input-group image-preview">
+                                                <input type="text" class=" image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                                <div class="input-group-btn">
+                                                    <div class="btn btn-default image-preview-input">
+                                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                                        <span class="image-preview-input-title">@Resources.Global.Browse</span>
+                                                        <input type="file" name="uploadattachments" /> <!-- rename it -->
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
 
-                                </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>@Resources.Global.YourMessage</label>
+                                            @Html.TextAreaFor(s => s.Message, new
+                                           {
+                                               @class = "",
+                                               @required = "rquired",
+                                               placeholder = "Your Message"
+                                           })
+                                            @*<textarea placeholder=' @Resources.Global.message ...'></textarea>*@
+                                        </div>
 
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>@Resources.Global.YourMessage</label>
-                                        <textarea placeholder=' @Resources.Global.message ...'></textarea>
+
+
+
+
+
                                     </div>
-
-
-
-
-
-
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-black">@Resources.Global.SendNews</button>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-black">@Resources.Global.SendNews</button>
+                                        </div>
                                     </div>
+                                    <!--end col-12-->
+
+
                                 </div>
-                                <!--end col-12-->
+                                <!--end row-->
 
+                            </form>
 
-                            </div>
-                            <!--end row-->
-
-                        </form>
+                        }
 
                     </div>
                     <!--end container-->

@@ -1,0 +1,104 @@
+﻿
+
+@model List<CitizenRequist>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admission/Views/Shared/_Layout.cshtml";
+    var ctx = new Eagles.LMS.BLL.UnitOfWork();
+    List<CitizenRequist> CareerInServices = new List<CitizenRequist>();
+}
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                <h4 class="mb-sm-0 font-size-18">
+                    Careers
+                </h4>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive" style="padding-bottom:30px;">
+
+                        <table id="table_Slider" class=" table table-bordered tableOtherdite">
+                            <thead class="DarkThead">
+                                <tr>
+                                    <th> <p> First Name</p> </th>
+                                    <th> <p> Last Name</p> </th>
+                                    <th> <p>Email </p></th>
+                                    <th> <p>Phone </p></th>
+
+                                    <th> <p>Message </p></th>
+                                    <th> <p>Attachment </p></th>
+
+
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+
+
+                                @foreach (var item in Model)
+                                {
+                                    //CareerInServices = ctx.CareerManager.GetAllIncluded(item.Id);
+
+                                    <tr>
+
+
+                                        <td> <p>@item.FirstName</p> </td>
+                                        <td> <p>@item.LastName</p> </td>
+                                        <td> <p>@item.Email</p> </td>
+                                        <td> <p>@item.Phone</p> </td>
+                                        <td> <p>@item.Message</p> </td>
+                                        <td>
+
+                                            <a href="@item.Attachment" download style="font-size: 25px; color: #2a3042; " target="_blank">
+                                                <i class="bx bxs-file-pdf"></i>
+                                            </a>
+                                        </td>
+
+                                       
+
+
+                                    </tr>
+                                }
+
+
+                            </tbody>
+
+
+
+
+
+                        </table>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+    </div>
+
+</div>
+
+
+
+
+@section EndBody{
+
+}
+

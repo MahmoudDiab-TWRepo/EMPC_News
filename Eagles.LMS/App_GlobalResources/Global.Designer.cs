@@ -942,7 +942,7 @@ namespace Eagles.LMS.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Citizen.
+        ///   Looks up a localized string similar to Citizen Journalism.
         /// </summary>
         public static string Citizen {
             get {

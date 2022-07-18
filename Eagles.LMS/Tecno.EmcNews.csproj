@@ -365,27 +365,58 @@
     <Compile Include="Areas\Admission\Controllers\AgendaController.cs" />
     <Compile Include="Areas\Admission\Controllers\AlaaaaController.cs" />
     <Compile Include="Areas\Admission\Controllers\BookingController.cs" />
+    <Compile Include="Areas\Admission\Controllers\CitizenRequistController.cs" />
     <Compile Include="Areas\Admission\Controllers\CitizensController.cs" />
     <Compile Include="Areas\Admission\Controllers\ClientsController.cs" />
+    <Compile Include="Areas\Admission\Controllers\ContactRequistController.cs" />
     <Compile Include="Areas\Admission\Controllers\LogsController.cs" />
+    <Compile Include="Areas\Admission\Controllers\SEOController.cs" />
     <Compile Include="Areas\Admission\Controllers\SettingsController.cs" />
     <Compile Include="BLL\AlbumManager.cs" />
     <Compile Include="BLL\BookingInServicesManager.cs" />
     <Compile Include="BLL\BookingManager.cs" />
     <Compile Include="BLL\BookingServiceManager.cs" />
+    <Compile Include="BLL\CitizenRequistManager.cs" />
     <Compile Include="BLL\CitizensManager.cs" />
     <Compile Include="BLL\ClientsManager.cs" />
+    <Compile Include="BLL\ContactRequistManager.cs" />
     <Compile Include="BLL\logManager.cs" />
+    <Compile Include="BLL\SEOManager.cs" />
     <Compile Include="BLL\SettingsManager.cs" />
-    <Compile Include="Migrations\202206061153559_teetet.cs" />
-    <Compile Include="Migrations\202206061153559_teetet.designer.cs">
-      <DependentUpon>202206061153559_teetet.cs</DependentUpon>
+    <Compile Include="Migrations\202207171449189_AddSEO.cs" />
+    <Compile Include="Migrations\202207171449189_AddSEO.designer.cs">
+      <DependentUpon>202207171449189_AddSEO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207171519329_UpdateSEO.cs" />
+    <Compile Include="Migrations\202207171519329_UpdateSEO.designer.cs">
+      <DependentUpon>202207171519329_UpdateSEO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207171600289_AddContatxtRequist.cs" />
+    <Compile Include="Migrations\202207171600289_AddContatxtRequist.designer.cs">
+      <DependentUpon>202207171600289_AddContatxtRequist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207171636498_UpdateContat.cs" />
+    <Compile Include="Migrations\202207171636498_UpdateContat.designer.cs">
+      <DependentUpon>202207171636498_UpdateContat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207171910015_AddCitizenrequist.cs" />
+    <Compile Include="Migrations\202207171910015_AddCitizenrequist.designer.cs">
+      <DependentUpon>202207171910015_AddCitizenrequist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207180919431_UpdateBooking.cs" />
+    <Compile Include="Migrations\202207180919431_UpdateBooking.designer.cs">
+      <DependentUpon>202207180919431_UpdateBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207180954110_UpdateBooking22.cs" />
+    <Compile Include="Migrations\202207180954110_UpdateBooking22.designer.cs">
+      <DependentUpon>202207180954110_UpdateBooking22.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\BookingInServices.cs" />
     <Compile Include="Models\BookingService.cs" />
+    <Compile Include="Models\CitizenRequist.cs" />
     <Compile Include="Models\Citizens.cs" />
     <Compile Include="Areas\Admission\Controllers\ContactUsController.cs" />
     <Compile Include="Areas\Admission\Controllers\GalariesController.cs" />
@@ -450,6 +481,7 @@
     <Compile Include="Models\AgendaImages.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ContactUs.cs" />
+    <Compile Include="Models\ContactRequist.cs" />
     <Compile Include="Models\Galary.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\GroupPriviage.cs" />
@@ -462,6 +494,7 @@
     <Compile Include="Models\Privilage.cs" />
     <Compile Include="Models\PrivilageRoute.cs" />
     <Compile Include="Models\RelatedWebSite.cs" />
+    <Compile Include="Models\SEO.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\ServiceImages.cs" />
     <Compile Include="Models\Setting.cs" />
@@ -870,7 +903,6 @@
     <Content Include="assets_NewPublic\css\font-awesome.min.css" />
     <Content Include="assets_NewPublic\css\gallery-demo.css" />
     <Content Include="assets_NewPublic\css\gallery-jquery.flipster.min.css" />
-    <Content Include="assets_NewPublic\css\index.html" />
     <Content Include="assets_NewPublic\css\ionicons.min.css" />
     <Content Include="assets_NewPublic\css\lightgallery.css" />
     <Content Include="assets_NewPublic\css\owl.carousel.min.css" />
@@ -974,6 +1006,7 @@
     <Content Include="assets_NewPublic\images\icons\NewsIcons\03.png" />
     <Content Include="assets_NewPublic\images\icons\NewsIcons\icon-about-1.png" />
     <Content Include="assets_NewPublic\images\icons\NewsIcons\vision.png" />
+    <Content Include="assets_NewPublic\images\icons\TVZ.PNG" />
     <Content Include="assets_NewPublic\images\icons\value-red.png" />
     <Content Include="assets_NewPublic\images\icons\value.png" />
     <Content Include="assets_NewPublic\images\icons\vision-red.png" />
@@ -1700,6 +1733,11 @@
     <Content Include="assets_NewDash\libs\summernote\font\summernote.woff" />
     <Content Include="assets_NewDash\libs\summernote\font\summernote.woff2" />
     <Content Include="assets_NewDash\libs\summernote\font\summernoted41d.eot" />
+    <Content Include="Areas\Admission\Views\SEO\Index.cshtml" />
+    <Content Include="Areas\Admission\Views\Users\ChangePassword.cshtml" />
+    <Content Include="Areas\Admission\Views\Users\_Changepass.cshtml" />
+    <Content Include="Areas\Admission\Views\ContactRequist\Index.cshtml" />
+    <Content Include="Areas\Admission\Views\CitizenRequist\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -2092,8 +2130,26 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206061153559_teetet.resx">
-      <DependentUpon>202206061153559_teetet.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202207171449189_AddSEO.resx">
+      <DependentUpon>202207171449189_AddSEO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207171519329_UpdateSEO.resx">
+      <DependentUpon>202207171519329_UpdateSEO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207171600289_AddContatxtRequist.resx">
+      <DependentUpon>202207171600289_AddContatxtRequist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207171636498_UpdateContat.resx">
+      <DependentUpon>202207171636498_UpdateContat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207171910015_AddCitizenrequist.resx">
+      <DependentUpon>202207171910015_AddCitizenrequist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207180919431_UpdateBooking.resx">
+      <DependentUpon>202207180919431_UpdateBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207180954110_UpdateBooking22.resx">
+      <DependentUpon>202207180954110_UpdateBooking22.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

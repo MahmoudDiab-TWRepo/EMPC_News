@@ -29,6 +29,21 @@ namespace Eagles.LMS.Models
 
         public string Message { get; set; }
 
+        public Boolean LiveStudio { get; set; }
+
+        public Boolean StandUpPosition { get; set; }
+        public Boolean TapeLayout { get; set; }
+        public Boolean EngCrew { get; set; }
+        public Boolean NewsPackage { get; set; }
+        public Boolean Edite { get; set; }
+        public Boolean Uplink { get; set; }
+        public Boolean SataliteSpace { get; set; }
+        public Boolean Production { get; set; }
+        public Boolean SNG { get; set; }
+        public Boolean OBVAN { get; set; }
+        public Boolean Other { get; set; }
+
+
         public List<BookingInServices> BookingInServices { get; set; }
        
         [NotMapped]

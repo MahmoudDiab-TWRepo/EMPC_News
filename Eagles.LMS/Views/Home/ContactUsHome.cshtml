@@ -1,7 +1,9 @@
-﻿
+﻿@model ContactRequist
 @{
-    ViewBag.Title = "ContactUs";
+
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var requestStatus = TempData.Peek("RequestStatus") as RequestStatus;
     bool en = true;
 
     if (Request.Cookies["Language"] != null)
@@ -10,14 +12,17 @@
 
     }
     UnitOfWork ctx = new UnitOfWork();
-
+    var SEO = ctx.SEOManager.GetAll().FirstOrDefault();
     var _contactUs = ctx.ContactUsManager.GetAll().FirstOrDefault();
 }
 
+@section PageTitle{
+    <title>@SEO.ContactUsPageTitle</title>
+}
 @section metatags{
-    <meta name="keywords" id="metaKeyword" content="empcnews, contactus, news, empc, " />
-    <meta name="description" id="metaDesc" content="Non-stop news coverage of the most important local and international events" />
-    <link rel="canonical" id="canonicalUrl" href="https://www.empcnews.com" />
+    <meta name="keywords" content="@SEO.ContactUsPageMetaKeywords " />
+    <meta name="description" id="metaDesc" content="@SEO.ContactUsPageMetaDescription" />
+    <link rel="canonical" id="canonicalUrl" href="@SEO.ContactUsPageCanonicalUrl" />
 }
 @section EndHeader{
 
@@ -160,28 +165,85 @@
 
         <div class="cleaner-h2"></div>
 
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="col-md-6">
-                    <input type="text" id="Text_FirstName" placeholder='@Resources.Global.FirstName' />
-                </div>
-                <div class="col-md-6">
-                    <input type="text" id="Text_LastName" placeholder='@Resources.Global.LastName' />
-                </div>
-                <div class="col-md-6">
-                    <input type="text" id="Text_Email" placeholder='@Resources.Global.Email' />
-                </div>
-                <div class="col-md-6">
-                    <input type="text" id="Text_Phone" placeholder='@Resources.Global.phone' />
-                </div>
-                <div class="col-md-12">
-                    <textarea id="Text_Message" placeholder='@Resources.Global.YourMessage'></textarea>
-                </div>
-                <div class="col-lg-12">
-                    <a id="BTN_SendMessage" class="btn btn-black " style="color:#fff">@Resources.Global.Send</a>
-                </div>
+        @using (Html.BeginForm("ContactUsHome", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="col-lg-12">
+                <form action="#" method="post">
+
+                    <div class="row">
+                        @*<div class="col-md-6">
+                                <input type="text" id="Text_FirstName" placeholder='@Resources.Global.FirstName' />
+                            </div>*@
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(s => s.FirstName, null, new
+                           {
+                               @class = "",
+                               placeholder = "First Name",
+                               @required = "rquired"
+                           })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(s => s.LastName, null, new
+                           {
+                               @class = "",
+                               placeholder = "Last Name",
+                               @required = "rquired"
+                           })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(s => s.Email, null, new
+                           {
+                               @class = "",
+                               placeholder = "Email",
+                               @required = "rquired",
+                               Type = "email"
+                           })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(s => s.Phone, null, new
+                           {
+                               @class = "",
+                               placeholder = "Phone Number",
+                               @required = "rquired"
+                           })
+                        </div>
+
+                        <div class="col-md-12">
+                            @Html.TextAreaFor(s => s.Message, new
+                       {
+                           @class = "",
+                           @required = "rquired",
+                           placeholder = "Your Message"
+                       })
+                        </div>
+
+
+                        @*<div class="col-md-6">
+                                <input type="text" id="Text_LastName" placeholder='@Resources.Global.LastName' />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="Text_Email" placeholder='@Resources.Global.Email' />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="Text_Phone" placeholder='@Resources.Global.phone' />
+                            </div>
+                            <div class="col-md-12">
+                                <textarea id="Text_Message" placeholder='@Resources.Global.YourMessage'></textarea>
+                            </div>*@
+                    <div class="col-lg-12">
+                        @*<a id="BTN_SendMessage_Old" class="btn btn-black " style="color:#fff">@Resources.Global.Send</a>*@
+
+                        <button type="submit" class="btn btn-black" style="color:#fff" id="Text_BTNSubmit_old">@Resources.Global.Send</button>
+
+                    </div>
+                    </div>
+                </form>
+
             </div>
-        </div>
+
+        }
+
 
 
 
@@ -209,6 +271,30 @@
     <script src="~/assets_2/vendors/base/vendors.bundle.js" type="text/javascript"></script>
     <script src="~/assets_2/default/base/Scripts.bundle.js" type="text/javascript"></script>
     <script src="~/assets_2/plugins/extended/bootstrap-notify.js" type="text/javascript"></script>
+
+
+
+
+    @if (requestStatus != null)
+    {
+
+        <script>
+
+    notify = $.notify({
+        message: '@requestStatus.Message',
+
+    }, {
+
+        type: '@requestStatus.Status' == 'Created' ? "success" : "danger",
+        animate: {
+            enter: 'animated flipInY',
+            exit: 'animated flipOutX',
+        }
+    });
+        </script>
+
+        TempData.Remove("RequestStatus");
+    }
 
 
     <script>

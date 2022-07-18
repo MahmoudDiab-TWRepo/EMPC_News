@@ -1,13 +1,18 @@
-﻿
+﻿@model Booking
 @{
-    ViewBag.Title = "Booking";
+
     Layout = "~/Views/Shared/_Layout.cshtml";
+    UnitOfWork ctx = new UnitOfWork();
+    var SEO = ctx.SEOManager.GetAll().FirstOrDefault();
 }
 
+@section PageTitle{
+    <title>@SEO.CareersPageTitle</title>
+}
 @section metatags{
-    <meta name="keywords" id="metaKeyword" content="empcnews, news, booking, empc, " />
-    <meta name="description" id="metaDesc" content="Non-stop news coverage of the most important local and international events" />
-    <link rel="canonical" id="canonicalUrl" href="https://www.empcnews.com" />
+    <meta name="keywords" content="@SEO.CareersPageMetaKeywords " />
+    <meta name="description" id="metaDesc" content="@SEO.CareersPageMetaDescription" />
+    <link rel="canonical" id="canonicalUrl" href="@SEO.CareersPageCanonicalUrl" />
 }
 @section EndHeader{
     <link href="~/assets_2/vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />
@@ -67,244 +72,372 @@
         <div class="container">
             <div class="bookingformcont">
 
-                <div class="row">
-                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+
+                @using (Html.BeginForm("Booking", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <form action="#" method="post">
                         <div class="row">
-                            <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Your Company Name :-</label>
-                                    <input type="text" id="Text_CompanyName" class="form-control" placeholder="">
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Your Company Name :-</label>
+                                            @Html.TextBoxFor(s => s.CompanyName, null, new
+                                            {
+                                                @class = "form-control",
+                                                placeholder = "First Name",
+                                                @required = "rquired"
+                                            })
+
+                                            @*<input type="text" id="Text_CompanyName" class="form-control" placeholder="">*@
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Your Company Email :-</label>
+                                            @Html.TextBoxFor(s => s.CompanyEmail, null, new
+                                            {
+                                                @class = "form-control",
+                                                placeholder = "First Name",
+                                                type = "email",
+                                                @required = "rquired"
+                                            })
+                                            @*<input type="email" id="Text_CompanyEmail" class="form-control" placeholder="">*@
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Date of Services</label>
+                                            @Html.TextBoxFor(s => s.DataServicees, null, new
+                                            {
+                                                @class = "form-control",
+                                                placeholder = "First Name",
+                                                type = "date",
+                                                @required = "rquired"
+                                            })
+                                            @*<input type="date" id="Text_DataServicees" class="form-control" placeholder="">*@
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <h2>Time of Services (GMT Time)</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Start (00.00 GMT)</label>
+                                            @Html.TextBoxFor(s => s.SartTime, null, new
+                                            {
+                                                @class = "form-control",
+                                                placeholder = "First Name",
+                                                type = "time",
+                                                @required = "rquired"
+                                            })
+                                            @*<input type="time" id="Text_SartTime" class="form-control" placeholder="Date of Services">*@
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>End (00.00 GMT)</label>
+                                            @Html.TextBoxFor(s => s.EndTime, null, new
+                                            {
+                                                @class = "form-control",
+                                                placeholder = "First Name",
+                                                type = "time",
+                                                @required = "rquired"
+                                            })
+                                            @*<input type="time" id="Text_EndTime" class="form-control" placeholder="Date of Services">*@
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Origin :-</label>
+                                            @Html.TextBoxFor(s => s.Origin, null, new
+                                            {
+                                                @class = "form-control",
+                                                placeholder = "First Name",
+                                                @required = "rquired"
+                                            })
+                                            @*<input type="text" id="Text_Origin" class="form-control" placeholder="">*@
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Your Company Email :-</label>
-                                    <input type="email" id="Text_CompanyEmail" class="form-control" placeholder="">
+
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <h2>Type of Services</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_LiveStudio">Live Studio </label>
+                                                        @Html.CheckBoxFor(s => s.LiveStudio, new
+                                                   {
+                                                       @class = "Text_ServiceType",
+                                                       @id = "Text_LiveStudio",
+                                                   })
+                                                        @*<input class="" value="1" id="" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_StandUpPosition">Stand up Position </label>
+                                                        @Html.CheckBoxFor(s => s.StandUpPosition, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_StandUpPosition",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="2" id="Text_StandUpPosition" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_TapeLayout">Tape Layout </label>
+                                                        @Html.CheckBoxFor(s => s.TapeLayout, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_TapeLayout",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="3" id="Text_TapeLayout" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_EngCrew">Eng Crew </label>
+                                                        @Html.CheckBoxFor(s => s.EngCrew, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_EngCrew",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="4" id="Text_EngCrew" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_NewsPackage">News Package </label>
+                                                        @Html.CheckBoxFor(s => s.NewsPackage, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_NewsPackage",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="5" id="Text_NewsPackage" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_Edite">Edit </label>
+                                                        @Html.CheckBoxFor(s => s.Edite, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_Edite",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="6" id="Text_Edite" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_Uplink">Uplink </label>
+                                                        @Html.CheckBoxFor(s => s.Uplink, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_Uplink",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="7" id="Text_Uplink" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_SataliteSpace">Satalite Space </label>
+                                                        @Html.CheckBoxFor(s => s.SataliteSpace, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_SataliteSpace",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="8" id="Text_SataliteSpace" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_Production">Production </label>
+                                                        @Html.CheckBoxFor(s => s.Production, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_Production",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="9" id="Text_Production" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_SNG">SNG </label>
+                                                        @Html.CheckBoxFor(s => s.SNG, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_SNG",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="10" id="Text_SNG" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_OBVAN">OB Van </label>
+                                                        @Html.CheckBoxFor(s => s.OBVAN, new
+                                                        {
+                                                            @class = "Text_ServiceType",
+                                                            @id = "Text_OBVAN",
+
+                                                        })
+                                                        @*<input class="Text_ServiceType" value="11" id="Text_OBVAN" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkOption">
+                                                <div class="bg">
+                                                    <div class="chiller_cb">
+                                                        <label for="Text_Other">Other </label>
+                                                        @Html.CheckBoxFor(s => s.Other, new
+                                                   {
+                                                       @class = "Text_ServiceType",
+                                                       @id = "Text_Other",
+
+                                                   })
+                                                        @*<input class="Text_ServiceType" value="12" id="Text_Other" type="checkbox">*@
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Date of Services</label>
-                                    <input type="date" id="Text_DataServicees" class="form-control" placeholder="">
+                                    <label>Your Messag</label>
+                                    @Html.TextAreaFor(s => s.Message, new
+                                       {
+                                           @class = "tettearea",
+                                           @required = "rquired",
+                                           placeholder = "Your Message"
+                                       })
+                                    @*<textarea class="tettearea" id="Text_Message" placeholder="Please Clarify Your requist's Technical Details"></textarea>*@
+
                                 </div>
                             </div>
-                            <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <h2>Time of Services (GMT Time)</h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Start (00.00 GMT)</label>
-                                    <input type="time" id="Text_SartTime" class="form-control" placeholder="Date of Services">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>End (00.00 GMT)</label>
-                                    <input type="time" id="Text_EndTime" class="form-control" placeholder="Date of Services">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Origin :-</label>
-                                    <input type="text" id="Text_Origin" class="form-control" placeholder="">
+                                    <button id="BTN_SendBook_old" type="submit" class="submitbtnbook">Send Book</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
+                }
 
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                        <div class="row">
-                            <div class="col-lg-12 co-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <h2>Type of Services</h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_LiveStudio">Live Studio </label>
-                                                <input class="Text_ServiceType" value="1" id="Text_LiveStudio" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_StandUpPosition">Stand up Position </label>
-                                                <input class="Text_ServiceType" value="2" id="Text_StandUpPosition" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_TapeLayout">Tape Layout </label>
-                                                <input class="Text_ServiceType" value="3" id="Text_TapeLayout" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_EngCrew">Eng Crew </label>
-                                                <input class="Text_ServiceType" value="4" id="Text_EngCrew" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_NewsPackage">News Package </label>
-                                                <input class="Text_ServiceType" value="5" id="Text_NewsPackage" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_Edite">Edit </label>
-                                                <input class="Text_ServiceType" value="6" id="Text_Edite" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_Uplink">Uplink </label>
-                                                <input class="Text_ServiceType" value="7" id="Text_Uplink" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_SataliteSpace">Satalite Space </label>
-                                                <input class="Text_ServiceType" value="8" id="Text_SataliteSpace" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_Production">Production </label>
-                                                <input class="Text_ServiceType" value="9" id="Text_Production" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_SNG">SNG </label>
-                                                <input class="Text_ServiceType" value="10" id="Text_SNG" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_OBVAN">OB Van </label>
-                                                <input class="Text_ServiceType" value="11" id="Text_OBVAN" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkOption">
-                                        <div class="bg">
-                                            <div class="chiller_cb">
-                                                <label for="Text_Other">Other </label>
-                                                <input class="Text_ServiceType" value="12" id="Text_Other" type="checkbox">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <label>Your Messag</label>
-                            <textarea class="tettearea" id="Text_Message" placeholder="Please Clarify Your requist's Technical Details"></textarea>
-
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <button id="BTN_SendBook" class="submitbtnbook">Send Book</button>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -321,6 +454,9 @@
     <script src="~/assets_2/vendors/base/vendors.bundle.js" type="text/javascript"></script>
     <script src="~/assets_2/default/base/Scripts.bundle.js" type="text/javascript"></script>
     <script src="~/assets_2/plugins/extended/bootstrap-notify.js" type="text/javascript"></script>
+
+
+
 
     <script>
         $(() => {

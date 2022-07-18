@@ -9,6 +9,10 @@ using Eagles.LMS.BLL;
 using Eagles.LMS.DTO;
 using Eagles.LMS.Models;
 
+
+using System.IO;
+using System.ComponentModel.DataAnnotations.Schema;
+using Eagles.LMS.Helper;
 namespace Eagles.LMS.Controllers
 {
     public class HomeController : Controller
@@ -32,6 +36,8 @@ namespace Eagles.LMS.Controllers
 
         public ActionResult Locations(int? id)
         {
+            if (id == 0)
+                return View("NotFound");
             if (id != null)
                 ViewBag.Id = id;
             //return Redirect("/Admission");
@@ -40,6 +46,8 @@ namespace Eagles.LMS.Controllers
 
         public ActionResult LocationDetails(int id)
         {
+            if (id == 0)
+                return View("NotFound");
             var loction = new Location();
             //if (loction == null)
             //{
@@ -75,6 +83,8 @@ namespace Eagles.LMS.Controllers
 
         public ActionResult ServicesDetails(int id)
         {
+            if (id == 0)
+                return View("NotFound");
             var service = new Service();
             //if (service == null)
             //    return HttpNotFound();
@@ -110,6 +120,9 @@ namespace Eagles.LMS.Controllers
             //var _new = new UnitOfWork().NewManager.GetAll().FirstOrDefault(s => s.Id == id);
             //_new.NewImages = new UnitOfWork().NewImagesMnager.GetAllBind().Where(s => s.NewId == id).ToList();
 
+            if ( id == 0)
+                return View("NotFound");
+
             var _new = new New();
             bool en = true;
 
@@ -130,6 +143,10 @@ namespace Eagles.LMS.Controllers
             }
             if (_new == null)
                 return View("NotFound");
+
+
+
+
             _new.NewImages = new UnitOfWork().NewImagesMnager.GetAllBind().Where(s => s.NewId == _new.Id).ToList();
 
             //return Redirect("/Admission");
@@ -152,6 +169,8 @@ namespace Eagles.LMS.Controllers
 
         public ActionResult AgendaDetails(int id)
         {
+            if (id == 0)
+                return View("NotFound");
             var _agenda = new Agenda();
             //if (_agenda == null)
             //    return HttpNotFound();
@@ -192,6 +211,8 @@ namespace Eagles.LMS.Controllers
 
         public ActionResult VideoDetails(int? id, int? albumId)
         {
+            if (id == 0)
+                return View("NotFound");
 
             if (id != null)
                 ViewBag.Id = id;
@@ -202,6 +223,8 @@ namespace Eagles.LMS.Controllers
         }
         public ActionResult Picture(int? id , int?  albumId)
         {
+            if (id == 0)
+                return View("NotFound");
 
             if (id != null)
                 ViewBag.Id = id;
@@ -230,16 +253,240 @@ namespace Eagles.LMS.Controllers
             //return Redirect("/Admission");
             return View();
         }
-  
+        [HttpPost]
+        public ActionResult Citizen(CitizenRequist citizenRequist, HttpPostedFileBase uploadattachments)
+        {
+
+            ActionResult result = View(citizenRequist);
+            string SiteDomainURL = System.Configuration.ConfigurationManager.AppSettings["SiteDomainURL"];
+
+            if (ModelState.IsValid)
+            {
+
+                RequestStatus requestStatus;
+                if (uploadattachments == null || uploadattachments.ContentLength == 0)
+                {
+                    requestStatus = new ManageRequestStatus().GetStatus(Status.GeneralError, "Plz Upload The Attachment");
+                }
+                else
+                {
+
+                    string folderName = "citizen";
+
+                    // To create a string that specifies the path to a subfolder under your
+                    // top-level folder, add a name for the subfolder to folderName.
+                    string pathString = System.IO.Path.Combine(Server.MapPath("~/attachments"), folderName);
+                    System.IO.Directory.CreateDirectory(pathString);
+                    string extention = System.IO.Path.GetExtension(uploadattachments.FileName);
+                    var fileName = Guid.NewGuid() + extention;
+                    var path = Path.Combine(Server.MapPath("~/attachments/citizen"), fileName);
+                    uploadattachments.SaveAs(path);
+                    citizenRequist.Attachment = $"/attachments/citizen/{fileName}";
+
+                    var ctx = new UnitOfWork();
+                    ctx.CitizenRequistManager.Add(citizenRequist);
+
+                    requestStatus = new ManageRequestStatus().GetStatus(Status.Created);
+
+                    try
+                    {
+                        SendEmail sendEmail = new SendEmail();
+                        sendEmail.SendMail(new EmailDTO
+                        {
+                            To = "To Email",
+                            Message =
+                            "<h1 style='font-size:25px; line-height:1.5'>New Citizen Requist</h1>"
+                            + "<p style='font-size:15px; color: #000'>Thank You for connecting us and we will get back to you soon.</p>" 
+                            + "<b style='font-size:12px; line-height:1.5'><br/><br/>First Name:</b>" + citizenRequist.FirstName + "<br />" 
+                            + "<b style='font-size:12px; line-height:1.5'>Last Name :</b>" + citizenRequist.LastName + "<br />" +
+                            "<b style='font-size:12px; line-height:1.5'>Email:</b>" + citizenRequist.Email + "<br />" +
+                            "<b style='font-size:12px; line-height:1.5'>Phone Number:</b>" + citizenRequist.Phone + "<br />" +
+                            "<b style='font-size:12px; line-height:1.5'>Message:</b>" + citizenRequist.Message + "<br />" +
+                            "<b style='font-size:12px; line-height:1.5'>Attachment link:  </b><a href='" + SiteDomainURL + citizenRequist.Attachment + "'>" + SiteDomainURL + citizenRequist.Attachment + "</a><br />",
+                            From = "web@empcnews.com",
+                            Subject = "New Citizen"
+                        }, "Citizen");
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    return Redirect("/Home/Citizin_ThanksPage");
+
+                }
+                TempData["RequestStatus"] = requestStatus;
+
+
+                //added by Me
+
+
+            }
+            return result;
+
+        }
+
+
+
+
         public ActionResult ContactUsHome()
         {
             //return Redirect("/Admission");
             return View();
         }
+
+        [HttpPost]
+        public ActionResult ContactUsHome(ContactRequist contat, HttpPostedFileBase uploadattachments)
+        {
+
+            ActionResult result = View(contat);
+
+            if (ModelState.IsValid)
+            {
+                RequestStatus requestStatus;
+                if (uploadattachments != null)
+                {
+                    requestStatus = new ManageRequestStatus().GetStatus(Status.GeneralError, "Plz Upload The Attachment");
+                }
+                else
+                {
+                    var ctx = new UnitOfWork();
+                    ctx.ContactRquistManager.Add(contat);
+                    requestStatus = new ManageRequestStatus().GetStatus(Status.Created);
+
+                    try
+                    {
+                        SendEmail sendEmail = new SendEmail();
+                        sendEmail.SendMail(new EmailDTO
+                        {
+                            To = "To Email",
+                            Message ="<h1 style='font-size:25px; line-height:1.5'>New Contact Message</h1>" 
+                            + "<p style='font-size:15px; color: #000'>Thank You for connecting us.</p>" + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>First Name :</b>" + contat.FirstName + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>Last Name :</b>" + contat.LastName + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>Email :</b>" + contat.Email + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>Phone :</b>" + contat.Phone + "<br />"
+                            +"<b style='font-size:12px; line-height:1.5'>Message:</b>" + contat.Message + "<br />" +
+                            "<br />",
+                            From = "web@empcnews.com",
+                            Subject = "New Contact Us"
+                        }, "Contact");
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                    return Redirect("/Home/ContactUs_ThanksPage");
+
+                }
+                TempData["RequestStatus"] = requestStatus;
+            }
+            return result;
+
+        }
+
+
         public ActionResult Booking()
         {
             //return Redirect("/Admission");
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Booking(Booking booking, HttpPostedFileBase uploadattachments)
+        {
+
+            ActionResult result = View(booking);
+
+            if (ModelState.IsValid)
+            {
+                RequestStatus requestStatus;
+                if (uploadattachments != null)
+                {
+                    requestStatus = new ManageRequestStatus().GetStatus(Status.GeneralError, "Plz Upload The Attachment");
+                }
+                else
+                {
+                    var ctx = new UnitOfWork();
+                    ctx.BookingManager.Add(booking);
+                    requestStatus = new ManageRequestStatus().GetStatus(Status.Created);
+
+                    var LiveStudio = "";
+                    var StandUpPosition = "";
+                    var TapeLayout = "";
+                    var EngCrew = "";
+                    var NewsPackage = "";
+                    var Edite = "";
+                    var Uplink = "";
+                    var SataliteSpace = "";
+                    var Production = "";
+                    var SNG = "";
+                    var OBVAN = "";
+                    var Other = "";
+
+
+
+                    if (booking.LiveStudio == true){LiveStudio = "Live Studio, ";}
+                    if (booking.StandUpPosition == true) { StandUpPosition = "Stand Up Position, "; }
+                    if (booking.TapeLayout == true) { TapeLayout = "Tape Layout, "; }
+                    if (booking.EngCrew == true) { EngCrew = "Eng Crew_"; }
+                    if (booking.NewsPackage == true) { NewsPackage = "News Package, "; }
+                    if (booking.Edite == true) { Edite = "Edite, "; }
+                    if (booking.Uplink == true) { Uplink = "Uplink, "; }
+                    if (booking.SataliteSpace == true) { SataliteSpace = "Satalite Space, "; }
+                    if (booking.Production == true) { Production = "Production, "; }
+                    if (booking.SNG == true) { SNG = "SNG, "; }
+                    if (booking.OBVAN == true) { OBVAN = "OBVAN, "; }
+                    if (booking.Other == true) { Other = "Other"; }
+
+                    try
+                    {
+
+                        
+                        SendEmail sendEmail = new SendEmail();
+                        sendEmail.SendMail(new EmailDTO
+                        {
+                            To = "To Email",
+                            Message = "<h1 style='font-size:25px; line-height:1.5'>New Booking Requist</h1> " 
+                            + "<p style = 'font-size:15px; color: #000;'> Thank you for your email and we will get back to you soon with our confirmation.</p>" + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>Company Name :</b>" + booking.CompanyName + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>Company Email :</b>" + booking.CompanyEmail + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>Date Services :</b>" + booking.DataServicees + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>Sart Time :</b>" + booking.SartTime + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>End Time:</b>" + booking.EndTime + "<br />" 
+                            + "<b style='font-size:12px; line-height:1.5'>Origin:</b>" + booking.Origin + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>Type of Services:</b>"
+                            + LiveStudio 
+                            + StandUpPosition 
+                            + TapeLayout
+                            + EngCrew
+                            + NewsPackage
+                            + Edite
+                            + Uplink
+                            + SataliteSpace
+                            + Production
+                            + SNG
+                            + OBVAN
+                            + Other
+                            + "<br />"
+                            + "<b style='font-size:12px; line-height:1.5'>Message:</b>" + booking.Message + "<br />" +
+                            "<br />",
+                            From = "web@empcnews.com",
+                            Subject = "New Booking"
+                        }, "booking");
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                    return Redirect("/Home/Booking_ThanksPage");
+
+                }
+                TempData["RequestStatus"] = requestStatus;
+            }
+            return result;
+
         }
 
         public ActionResult Booking_ThanksPage()

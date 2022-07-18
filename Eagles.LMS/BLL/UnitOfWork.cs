@@ -32,6 +32,11 @@ namespace Eagles.LMS.BLL
 
         public SocialMediaManager SocialMediaManager { get { return new SocialMediaManager(ctx); } }
 
+        public SEOManager SEOManager { get { return new SEOManager(ctx); } }
+
+        public CitizenRequistManager CitizenRequistManager { get { return new CitizenRequistManager(ctx); } }
+        public ContactRquistManager ContactRquistManager { get { return new ContactRquistManager(ctx); } }
+
         public PrivilageManager PrivilageManager { get { return new PrivilageManager(ctx); } }
         public PrivilageRouteManager PrivilageRouteManager { get { return new PrivilageRouteManager(ctx); } }
         public LocationImagesManager LocationImagesManager { get { return new LocationImagesManager(ctx); } }

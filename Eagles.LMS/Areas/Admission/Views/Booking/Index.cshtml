@@ -4,6 +4,10 @@
     Layout = "~/Areas/Admission/Views/Shared/_Layout.cshtml";
     var ctx = new Eagles.LMS.BLL.UnitOfWork();
     List<BookingInServices> bookingInServices = new List<BookingInServices>();
+
+
+
+
 }
 
 <div class="container-fluid">
@@ -40,7 +44,44 @@
                                     <th> <p>Origin  </p></th>
 
                                     <th> <p>Message </p></th>
-                                    <th> <p>Services </p></th>
+
+
+                                    <th>
+                                        <p>LiveStudio</p>
+                                    </th>
+                                    <th>
+                                        <p>StandUpPosition</p>
+                                    </th>
+                                    <th>
+                                        <p>TapeLayout</p>
+                                    </th>
+                                    <th>
+                                        <p>EngCrew</p>
+                                    </th>
+                                    <th>
+                                        <p>NewsPackage</p>
+                                    </th>
+                                    <th>
+                                        <p>Edite</p>
+                                    </th>
+                                    <th>
+                                        <p>Uplink</p>
+                                    </th>
+                                    <th>
+                                        <p>SataliteSpace</p>
+                                    </th>
+                                    <th>
+                                        <p>Production</p>
+                                    </th>
+                                    <th>
+                                        <p>SNG</p>
+                                    </th>
+                                    <th>
+                                        <p>OBVAN</p>
+                                    </th>
+                                    <th>
+                                        <p>Other</p>
+                                    </th>
 
 
                                 </tr>
@@ -49,36 +90,74 @@
 
                             <tbody>
 
-                                <tr>
+                                
                                     @foreach (var item in Model)
                                     {
                                         bookingInServices = ctx.BookingInServicesManager.GetAllIncluded(item.Id);
 
-                                    <tr>
-                                        <td> <p>@item.CompanyName</p> </td>
-                                        <td> <p>@item.CompanyEmail</p> </td>
-                                        <td> <p>@item.DataServicees</p> </td>
-                                        <td> <p>@item.SartTime</p> </td>
-                                        <td> <p>@item.EndTime</p> </td>
-                                        <td> <p>@item.Origin</p> </td>
-                                        <td> <p>@item.Message</p> </td>
+                                <tr>
+                                    <td> <p>@item.CompanyName</p> </td>
+                                    <td> <p>@item.CompanyEmail</p> </td>
+                                    <td> <p>@item.DataServicees</p> </td>
+                                    <td> <p>@item.SartTime</p> </td>
+                                    <td> <p>@item.EndTime</p> </td>
+                                    <td> <p>@item.Origin</p> </td>
+                                    <td> <p>@item.Message</p> </td>
+
+                                    <td>
+                                        @item.LiveStudio
+                                    </td>
+                                    <td>
+                                        @item.StandUpPosition
+                                    </td>
+                                    <td>
+                                        @item.TapeLayout
+                                    </td>
+                                    <td>
+                                        @item.EngCrew
+                                    </td>
+                                    <td>
+                                        @item.NewsPackage
+                                    </td>
+                                    <td>
+                                        @item.Edite
+                                    </td>
+                                    <td>
+                                        @item.Uplink
+                                    </td>
+                                    <td>
+                                        @item.SataliteSpace
+                                    </td>
+                                    <td>
+                                        @item.Production
+                                    </td>
+                                    <td>
+                                        @item.SNG
+                                    </td>
+                                    <td>
+                                        @item.OBVAN
+                                    </td>
+                                    <td>
+                                        @item.Other
+                                    </td>
+
+                                    @*<td>
 
 
 
-                                        <td>
-                                            @if (bookingInServices != null && bookingInServices.Any())
-                                            {
-                                                foreach (var book_services in bookingInServices)
-                                                {
-                                                    <span>@book_services.BookingService.Name</span>
-                                                    <span> - </span>
-                                                }
-                                            }
-                                        </td>
+            @if (bookingInServices != null && bookingInServices.Any())
+            {
+                foreach (var book_services in bookingInServices)
+                {
+                    <span>@book_services.BookingService.Name</span>
+                    <span> - </span>
+                }
+            }
+        </td>*@
 
 
-                                    </tr>
-                                }
+                                </tr>
+                                    }
 
 
                                 </tbody>

@@ -33,6 +33,12 @@ namespace Eagles.LMS.Data
 
         public DbSet<UserForLogin> UserForLogins { get; set; }
 
+
+        public DbSet<SEO> SEO { get; set; }
+
+
+        public DbSet<CitizenRequist> CitizenRequist { get; set; }
+        public DbSet<ContactRequist> ContactRequist { get; set; }
         public DbSet<LocationImages> LocationImages { get; set; }
 
         public DbSet<Slider> Sliders { get; set; }

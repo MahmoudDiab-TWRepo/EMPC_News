@@ -141,6 +141,8 @@
 
     .navbar-nav .open .dropdown-menu > li > a {
         padding: 5px 25px 5px 25px;
+        margin: 0;
+        font-size: 15px;
     }
 
     .title-header {
@@ -349,7 +351,7 @@
         padding: 10px;
     }
     .vedioAboutSc .secvedcont .title h2 {
-        font-size: 36px;
+        font-size: 25px;
     }
     .servpagenew .servItemnew .images {
         height: 250px;
@@ -400,4 +402,175 @@
     .hero-wrap {
         margin-bottom: 50px !important;
     }
-}
+
+    .pyrimidis-title .ContentPargraph {
+        height: auto;
+        overflow: hidden;
+        width: 100%;
+    }
+    h2.headh2 {
+
+        margin-bottom: 15px;
+        margin-top: 15px;
+        font-size: 40px;
+
+    }
+    .width-btn-who {
+        width: auto;
+        margin-top: 15px;
+    }
+    .who .btn-theme {
+        padding: 0 25px;
+        height: 40px;
+        line-height: 40px;
+    }
+    .wpo-site-footer .wpo-upper-footer .col, .wpo-site-footer-s2 .wpo-upper-footer .col {
+        min-height: auto;
+        margin-bottom: 0;
+    }
+    .wpo-service-link-widget {
+        padding: 0;
+    }
+    .wpo-site-footer .contact-ft, .wpo-site-footer-s2 .contact-ft {
+        margin-top: 0;
+    }
+    .wpo-site-footer .widget-title, .wpo-site-footer-s2 .widget-title {
+        margin-bottom: 0;
+    }
+    .data-about h2 {
+
+        padding: 0;
+        font-size: 25px;
+    }
+    .news {
+        padding: 25px 0;
+    }
+    .ServicesPage .ServipageContent .ServiceItem .Discription {
+        margin-bottom: 0px;
+        min-height: auto;
+    }
+    .gallery-section h2.headh2 {
+        font-size: 30px;
+    }
+    .ServicesPage .ServipageContent .ServiceItem .Discription p {
+        font-size: 14pt;
+    }
+    .threecitizenimgadetails .bigimg {
+        width: 100%;
+        margin: auto;
+        padding: 10px;
+    }
+    .carousel-inner .item .CauroselItemImg {
+        height: 250px !important;
+    }
+    .imagessSec iframe {
+
+        width: 100%;
+
+    }
+    .imagessSec {
+        height: 250px;
+    }
+    .ContentPargraph {
+        height: auto;
+
+        margin-bottom: 10px;
+    }
+    .servpagenew .servItemnew .discription p {
+        font-size: 14pt;
+    }
+    .threecitizenimgadetails .images .discription p {
+        font-size: 14pt;
+    }
+    .dropdown-menu > li > a :hover, .dropdown-menu > li > :hover {
+        background: #d9a555 !important;
+    }
+    .newsssspagess .NewsCoool:first-child {
+        width: 100%;
+    }
+    .newsssspagess .NewsCoool:nth-child(2) {
+        width: 100%;
+    }
+    .newsssspagess .NewsCoool:nth-child(3) {
+        width: 100%;
+    }
+    .newsssspagess .NewsCoool {
+        padding: 0;
+        width: calc((100% - 0px)/1);
+    }
+    .threecitizenimgadetails {
+        padding: 0 15px;
+        padding-top: 50px;
+    }
+
+    .newsssspagess .NewsCoool:first-child .SmallImg .NewsItemImg {
+        height: 250px;
+    }
+    .newsssspagess .NewsCoool:first-child .ContentPargraph {
+        height: auto;
+    }
+    .newsssspagess .NewsCoool:nth-child(2) .images .discription .ContentPargraph {
+        height: auto;
+        overflow: hidden;
+    }
+    .newsssspagess .NewsCoool .images .discription p {
+        font-size: 14pt !important;
+        font-weight: 100;
+    }
+    .threecitizenimgadetails .images .discription .ContentPargraph {
+        height: auto;
+    }
+    .threecitizenimgadetails .images .discription h2 {
+        height: auto;
+    }
+    .new-description {
+        width: 100%;
+        padding: 10px;
+    }
+    .mainImagenews {
+        height: 250px;
+    }
+    .mainImgGallary .imageGalalallala {
+        display: block;
+        width: 80%;
+    }
+        .mainImgGallary .imageGalalallala .images {
+            height: 250px;
+        }
+    .bigSlider .swiper-slide .imagesss {
+
+        height: 300px;
+        width: auto;
+    }
+    .mySwiper .swiper-slide-thumb-active {
+        opacity: 1;
+        width: auto !important;
+    }
+    .mySwiper .swiper-slide{
+        width:auto !important
+    }
+    .bigSlider .swiper-slide .imagesss img {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+    .newsssspagess .NewsCoool:nth-child(1) .bigimg .CitezinImgItem {
+        height: 300px;
+    }
+    .CitizenFormSend .image-preview .image-preview-filename {
+        width: calc(100% - 100px);
+    }
+    .CitizenFormSend .image-preview .input-group-btn {
+        width: 100px;
+    }
+    .btn-black {
+        margin: auto;
+        display: block;
+    }
+    .sendmessage{
+        padding-bottom:15px;
+    }
+    .bookingform .bookingformcont {
+        width: 100%;
+    }
+    }

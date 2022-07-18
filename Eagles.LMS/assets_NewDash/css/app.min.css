@@ -5631,3 +5631,17 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination li {
     word-wrap: break-word;
     height: 365px;
 }
+
+.FontCairo {
+    font-family: 'Cairo';
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #2a3042;
+    border-color: #2a3042;
+}
+
+.TextArea_Control {
+    min-height: 180px !important;
+}
