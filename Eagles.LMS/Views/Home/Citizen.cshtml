@@ -25,14 +25,45 @@
 
     }
 }
-@section PageTitle{
-    <title>@SEO.CitizenPageTitle</title>
+
+
+
+
+
+
+
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.CitizenPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.CitizenPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.CitizenPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.CitizenPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.CitizenPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.CitizenPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.CitizenPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.CitizenPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.CitizenPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.CitizenPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.CitizenPageCanonicalUrl" />
+    }
 }
+
+
+
+
+
+
+
+
 @section EndHeader{
     <style>
         .threecitizenimgadetails .bigimg {

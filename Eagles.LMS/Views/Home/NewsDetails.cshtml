@@ -13,14 +13,35 @@
     }
 }
 
-@section PageTitle{
-    <title>@SEO.NewsPageTitle</title>
+
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.NewsPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.NewsPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.NewsPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.NewsPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.NewsPageCanonicalUrl" />
+    }
 }
+
+
+
+
 
 @section EndHeader{
 

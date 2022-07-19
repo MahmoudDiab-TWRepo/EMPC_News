@@ -7,13 +7,13 @@ namespace Eagles.LMS.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class UpdateContat : IMigrationMetadata
+    public sealed partial class Sepicial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateContat));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Sepicial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202207171636498_UpdateContat"; }
+            get { return "202207191542210_Sepicial"; }
         }
         
         string IMigrationMetadata.Source

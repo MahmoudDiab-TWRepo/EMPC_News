@@ -4,16 +4,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     UnitOfWork ctx = new UnitOfWork();
     var SEO = ctx.SEOManager.GetAll().FirstOrDefault();
+
+
+    bool en = true;
+
+    if (Request.Cookies["Language"] != null)
+    {
+        en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+
+    }
 }
 
-@section PageTitle{
-    <title>@SEO.CareersPageTitle</title>
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.CareersPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.CareersPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.CareersPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.CareersPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.CareersPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.CareersPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.CareersPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.CareersPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.CareersPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.CareersPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.CareersPageCanonicalUrl" />
+    }
 }
+
+
+
+
+
+
+
 @section EndHeader{
     <link href="~/assets_2/vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />
 
@@ -414,13 +446,13 @@
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Your Messag</label>
+                                    <label>Your Message </label>
                                     @Html.TextAreaFor(s => s.Message, new
-                                       {
-                                           @class = "tettearea",
-                                           @required = "rquired",
-                                           placeholder = "Your Message"
-                                       })
+                               {
+                                   @class = "tettearea",
+                                   @required = "rquired",
+                                   placeholder = "Please clarify your request details."
+                               })
                                     @*<textarea class="tettearea" id="Text_Message" placeholder="Please Clarify Your requist's Technical Details"></textarea>*@
 
                                 </div>

@@ -13,14 +13,36 @@
     }
 }
 
-@section PageTitle{
-    <title>@SEO.ServicesPageTitle</title>
+
+
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.ServicesPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.ServicesPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.ServicesPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.ServicesPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.ServicesPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.ServicesPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.ServicesPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.ServicesPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.ServicesPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.ServicesPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.ServicesPageCanonicalUrl" />
+    }
 }
+
+
+
+
 
 @section EndHeader{
 

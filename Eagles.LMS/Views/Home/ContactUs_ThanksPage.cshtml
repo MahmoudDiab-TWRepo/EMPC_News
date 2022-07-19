@@ -4,15 +4,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     UnitOfWork ctx = new UnitOfWork();
     var SEO = ctx.SEOManager.GetAll().FirstOrDefault();
+
+    bool en = true;
+
+    if (Request.Cookies["Language"] != null)
+    {
+        en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+
+    }
 }
 
-@section PageTitle{
-    <title>@SEO.ContactUsPageTitle</title>
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.ContactUsPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.ContactUsPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.ContactUsPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.ContactUsPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.ContactUsPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.ContactUsPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.ContactUsPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.ContactUsPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.ContactUsPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.ContactUsPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.ContactUsPageCanonicalUrl" />
+    }
 }
 
 

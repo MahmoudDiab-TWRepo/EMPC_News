@@ -1,6 +1,7 @@
 ﻿@{
-    ViewBag.Title = "AboutUs";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
 
 }
 
@@ -36,14 +37,31 @@
 
 }
 
-@section PageTitle{
-    <title>@SEO.AboutUsPageTitle</title>
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.AboutUsPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.AboutUsPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.AboutUsPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.AboutUsPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.AboutUsPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.AboutUsPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.AboutUsPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.AboutUsPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.AboutUsPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.AboutUsPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.AboutUsPageCanonicalUrl" />
+    }
 }
+
+
 
 @section EndHeader{
     <style>

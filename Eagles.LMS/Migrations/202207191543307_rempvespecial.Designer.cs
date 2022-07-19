@@ -7,13 +7,13 @@ namespace Eagles.LMS.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddContatxtRequist : IMigrationMetadata
+    public sealed partial class rempvespecial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddContatxtRequist));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(rempvespecial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202207171600289_AddContatxtRequist"; }
+            get { return "202207191543307_rempvespecial"; }
         }
         
         string IMigrationMetadata.Source

@@ -4,7 +4,6 @@
 
 @{
 
-    ViewBag.Title = "Home";
 
     string host = Request.Url.Host;
 
@@ -63,15 +62,32 @@
     }
 }
 
-@section PageTitle{
-    <title>@SEO.HomePageTitle</title>
-}
-@section metatags{
 
-    <meta name="description" id="metaDesc" content="@SEO.HomPageMetaDescription" />
-    <meta name="keywords" content="@SEO.HomPageMetaKeywords " />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.HomPageCanonicalUrl" />
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.HomePageTitleEnglish</title>
+    }
+    @section metatags{
+
+        <meta name="description" id="metaDesc" content="@SEO.HomPageMetaDescriptionEnglish" />
+        <meta name="keywords" content="@SEO.HomPageMetaKeywordsEnglish " />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.HomPageCanonicalUrl" />
+    }
 }
+else
+{
+    @section PageTitle{
+        <title>@SEO.HomePageTitleArabic</title>
+    }
+    @section metatags{
+
+        <meta name="description" id="metaDesc" content="@SEO.HomPageMetaDescriptionArabic" />
+        <meta name="keywords" content="@SEO.HomPageMetaKeywordsArabic " />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.HomPageCanonicalUrl" />
+    }
+}
+
 
 
 @section EndHeader{

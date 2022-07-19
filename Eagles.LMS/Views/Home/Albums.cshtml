@@ -36,14 +36,43 @@
     }
     var Id = ViewBag.Id;
 }
-@section PageTitle{
-    <title>@SEO.AlbumsPageTitle</title>
+
+
+
+
+
+
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.AlbumsPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.AlbumsPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.AlbumsPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.AlbumsPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.AlbumsPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.AlbumsPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.AlbumsPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.AlbumsPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.AlbumsPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.AlbumsPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.AlbumsPageCanonicalUrl" />
+    }
 }
+
+
+
+
+
+
+
 @section EndHeader {
 
     <style>

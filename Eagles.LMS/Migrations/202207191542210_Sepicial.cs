@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UpdateContat : DbMigration
+    public partial class Sepicial : DbMigration
     {
         public override void Up()
         {
-            RenameTable(name: "dbo.ContactUsRequist", newName: "ContactRequist");
+            AddColumn("dbo.SEO", "Specials", c => c.String());
         }
         
         public override void Down()
         {
-            RenameTable(name: "dbo.ContactRequist", newName: "ContactUsRequist");
+            DropColumn("dbo.SEO", "Specials");
         }
     }
 }

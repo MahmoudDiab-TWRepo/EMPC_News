@@ -24,14 +24,33 @@
     }
 }
 
-@section PageTitle{
-    <title>@SEO.NewsPageTitle</title>
+
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.NewsPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.NewsPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.NewsPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.NewsPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.NewsPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.NewsPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.NewsPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.NewsPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.NewsPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.NewsPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.NewsPageCanonicalUrl" />
+    }
 }
+
+
 
 @section EndHeader{
     <style>

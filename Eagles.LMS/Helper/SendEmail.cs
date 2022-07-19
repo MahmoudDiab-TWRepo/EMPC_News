@@ -17,7 +17,7 @@ namespace Eagles.LMS.Helper
     {
         EmcNewsContext db = new EmcNewsContext();
 
-        public bool SendMail(EmailDTO obj, string Key)
+        public bool SendMail(EmailDTO obj, string Key, string UserMail)
         {
             string Emails = "";
             SmtpSection smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
@@ -33,7 +33,7 @@ namespace Eagles.LMS.Helper
                     Emails = System.Configuration.ConfigurationManager.AppSettings["TOEMailCitizen"];
                     break;
 
-                //default:
+                    //default:
             }
 
             string Adimn_Subject = System.Configuration.ConfigurationManager.AppSettings["Admin_New_Booking"];
@@ -46,7 +46,7 @@ namespace Eagles.LMS.Helper
                 mm.Subject = User_Subject;
                 mm.Body = Bodymessage + "</b>" + obj.Message;
                 mm.IsBodyHtml = true;
-
+                mm.CC.Add(UserMail);
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = smtpSection.Network.Host;
                 smtp.EnableSsl = smtpSection.Network.EnableSsl;
@@ -60,8 +60,8 @@ namespace Eagles.LMS.Helper
             return true;
         }
 
-    
-}
+
+    }
     public class EmailDTO
     {
         public string To { get; set; }

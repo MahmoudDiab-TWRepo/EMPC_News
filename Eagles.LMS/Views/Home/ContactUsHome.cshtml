@@ -16,14 +16,39 @@
     var _contactUs = ctx.ContactUsManager.GetAll().FirstOrDefault();
 }
 
-@section PageTitle{
-    <title>@SEO.ContactUsPageTitle</title>
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.ContactUsPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.ContactUsPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.ContactUsPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.ContactUsPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.ContactUsPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.ContactUsPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.ContactUsPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.ContactUsPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.ContactUsPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.ContactUsPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.ContactUsPageCanonicalUrl" />
+    }
 }
+
+
+
+
+
+
+
+
+
 @section EndHeader{
 
 
@@ -231,12 +256,12 @@
                             <div class="col-md-12">
                                 <textarea id="Text_Message" placeholder='@Resources.Global.YourMessage'></textarea>
                             </div>*@
-                    <div class="col-lg-12">
-                        @*<a id="BTN_SendMessage_Old" class="btn btn-black " style="color:#fff">@Resources.Global.Send</a>*@
+                        <div class="col-lg-12">
+                            @*<a id="BTN_SendMessage_Old" class="btn btn-black " style="color:#fff">@Resources.Global.Send</a>*@
 
-                        <button type="submit" class="btn btn-black" style="color:#fff" id="Text_BTNSubmit_old">@Resources.Global.Send</button>
+                            <button type="submit" class="btn btn-black" style="color:#fff" id="Text_BTNSubmit_old">@Resources.Global.Send</button>
 
-                    </div>
+                        </div>
                     </div>
                 </form>
 

@@ -37,14 +37,41 @@
 }
 
 
-@section PageTitle{
-    <title>@SEO.VideoPageTitle</title>
+
+
+
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.VideoPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.VideoPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.VideoPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.VideoPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.VideoPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.VideoPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.VideoPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.VideoPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.VideoPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.VideoPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.VideoPageCanonicalUrl" />
+    }
 }
+
+
+
+
+
+
+
+
 
 
 @section EndHeader {

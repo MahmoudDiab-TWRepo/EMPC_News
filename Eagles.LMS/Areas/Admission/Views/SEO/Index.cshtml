@@ -96,9 +96,20 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Home Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.HomePageTitle, new
+                                @Html.TextBoxFor(s => s.HomePageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo ",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.HomePageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -106,9 +117,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic </label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.HomPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.HomPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.HomPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -116,9 +137,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.HomPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.HomPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.HomPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -147,9 +178,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">About US Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.AboutUsPageTitle, new
+                                @Html.TextBoxFor(s => s.AboutUsPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.AboutUsPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -157,9 +198,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.AboutUsPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.AboutUsPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.AboutUsPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -167,9 +218,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic </label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.AboutUsPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.AboutUsPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.AboutUsPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -198,9 +259,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Location OutDoor Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.OutDoorLocationsPageTitle, new
+                                @Html.TextBoxFor(s => s.OutDoorLocationsPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.OutDoorLocationsPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -208,9 +279,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic </label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.OutDoorLocationsPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.OutDoorLocationsPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.OutDoorLocationsPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -218,9 +299,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.OutDoorLocationsPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.OutDoorLocationsPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.OutDoorLocationsPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -251,9 +342,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Location Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.LocationsPageTitle, new
+                                @Html.TextBoxFor(s => s.LocationsPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.LocationsPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -261,9 +362,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.LocationsPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.LocationsPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.LocationsPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -271,9 +382,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.LocationsPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.LocationsPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.LocationsPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -306,9 +427,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Services Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.ServicesPageTitle, new
+                                @Html.TextBoxFor(s => s.ServicesPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.ServicesPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -316,9 +447,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.ServicesPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.ServicesPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English </label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.ServicesPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -326,9 +467,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.ServicesPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.ServicesPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.ServicesPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -358,9 +509,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">News Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.NewsPageTitle, new
+                                @Html.TextBoxFor(s => s.NewsPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.NewsPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -368,9 +529,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.NewsPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.NewsPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.NewsPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -378,9 +549,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.NewsPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.NewsPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.NewsPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -410,9 +591,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Agenda Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.AgendaPageTitle, new
+                                @Html.TextBoxFor(s => s.AgendaPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.AgendaPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -420,9 +611,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.AgendaPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.AgendaPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English </label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.AgendaPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -430,9 +631,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.AgendaPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.AgendaPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.AgendaPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -461,9 +672,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Albums Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.AlbumsPageTitle, new
+                                @Html.TextBoxFor(s => s.AlbumsPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.AlbumsPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -471,9 +692,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.AlbumsPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.AlbumsPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.AlbumsPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -481,9 +712,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic </label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.AlbumsPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.AlbumsPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.AlbumsPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -512,9 +753,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Video Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.VideoPageTitle, new
+                                @Html.TextBoxFor(s => s.VideoPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.VideoPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -522,9 +773,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.VideoPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.VideoPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.VideoPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -532,9 +793,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic </label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.VideoPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.VideoPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.VideoPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -564,9 +835,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Picture Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.PicturePageTitle, new
+                                @Html.TextBoxFor(s => s.PicturePageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.PicturePageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -574,9 +855,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.PicturePageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.PicturePageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.PicturePageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -584,9 +875,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.PicturePageMetaDescription, new
+                                @Html.TextBoxFor(s => s.PicturePageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English </label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.PicturePageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -616,9 +917,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Citizen Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.CitizenPageTitle, new
+                                @Html.TextBoxFor(s => s.CitizenPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.CitizenPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -626,9 +937,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.CitizenPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.CitizenPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.CitizenPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -636,9 +957,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.CitizenPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.CitizenPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.CitizenPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -668,9 +999,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Contact US Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.ContactUsPageTitle, new
+                                @Html.TextBoxFor(s => s.ContactUsPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.ContactUsPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -678,9 +1019,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.ContactUsPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.ContactUsPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.ContactUsPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -688,9 +1039,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.ContactUsPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.ContactUsPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.ContactUsPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "
@@ -720,9 +1081,19 @@
                     <h4 class="card-title btn-dark m-0 text-white p-3">Booking Page</h4>
                     <div class="card-body">
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Page Title</label>
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.CareersPageTitle, new
+                                @Html.TextBoxFor(s => s.CareersPageTitleArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.CareersPageTitleEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Page Title "
@@ -730,9 +1101,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta keywords</label>
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.CareersPageMetaKeywords, new
+                                @Html.TextBoxFor(s => s.CareersPageMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.CareersPageMetaDescriptionEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta keywords "
@@ -740,9 +1121,19 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-md-2 col-form-label"> Meta Description</label>
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(s => s.CareersPageMetaDescription, new
+                                @Html.TextBoxFor(s => s.CareersPageMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English </label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.CareersPageMetaKeywordsEnglish, new
                            {
                                @class = "form-control ",
                                placeholder = "Meta Description "

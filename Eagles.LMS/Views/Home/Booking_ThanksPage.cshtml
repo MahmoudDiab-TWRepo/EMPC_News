@@ -4,16 +4,40 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     UnitOfWork ctx = new UnitOfWork();
     var SEO = ctx.SEOManager.GetAll().FirstOrDefault();
+
+    bool en = true;
+
+    if (Request.Cookies["Language"] != null)
+    {
+        en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+
+    }
 }
 
-@section PageTitle{
-    <title>@SEO.CareersPageTitle</title>
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.CareersPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.CareersPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.CareersPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.CareersPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.CareersPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.CareersPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.CareersPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.CareersPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.CareersPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.CareersPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.CareersPageCanonicalUrl" />
+    }
 }
+
 
 
 <div class="ThankingPage">

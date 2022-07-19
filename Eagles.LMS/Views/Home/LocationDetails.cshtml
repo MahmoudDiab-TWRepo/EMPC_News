@@ -13,14 +13,32 @@
     }
 }
 
-@section PageTitle{
-    <title>@SEO.LocationsPageTitle</title>
+
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.LocationsPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.LocationsPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.LocationsPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.LocationsPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.LocationsPageCanonicalUrl" />
+    }
 }
+
 
 
 @section EndHeader{

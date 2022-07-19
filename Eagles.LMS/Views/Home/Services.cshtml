@@ -22,14 +22,38 @@
     }
 }
 
-@section PageTitle{
-    <title>@SEO.ServicesPageTitle</title>
+
+
+
+
+
+
+@if (en)
+{
+    @section PageTitle{
+        <title>@SEO.ServicesPageTitleEnglish</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.ServicesPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@SEO.ServicesPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.ServicesPageCanonicalUrl" />
+    }
 }
-@section metatags{
-    <meta name="keywords" content="@SEO.ServicesPageMetaKeywords " />
-    <meta name="description" id="metaDesc" content="@SEO.ServicesPageMetaDescription" />
-    <link rel="canonical" id="canonicalUrl" href="@SEO.ServicesPageCanonicalUrl" />
+else
+{
+    @section PageTitle{
+        <title>@SEO.ServicesPageTitleArabic</title>
+    }
+    @section metatags{
+        <meta name="keywords" content="@SEO.ServicesPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@SEO.ServicesPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@SEO.ServicesPageCanonicalUrl" />
+    }
 }
+
+
+
+
 
 @section EndHeader{
     <style>
