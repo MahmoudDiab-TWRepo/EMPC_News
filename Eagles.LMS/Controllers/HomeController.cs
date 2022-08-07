@@ -44,8 +44,14 @@ namespace Eagles.LMS.Controllers
             return View();
         }
 
-        public ActionResult LocationDetails(int id)
+        public ActionResult LocationDetails(int? id)
         {
+            if (id == null)
+            {
+
+                return View("NotFound");
+
+            }
             if (id == 0)
                 return View("NotFound");
             var loction = new Location();
@@ -81,8 +87,14 @@ namespace Eagles.LMS.Controllers
             return View();
         }
 
-        public ActionResult ServicesDetails(int id)
+        public ActionResult ServicesDetails(int? id)
         {
+            if (id == null)
+            {
+
+                return View("NotFound");
+
+            }
             if (id == 0)
                 return View("NotFound");
             var service = new Service();
@@ -115,13 +127,21 @@ namespace Eagles.LMS.Controllers
             //return Redirect("/Admission");
             return View();
         }
-        public ActionResult NewsDetails(int id)
+        public ActionResult NewsDetails(int? id)
         {
             //var _new = new UnitOfWork().NewManager.GetAll().FirstOrDefault(s => s.Id == id);
             //_new.NewImages = new UnitOfWork().NewImagesMnager.GetAllBind().Where(s => s.NewId == id).ToList();
 
+            if (id == null)
+            {
+               
+                    return View("NotFound");
+
+            }
+
             if (id == 0)
                 return View("NotFound");
+
 
             var _new = new New();
             bool en = true;
@@ -167,8 +187,19 @@ namespace Eagles.LMS.Controllers
         }
 
 
-        public ActionResult AgendaDetails(int id)
+        public ActionResult AgendaDetails(int? id)
         {
+
+
+            if (id == null)
+            {
+
+                return View("NotFound");
+
+            }
+
+
+
             if (id == 0)
                 return View("NotFound");
             var _agenda = new Agenda();
@@ -211,6 +242,18 @@ namespace Eagles.LMS.Controllers
 
         public ActionResult VideoDetails(int? id, int? albumId)
         {
+            if (albumId == null)
+            {
+
+                return View("NotFound");
+
+            }
+            if (albumId == 0)
+            {
+
+                return View("NotFound");
+
+            }
             if (id == 0)
                 return View("NotFound");
 
@@ -223,6 +266,12 @@ namespace Eagles.LMS.Controllers
         }
         public ActionResult Picture(int? id, int? albumId)
         {
+            if (id == null)
+            {
+
+                return View("NotFound");
+
+            }
             if (id == 0)
                 return View("NotFound");
 
@@ -295,7 +344,7 @@ namespace Eagles.LMS.Controllers
                         {
                             To = "To Email",
                             Message =
-                            "<h1 style='font-size:25px; line-height:1.5'>New Citizen Requist</h1>"
+                            "<h1 style='font-size:25px; line-height:1.5'>New Citizen Request</h1>"
                             + "<p style='font-size:15px; color: #000'>Thank You for connecting us and we will get back to you soon.</p>"
                             + "<b style='font-size:12px; line-height:1.5'><br/><br/>First Name:</b>" + citizenRequist.FirstName + "<br />"
                             + "<b style='font-size:12px; line-height:1.5'>Last Name :</b>" + citizenRequist.LastName + "<br />" +
@@ -447,7 +496,7 @@ namespace Eagles.LMS.Controllers
                         sendEmail.SendMail(new EmailDTO
                         {
                             To = "To Email",
-                            Message = "<h1 style='font-size:25px; line-height:1.5'>New Booking Requist</h1> "
+                            Message = "<h1 style='font-size:25px; line-height:1.5'>New Booking Request</h1> "
                             + "<p style = 'font-size:15px; color: #000;'> Thank you for your email and we will get back to you soon with our confirmation.</p>" + "<br />"
                             + "<b style='font-size:12px; line-height:1.5'>Company Name :</b>" + booking.CompanyName + "<br />"
                             + "<b style='font-size:12px; line-height:1.5'>Company Email :</b>" + booking.CompanyEmail + "<br />"

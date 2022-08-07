@@ -52,5 +52,16 @@ namespace Eagles.LMS.Models
         public string ShortDescriptionEnglish { get; set; }
         public DateTime EditeTime { get; set; }
         public int UserEditId { get; set; }
+
+
+
+        public string SEOTitleArabic { get; set; }
+        public string SEOTitleEnglish { get; set; }
+        public string SEOMetaDescriptionArabic { get; set; }
+        public string SEOMetaDescriptionEnglish { get; set; }
+        public string SEOMetaKeywordsArabic { get; set; }
+        public string SEOMetaKeywordsEnglish { get; set; }
+        public string SEOCanonicalUrl { get; set; }
+
     }
 }

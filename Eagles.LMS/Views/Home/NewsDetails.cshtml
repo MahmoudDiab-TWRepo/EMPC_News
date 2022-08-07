@@ -19,23 +19,23 @@
 @if (en)
 {
     @section PageTitle{
-        <title>@SEO.NewsPageTitleEnglish</title>
+        <title>@Model.SEOTitleEnglish</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaKeywordsEnglish " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaDescriptionEnglish" />
-        <link rel="canonical" id="canonicalUrl" href="@SEO.NewsPageCanonicalUrl" />
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.SEOMetaKeywordsEnglish, @Model.TitleArabic, @SEO.NewsPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.SEOMetaDescriptionEnglish @Model.TitleArabic, @SEO.NewsPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@Model.SEOCanonicalUrl" />
     }
 }
 else
 {
     @section PageTitle{
-        <title>@SEO.NewsPageTitleArabic</title>
+        <title>@Model.SEOTitleArabic</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaKeywordsArabic " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.NewsPageMetaDescriptionArabic" />
-        <link rel="canonical" id="canonicalUrl" href="@SEO.NewsPageCanonicalUrl" />
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaKeywordsArabic, @SEO.NewsPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaDescriptionArabic, @SEO.NewsPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@Model.SEOCanonicalUrl" />
     }
 }
 
@@ -591,15 +591,16 @@ else
         var swiper = new Swiper(".mySwiper", {
             spaceBetween: 10,
             slidesPerView: 12,
+            loop: false,
             freeMode: true,
             watchSlidesProgress: true,
             breakpoints: {
                 640: {
-                    slidesPerView: 3,
+                    slidesPerView: 4,
                     spaceBetween: 3,
                 },
                 768: {
-                    slidesPerView: 6,
+                    slidesPerView: 8,
                     spaceBetween: 5,
                 },
                 1024: {
@@ -610,7 +611,7 @@ else
         });
         var swiper2 = new Swiper(".mySwiper2", {
             spaceBetween: 10,
-            loop: true,
+            loop: false,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",

@@ -395,6 +395,18 @@
     <Compile Include="Migrations\202207191543307_rempvespecial.designer.cs">
       <DependentUpon>202207191543307_rempvespecial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207241426315_AddAgendaSEO.cs" />
+    <Compile Include="Migrations\202207241426315_AddAgendaSEO.designer.cs">
+      <DependentUpon>202207241426315_AddAgendaSEO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207241510300_UpdateAddPageSeo.cs" />
+    <Compile Include="Migrations\202207241510300_UpdateAddPageSeo.designer.cs">
+      <DependentUpon>202207241510300_UpdateAddPageSeo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207241624225_ADDSEOGALLSRY.cs" />
+    <Compile Include="Migrations\202207241624225_ADDSEOGALLSRY.designer.cs">
+      <DependentUpon>202207241624225_ADDSEOGALLSRY.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -2122,6 +2134,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207191543307_rempvespecial.resx">
       <DependentUpon>202207191543307_rempvespecial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207241426315_AddAgendaSEO.resx">
+      <DependentUpon>202207241426315_AddAgendaSEO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207241510300_UpdateAddPageSeo.resx">
+      <DependentUpon>202207241510300_UpdateAddPageSeo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207241624225_ADDSEOGALLSRY.resx">
+      <DependentUpon>202207241624225_ADDSEOGALLSRY.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

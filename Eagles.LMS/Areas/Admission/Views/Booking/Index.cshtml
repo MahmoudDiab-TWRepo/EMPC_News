@@ -36,6 +36,7 @@
                         <table id="table_Slider" class=" table table-bordered tableOtherdite">
                             <thead class="DarkThead">
                                 <tr>
+                                    <th class="sorting_desc" aria-sort="descending" aria-label=" Id Name : activate to sort column ascending"> <p>Id Name</p> </th>
                                     <th> <p>Company Name</p> </th>
                                     <th> <p>Company Email </p></th>
                                     <th> <p>Date of Services </p></th>
@@ -96,6 +97,7 @@
                                         bookingInServices = ctx.BookingInServicesManager.GetAllIncluded(item.Id);
 
                                 <tr>
+                                    <td> <p>@item.Id</p> </td>
                                     <td> <p>@item.CompanyName</p> </td>
                                     <td> <p>@item.CompanyEmail</p> </td>
                                     <td> <p>@item.DataServicees</p> </td>

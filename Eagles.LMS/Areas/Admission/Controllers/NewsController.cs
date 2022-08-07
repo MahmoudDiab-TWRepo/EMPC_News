@@ -112,8 +112,8 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                     {
                         foreach (var item in uploadattachments_multi)
                         {
-                            _rendom = new Random().Next(1, 99999999).ToString();
-
+                            //_rendom = new Random().Next(1, 99999999).ToString();
+                             _rendom = System.Guid.NewGuid().ToString();
                             //fileName = _rendom + Path.GetFileName(item.FileName);
                             string extention = System.IO.Path.GetExtension(item.FileName);
                             fileName = _rendom + extention;

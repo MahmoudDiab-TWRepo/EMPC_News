@@ -8,22 +8,7 @@
 }
 @section EndHeader{
 
-    @*<script src="https://cdn.tiny.cloud/1/darv2hkyj2fhq6bcw9dvds7nq95xpa5p19zfb5q6ybjadm5z/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: '.textarea',
-            height: 500,
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor  advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable ',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste imagetools wordcount',
-                'image code',
-            ],
-            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |  code',
-            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-        });
 
-    </script>*@
 }
 
 <div class="container-fluid">
@@ -198,7 +183,7 @@
 
 
 
-                                                
+
                                             }
                                         </div>
                                     </div>*@
@@ -207,13 +192,13 @@
 
 
                                     @*<div class="col-lg-12 col-md-12">
-            <div class="mb-3">
-                @if (Model != null && Model.MainImage != null)
-                {
-                    <img style="max-width: auto; height: 210px " src="@Model.MainImage" />
-                }
-            </div>
-        </div>*@
+                                        <div class="mb-3">
+                                            @if (Model != null && Model.MainImage != null)
+                                            {
+                                                <img style="max-width: auto; height: 210px " src="@Model.MainImage" />
+                                            }
+                                        </div>
+                                    </div>*@
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="mb-3">
@@ -251,23 +236,23 @@
                                         </div>
 
                                         @*<table class="" style="display:none">
-                <tr>
-                    <th>IMG</th>
-                    <th>Remove</th>
-                </tr>
-                @foreach (var item in Model.ServiceImages)
-                {
-                    <tr>
-                        <td>
-                            <img style="width:100px;height:100px" src="@item.Path" />
-                        </td>
-                        <td>
+                                            <tr>
+                                                <th>IMG</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                            @foreach (var item in Model.ServiceImages)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <img style="width:100px;height:100px" src="@item.Path" />
+                                                    </td>
+                                                    <td>
 
 
-                        </td>
-                    </tr>
-                }
-            </table>*@
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>*@
                                     }
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -300,6 +285,91 @@
                     </div>
                 </div>
             </div> <!-- end col -->
+
+
+
+
+            <div class="col-12">
+                <div class="card">
+                    <h4 class="card-title btn-dark m-0 text-white p-3">SEO</h4>
+                    <div class="card-body">
+
+
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.SEOTitleEnglish, new
+                           {
+                               @class = "form-control ",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Page Title Arabic</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.SEOTitleArabic, new
+                           {
+                               @class = "form-control FontCairo ",
+                               placeholder = "Page Title "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description Arabic </label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.SEOMetaDescriptionArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta Description English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.SEOMetaDescriptionEnglish, new
+                           {
+                               @class = "form-control ",
+                               placeholder = "Meta keywords "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords Arabic</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.SEOMetaKeywordsArabic, new
+                           {
+                               @class = "form-control FontCairo",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Meta keywords English</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.SEOMetaKeywordsEnglish, new
+                           {
+                               @class = "form-control ",
+                               placeholder = "Meta Description "
+                           })
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label"> Canonical Url</label>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(s => s.SEOCanonicalUrl, new
+                           {
+                               @class = "form-control ",
+                               placeholder = "Canonical Url "
+                           })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
 
             <div class="col-lg-12 col-md-12">

@@ -37,5 +37,14 @@ namespace Eagles.LMS.Models
         public int? AlbumId { get; set; }
 
 
+        public string SEOTitleArabic { get; set; }
+        public string SEOTitleEnglish { get; set; }
+        public string SEOMetaDescriptionArabic { get; set; }
+        public string SEOMetaDescriptionEnglish { get; set; }
+        public string SEOMetaKeywordsArabic { get; set; }
+        public string SEOMetaKeywordsEnglish { get; set; }
+        public string SEOCanonicalUrl { get; set; }
+
+
     }
 }

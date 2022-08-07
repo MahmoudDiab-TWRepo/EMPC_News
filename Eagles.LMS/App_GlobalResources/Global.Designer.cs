@@ -1969,7 +1969,7 @@ namespace Eagles.LMS.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to photos and news reports for important events in the Middle East and the world.
+        ///   Looks up a localized string similar to Photos and news reports for important events in the Middle East and the world.
         /// </summary>
         public static string GallaryParg {
             get {

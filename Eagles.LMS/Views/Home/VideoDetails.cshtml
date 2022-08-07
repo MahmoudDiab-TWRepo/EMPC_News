@@ -28,11 +28,11 @@
     }
     if (en == true)
     {
-        videos = videos.Where(s => s.TitleEnglish != null).ToList();
+        videos = videos.ToList();
     }
     else
     {
-        videos = videos.Where(s => s.TitleArabic != null).ToList();
+        videos = videos.ToList();
     }
 }
 

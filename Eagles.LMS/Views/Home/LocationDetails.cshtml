@@ -19,23 +19,23 @@
 @if (en)
 {
     @section PageTitle{
-        <title>@SEO.LocationsPageTitleEnglish</title>
+        <title>@Model.SEOTitleEnglish</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaKeywordsEnglish " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaDescriptionEnglish" />
-        <link rel="canonical" id="canonicalUrl" href="@SEO.LocationsPageCanonicalUrl" />
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.SEOMetaKeywordsEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.SEOMetaDescriptionEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaDescriptionEnglish" />
+        <link rel="canonical" id="canonicalUrl" href="@Model.SEOCanonicalUrl" />
     }
 }
 else
 {
     @section PageTitle{
-        <title>@SEO.LocationsPageTitleArabic</title>
+        <title>@Model.SEOTitleArabic</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaKeywordsArabic " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @SEO.LocationsPageMetaDescriptionArabic" />
-        <link rel="canonical" id="canonicalUrl" href="@SEO.LocationsPageCanonicalUrl" />
+        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaKeywordsArabic, @SEO.LocationsPageMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaDescriptionArabic, @SEO.LocationsPageMetaDescriptionArabic" />
+        <link rel="canonical" id="canonicalUrl" href="@Model.SEOCanonicalUrl" />
     }
 }
 
