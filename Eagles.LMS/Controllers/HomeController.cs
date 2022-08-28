@@ -240,30 +240,86 @@ namespace Eagles.LMS.Controllers
             return View();
         }
 
-        public ActionResult VideoDetails(int? id, int? albumId)
+        //public ActionResult VideoDetails(int? id, int? albumId)
+        //{
+        //    if (albumId == null)
+        //    {
+
+        //        return View("NotFound");
+
+        //    }
+        //    if (albumId == 0)
+        //    {
+
+        //        return View("NotFound");
+
+        //    }
+        //    if (id == 0)
+        //        return View("NotFound");
+
+        //    if (id != null)
+        //        ViewBag.Id = id;
+        //    //return Redirect("/Admission");
+        //    if (albumId != null)
+        //        ViewBag.AlbumId = albumId;
+        //    return View();
+        //}
+
+        public ActionResult VideoDetails(int? Id)
         {
-            if (albumId == null)
+            //if (id == 0)
+            //    return View("NotFound");
+            //if (id != null)
+            //    ViewBag.Id = id;
+            //if (Id != null)
+              //  ViewBag.Id = Id;
+            //return View();
+
+
+            if (Id == null)
             {
 
                 return View("NotFound");
 
             }
-            if (albumId == 0)
-            {
 
+            if (Id == 0)
                 return View("NotFound");
+
+
+            var _album = new Album();
+            bool en = true;
+
+            if (Request.Cookies["Language"] != null)
+            {
+                en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
 
             }
-            if (id == 0)
+            if (en == true)
+            {
+                _album = new UnitOfWork().AlbumManager.GetAll().Where(s => s.TitleEnglish != null).FirstOrDefault(s => s.Id == Id);
+
+            }
+            else
+            {
+                _album = new UnitOfWork().AlbumManager.GetAll().Where(s => s.TitleArabic != null).FirstOrDefault(s => s.Id == Id);
+
+            }
+            if (_album == null)
                 return View("NotFound");
 
-            if (id != null)
-                ViewBag.Id = id;
+
+
+
+           // _new.NewImages = new UnitOfWork().NewImagesMnager.GetAllBind().Where(s => s.NewId == _new.Id).ToList();
+
             //return Redirect("/Admission");
-            if (albumId != null)
-                ViewBag.AlbumId = albumId;
-            return View();
+            return View(_album);
+
+
+
         }
+
         public ActionResult Picture(int? id, int? albumId)
         {
             if (id == null)
@@ -575,7 +631,10 @@ namespace Eagles.LMS.Controllers
                 Response.Cookies.Add(cookie);
             }
             if (redirect == null)
+            {
                 redirect = "/";
+               
+            }
             return Redirect(redirect);
         }
 

@@ -56,7 +56,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
 
             RequestStatus requestStatus;
             if (uploadattachments != null && !
-                uploadattachments.ContentType.CheckImageExtention())
+                    uploadattachments.ContentType.CheckImageExtention())
             {
 
                 requestStatus = new ManageRequestStatus().GetStatus(Status.GeneralError, "Attachment not supported ,Plz Upload Image Only");

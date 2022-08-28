@@ -148,7 +148,7 @@ else
             @foreach (var picture in albums_videos)
             {
                 <Div class="col-md-4">
-                    <a class="new new-small small-location location-new" href="/Home/VideoDetails?albumId=@picture.Id">
+                    <a class="new new-small small-location location-new" href="/Home/VideoDetails/@picture.Id">
                         @*<img src="@picture.Image" class="img-responsive img-services" />*@
                         <div class="AlbumImgItem">
                             <div class=" imagsBG" style="background-image: url(@picture.Image)"></div>

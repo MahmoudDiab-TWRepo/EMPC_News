@@ -1,4 +1,4 @@
-﻿
+﻿@model Eagles.LMS.Models.Album
 @{
     ViewBag.Title = "VideoDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,20 +10,20 @@
         en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
     }
 
-    var Id = ViewBag.Id;
-    var albumId = ViewBag.AlbumId;
+    //var Id = ViewBag.Id;
+    //var albumId = Model.Id;
 
     List<Galary> videos;
-    if (albumId != null)
+    if ( Model.Id != 0)
     {
-        videos = ctx.GalaryManager.GetAll().Where(s => !s.IsImage && s.AlbumId == albumId).OrderBy(s => s.Order).ToList();
+        videos = ctx.GalaryManager.GetAll().Where(s => !s.IsImage && s.AlbumId == Model.Id).OrderBy(s => s.Order).ToList();
     }
     else
     {
-        //var firstvideo = new Galary();
+        var firstvideo = new Galary();
         //firstvideo = ctx.GalaryManager.GetBy(Id);
 
-        videos = ctx.GalaryManager.GetAll().Where(s => !s.IsImage && s.AlbumId == Id).OrderBy(s => s.Order).ToList();
+        videos = null;
 
     }
     if (en == true)

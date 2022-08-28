@@ -9,6 +9,12 @@ namespace Eagles.LMS.BLL
     public class AlbumManager : Reposatory<Album>
     {
 
-        public AlbumManager(LMS.Data.EmcNewsContext ctx) : base(ctx) { }
+        public AlbumManager(LMS.Data.EmcNewsContext ctx) : base(ctx) { 
+        }
+
+        public List<Album> GetAllWithGalaries()
+        {
+            return ctx.Albums.Include("Galaries").ToList();
+        }
     }
 }
