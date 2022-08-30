@@ -294,14 +294,15 @@ else
                                     @*<div class="imags" style="background-image: url(@_news[i].MainImage)"></div>*@
 
                                     <div class="Images">
-                                        @if (!string.IsNullOrEmpty(@_news[i].MainImage))
+                                        @if (!string.IsNullOrEmpty(@_news[i].MainHomeImage))
                                         {
-                                            <img src="@_news[i].MainImage" />
+                                            <img src="@_news[i].MainHomeImage" />
 
                                         }
                                         else
                                         {
-                                            <img src="~/assets_NewPublic/images/f14.jpeg" />
+                                            <img src="@_news[i].MainImage" />
+                                            @*<img src="~/assets_NewPublic/images/f14.jpeg" />*@
                                             @*<img src="@_news[i].MainImage" />*@
                                         }
 

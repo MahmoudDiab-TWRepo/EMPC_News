@@ -40,10 +40,11 @@ namespace Eagles.LMS.Areas.Admission.Controllers
             return View(_news);
         }
         [HttpPost]
-        public ActionResult Edit(New _new, HttpPostedFileBase uploadattachments, List<HttpPostedFileBase> uploadattachments_multi = null)
+        public ActionResult Edit(New _new, HttpPostedFileBase uploadattachments, HttpPostedFileBase uploadattachmentsHomeMain, List<HttpPostedFileBase> uploadattachments_multi = null)
         {
             var _maxOrder = new UnitOfWork().NewImagesMnager.MaxOrder();
             ViewBag.MaxOrder = _maxOrder;
+            ActionResult result = View(_new);
 
             //byte[] bytes;
             //using (BinaryReader br = new BinaryReader(uploadattachments.InputStream))
@@ -55,8 +56,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
 
 
             RequestStatus requestStatus;
-            if (uploadattachments != null && !
-                    uploadattachments.ContentType.CheckImageExtention())
+            if (uploadattachments != null && ! uploadattachments.ContentType.CheckImageExtention() && uploadattachmentsHomeMain != null && !uploadattachmentsHomeMain.ContentType.CheckImageExtention())
             {
 
                 requestStatus = new ManageRequestStatus().GetStatus(Status.GeneralError, "Attachment not supported ,Plz Upload Image Only");
@@ -71,7 +71,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                 }
                 else
                 {
-                    string _rendom, fileName, path;
+                    string _rendom, fileName, path, _rendomTwo, fileNameTwo, pathTwo;
                     if (uploadattachments != null)
                     {
 
@@ -84,6 +84,22 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                         path = Path.Combine(Server.MapPath("~/attachments"), fileName);
                         uploadattachments.SaveAs(path);
                         _new.MainImage = $"/attachments/{fileName}";
+
+                    }
+
+                    if (uploadattachmentsHomeMain != null)
+                    {
+
+                        //_rendomTwo = new Random().Next(1, 99999999).ToString();
+                        _rendomTwo = System.Guid.NewGuid().ToString();
+
+                        //fileName = _rendom + Path.GetFileName(uploadattachments.FileName);
+                        string extentionTwo = System.IO.Path.GetExtension(uploadattachmentsHomeMain.FileName);
+                        fileNameTwo = _rendomTwo + extentionTwo;
+
+                        pathTwo = Path.Combine(Server.MapPath("~/attachments"), fileNameTwo);
+                        uploadattachmentsHomeMain.SaveAs(pathTwo);
+                        _new.MainHomeImage = $"/attachments/{fileNameTwo}";
 
                     }
 
@@ -133,7 +149,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
 
 
                     requestStatus = new ManageRequestStatus().GetStatus(Status.Edited);
-
+                    result = RedirectToAction(nameof(Edit));
 
 
 
@@ -142,8 +158,8 @@ namespace Eagles.LMS.Areas.Admission.Controllers
 
             TempData["RequestStatus"] = requestStatus;
             _new.NewImages = _ctx.NewImagesMnager.GetAll().Where(s => s.NewId == _new.Id).ToList();
-            return View(_new);
-
+            //return View(_new);
+            return result;
         }
 
 
@@ -160,7 +176,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
             return Convert.ToInt32(userFromSesstion);
         }
         [HttpPost]
-        public ActionResult Create(New _new, HttpPostedFileBase uploadattachments, List<HttpPostedFileBase> uploadattachments_multi = null)
+        public ActionResult Create(New _new, HttpPostedFileBase uploadattachments, HttpPostedFileBase uploadattachmentsHomeMain, List<HttpPostedFileBase> uploadattachments_multi = null)
         {
             var _maxOrder = new UnitOfWork().NewImagesMnager.MaxOrder();
             ViewBag.MaxOrder = _maxOrder;
@@ -173,8 +189,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
             {
 
                 RequestStatus requestStatus;
-                if (uploadattachments == null || uploadattachments.ContentLength == 0 || !
-                    uploadattachments.ContentType.CheckImageExtention())
+                if (uploadattachments == null || uploadattachments.ContentLength == 0 || ! uploadattachments.ContentType.CheckImageExtention())
                 {
                     requestStatus = new ManageRequestStatus().GetStatus(Status.GeneralError, "Attachment not supported ,Plz Upload Image Only");
                 }
@@ -201,6 +216,31 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                         uploadattachments.SaveAs(path);
 
                         _new.MainImage = $"/attachments/{fileName}";
+
+                        if (uploadattachmentsHomeMain != null)
+                        {
+
+
+
+                            string _rendomTwo = System.Guid.NewGuid().ToString();
+
+                            string extentionTwo = System.IO.Path.GetExtension(uploadattachmentsHomeMain.FileName);
+
+                            var fileNameTwo = _rendomTwo + extentionTwo;
+
+
+
+                            var pathTwo = Path.Combine(Server.MapPath("~/attachments"), fileNameTwo);
+
+                            uploadattachmentsHomeMain.SaveAs(pathTwo);
+
+
+                            _new.MainHomeImage = $"/attachments/{fileNameTwo}";
+
+                        }
+
+
+
                         var _ctx = new UnitOfWork();
 
                        
@@ -213,6 +253,8 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                         _new.EditeTime = DateTime.Now;
                         _new = _ctx.NewManager.Add(_new);
                var user = _ctx.UserManager.GetById(userId);
+
+
                       
                         _ctx.logManager.Add(new log
                         {

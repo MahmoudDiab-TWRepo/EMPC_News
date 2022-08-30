@@ -66,7 +66,8 @@
         @using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.HiddenFor(s => s.Id)
-            @Html.HiddenFor(s => s.MainImage)
+            @*@Html.HiddenFor(s => s.MainImage)*@
+            @Html.HiddenFor(s => s.MainHomeImage)
             @Html.HiddenFor(s => s.CreatedTime)
             @Html.HiddenFor(s => s.UserCreateId)
             @Html.HiddenFor(s => s.Status)
@@ -306,8 +307,37 @@
 
                                         </div>
                                     </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 
-
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="mb-3">
+                                                    <label for="uploadattachmentsHomeMain" class="form-label">Main Image Inner <span class="extiniosType">(jpg, png, peg, gif, jpg)</span><span class="extiniosType">(W:1520px, H:850px)</span></label>
+                                                    <input class="form-control" name="uploadattachmentsHomeMain" type="file" id="uploadattachmentsHomeMain">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="mb-3">
+                                                    @if (Model != null && Model.MainHomeImage != null && Model.MainHomeImage != "")
+                                                    {
+                                                        <div id="box_mainImgTwo" class="row">
+                                                            <div class="col-lg-4">
+                                                                <div class="ImagesGroup">
+                                                                    <div class="ImageItem">
+                                                                        <div class="Images">
+                                                                            <img src="@Model.MainHomeImage" />
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>

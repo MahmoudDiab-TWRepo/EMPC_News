@@ -407,6 +407,10 @@
     <Compile Include="Migrations\202207241624225_ADDSEOGALLSRY.designer.cs">
       <DependentUpon>202207241624225_ADDSEOGALLSRY.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208301343153_AddMainHomeImgNews.cs" />
+    <Compile Include="Migrations\202208301343153_AddMainHomeImgNews.designer.cs">
+      <DependentUpon>202208301343153_AddMainHomeImgNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -2143,6 +2147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207241624225_ADDSEOGALLSRY.resx">
       <DependentUpon>202207241624225_ADDSEOGALLSRY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208301343153_AddMainHomeImgNews.resx">
+      <DependentUpon>202208301343153_AddMainHomeImgNews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
