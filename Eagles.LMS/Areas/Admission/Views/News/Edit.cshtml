@@ -66,7 +66,7 @@
         @using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.HiddenFor(s => s.Id)
-            @*@Html.HiddenFor(s => s.MainImage)*@
+            @Html.HiddenFor(s => s.MainImage)
             @Html.HiddenFor(s => s.MainHomeImage)
             @Html.HiddenFor(s => s.CreatedTime)
             @Html.HiddenFor(s => s.UserCreateId)
@@ -220,8 +220,8 @@
                                                                     <img src="@Model.MainImage" />
                                                                 </div>
                                                                 @*<div class="DeletemainImg">
-                                                                    <a class="btn_deleteMainImage" data-id="@Model.Id"><i class="bx bx-trash"></i></a>
-                                                                </div>*@
+                                                                        <a class="btn_deleteMainImage" data-id="@Model.Id"><i class="bx bx-trash"></i></a>
+                                                                    </div>*@
                                                             </div>
                                                         </div>
                                                     </div>
@@ -271,23 +271,23 @@
 
 
                                                 @*<table class="">
-                                                    <tr>
-                                                        <th>IMG</th>
-                                                        <th>Remove</th>
-                                                    </tr>
-                                                    @foreach (var item in Model.NewImages)
-                                                    {
                                                         <tr>
-                                                            <td>
-                                                                <img style="width:100px;height:100px" src="@item.Path" />
-                                                            </td>
-                                                            <td>
-                                                                <a class="dropdown-item text-danger align-middle btn_delete" data-id="@item.Id" href="#"><i class="bx bx-trash font-size-16 me-1"></i>Delete</a>
-
-                                                            </td>
+                                                            <th>IMG</th>
+                                                            <th>Remove</th>
                                                         </tr>
-                                                    }
-                                                </table>*@
+                                                        @foreach (var item in Model.NewImages)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    <img style="width:100px;height:100px" src="@item.Path" />
+                                                                </td>
+                                                                <td>
+                                                                    <a class="dropdown-item text-danger align-middle btn_delete" data-id="@item.Id" href="#"><i class="bx bx-trash font-size-16 me-1"></i>Delete</a>
+
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>*@
                                             }
 
                                         </div>
@@ -313,7 +313,7 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="mb-3">
-                                                    <label for="uploadattachmentsHomeMain" class="form-label">Main Image Inner <span class="extiniosType">(jpg, png, peg, gif, jpg)</span><span class="extiniosType">(W:1520px, H:850px)</span></label>
+                                                    <label for="uploadattachmentsHomeMain" class="form-label">Main Home Image <span class="extiniosType">(jpg, png, peg, gif, jpg)</span><span class="extiniosType">(W:270px, H:350px)</span></label>
                                                     <input class="form-control" name="uploadattachmentsHomeMain" type="file" id="uploadattachmentsHomeMain">
                                                 </div>
                                             </div>
@@ -328,7 +328,9 @@
                                                                         <div class="Images">
                                                                             <img src="@Model.MainHomeImage" />
                                                                         </div>
-                                                                        
+                                                                        <div class="DeleteBtn">
+                                                                            <a class=" btn_delete_MainTwo" data-id="@Model.Id"><i class="bx bx-trash"></i></a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -505,6 +507,30 @@
             });
 
 
+
+        $("body").on("click", ".btn_delete_MainTwo", (s) => {
+            let self = $(s.currentTarget),
+
+                    entityId = self.attr('data-id');
+                bootbox.confirm("@Resources.Global.ConfirmDeleteoperation !", function (flag) {
+                    if (flag) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/GlobalServices/RemoveNewsMainTwoImg?id=" + entityId+"",
+                            success: (response) => {
+                                toastr.success('@Resources.Global.Theunithasbeensuccessfullydeleted', '', { timeOut: 10000 });
+                                $('#box_mainImgTwo').remove();
+                                location.reload();
+                                location.reload;
+                                }, error: (error) => {
+                                // unauthorize
+                                let errorMessage = manageAjaxError(error);
+                                pushNotification("danger", errorMessage);
+                            }
+                        });
+                    }
+                })
+            });
 
 
     </script>

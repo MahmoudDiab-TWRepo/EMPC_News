@@ -5645,3 +5645,34 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination li {
 .TextArea_Control {
     min-height: 180px !important;
 }
+
+
+.btn_delete_MainTwo {
+    display: block;
+    width: 45px;
+    height: 45px;
+    background-color: #f46a6acc;
+    border-color: #f46a6a;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 50%;
+    color: #fff;
+    padding: 0;
+    font-size: 19px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+.btn_delete_MainTwo:hover {
+    background-color: #f46a6a;
+    color:#fff;
+}
+
+
+
+
+
+
+
+
+
+

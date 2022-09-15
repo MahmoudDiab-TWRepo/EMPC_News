@@ -61,6 +61,23 @@ namespace Eagles.LMS.Web_Services
 
 
         [HttpPost]
+        [Route("api/GlobalServices/RemoveNewsMainTwoImg")]
+        public async Task<IHttpActionResult> RemoveNewsMainTwoImg(int id)
+        {
+            UnitOfWork ctx = new UnitOfWork();
+            var _new = ctx.NewManager.GetBy(id);
+            if (_new != null)
+            {
+                _new.MainHomeImage = "";
+                ctx.NewManager.UpdateWithSave(_new);
+
+                return Ok();
+            }
+            return NotFound();
+        }
+        
+
+        [HttpPost]
         [Route("api/GlobalServices/RemoveAgendaMainImg")]
         public async Task<IHttpActionResult> RemoveAgendaMainImg(int id)
         {

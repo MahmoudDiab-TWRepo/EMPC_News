@@ -19,7 +19,8 @@
 @if (en)
 {
     @section PageTitle{
-        <title>@Model.SEOTitleEnglish</title>
+        @*<title>@Model.SEOTitleEnglish</title>*@
+        <title>@Model.TitleEnglish</title>
     }
     @section metatags{
         <meta name="keywords" content="@Model.TitleEnglish, @Model.SEOMetaKeywordsEnglish, @Model.TitleArabic, @SEO.NewsPageMetaKeywordsEnglish " />
@@ -30,7 +31,8 @@
 else
 {
     @section PageTitle{
-        <title>@Model.SEOTitleArabic</title>
+        @*<title>@Model.SEOTitleArabic</title>*@
+        <title>@Model.TitleArabic</title>
     }
     @section metatags{
         <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaKeywordsArabic, @SEO.NewsPageMetaKeywordsArabic " />

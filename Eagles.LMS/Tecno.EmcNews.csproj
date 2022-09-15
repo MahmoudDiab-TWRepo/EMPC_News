@@ -2036,6 +2036,7 @@
     <Content Include="Views\Home\Booking_ThanksPage.cshtml" />
     <Content Include="Views\Home\Citizin_ThanksPage.cshtml" />
     <Content Include="Views\Home\ContactUs_ThanksPage.cshtml" />
+    <Content Include="Views\Account\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

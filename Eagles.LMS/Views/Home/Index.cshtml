@@ -66,7 +66,8 @@
 @if (en)
 {
     @section PageTitle{
-        <title>@SEO.HomePageTitleEnglish</title>
+        @*<title>@SEO.HomePageTitleEnglish</title>*@
+        <title>Home</title>
     }
     @section metatags{
 
@@ -78,7 +79,8 @@
 else
 {
     @section PageTitle{
-        <title>@SEO.HomePageTitleArabic</title>
+        @*<title>@SEO.HomePageTitleArabic</title>*@
+        <title>الرئيسيه</title>
     }
     @section metatags{
 
@@ -193,8 +195,12 @@ else
                     <div class="slider-item">
                         <div class="video_background">
                             <div class="video_foreground">
-                                <iframe src="https://www.youtube.com/embed/@slider.Iframe?rel=0&mute=1"></iframe>
-                                @*<iframe src="https://www.youtube.com/embed/@slider.Iframe?playlist=@slider.Iframe&controls=1&autoplay=1&loop=1&rel=0&showinfo=0&mute=1 " frameborder="0" allow='autoplay' allowfullscreen></iframe>*@
+                                <iframe src="https://www.youtube.com/embed/xIonKgCvhoc?playlist=xIonKgCvhoc&controls=1&autoplay=0&loop=1&rel=0&showinfo=0&mute=1 " frameborder="0" allow='autoplay' allowfullscreen></iframe>
+
+
+
+                                @*<iframe src="https://www.youtube.com/embed/@slider.Iframe?rel=0&mute=1"></iframe>*@
+                                @*<iframe src="https://www.youtube.com/embed/@slider.Iframe?playlist=@slider.Iframe&controls=1&autoplay=0&loop=1&rel=0&showinfo=0&mute=1 " frameborder="0" allow='autoplay' allowfullscreen></iframe>*@
                             </div>
                         </div>
 
@@ -260,6 +266,7 @@ else
                             <video id="video" preload autoplay width="100%" muted>
                                 <source src="@slider.Image" type='video/mp4' />
                             </video>
+
                         </div>*@
                 }
             }
@@ -289,69 +296,141 @@ else
                         @*@foreach (var _new in _news)*@
                         @for (int i = 0; i < _news.Count; i++)
                         {
-                            <div class=" othercol">
-                                <div class="newsItem newsItemBig">
-                                    @*<div class="imags" style="background-image: url(@_news[i].MainImage)"></div>*@
+                            if (i == 0)
+                            {
+                                <div class=" othercol">
+                                    <div class="newsItem newsItemBig">
+                                        @*<div class="imags" style="background-image: url(@_news[i].MainImage)"></div>*@
 
-                                    <div class="Images">
-                                        @if (!string.IsNullOrEmpty(@_news[i].MainHomeImage))
-                                        {
-                                            <img src="@_news[i].MainHomeImage" />
+                                        <div class="Images">
+                                            @if (!string.IsNullOrEmpty(@_news[i].MainHomeImage))
+                                            {
+                                                @*<img src="@_news[i].MainHomeImage" />*@
+                                                <img src="@_news[i].MainImage" alt="first" />
 
-                                        }
-                                        else
-                                        {
-                                            <img src="@_news[i].MainImage" />
-                                            @*<img src="~/assets_NewPublic/images/f14.jpeg" />*@
-                                            @*<img src="@_news[i].MainImage" />*@
-                                        }
+                                            }
+                                            else
+                                            {
+                                                <img src="@_news[i].MainImage" alt="first2" />
+                                                @*<img src="~/assets_NewPublic/images/f14.jpeg" />*@
+                                                @*<img src="@_news[i].MainImage" />*@
+                                            }
 
-                                    </div>
-                                    <div class="newsDetails">
-                                        <div class="newdtcont">
-                                            <div class="marknew">
-                                                @if (en)
-                                                {
-
-                                                    if (!string.IsNullOrEmpty(@_news[i].NotsEnglish))
+                                        </div>
+                                        <div class="newsDetails">
+                                            <div class="newdtcont">
+                                                <div class="marknew">
+                                                    @if (en)
                                                     {
-                                                        <span>@_news[i].NotsEnglish</span>
+
+                                                        if (!string.IsNullOrEmpty(@_news[i].NotsEnglish))
+                                                        {
+                                                            <span>@_news[i].NotsEnglish</span>
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        if (!string.IsNullOrEmpty(@_news[i].NotsArabic))
+                                                        {
+                                                            <span>@_news[i].NotsArabic</span>
+                                                        }
+
                                                     }
 
-                                                }
-                                                else
-                                                {
-                                                    if (!string.IsNullOrEmpty(@_news[i].NotsArabic))
+                                                </div>
+                                                <div class="newsTitle">
+                                                    @if (en)
                                                     {
-                                                        <span>@_news[i].NotsArabic</span>
+                                                        <a href="/Home/NewsDetails/@_news[i].Id">
+
+                                                            @_news[i].TitleEnglish
+
+                                                        </a>
                                                     }
+                                                    else
+                                                    {
 
-                                                }
+                                                        <a href="/Home/NewsDetails/@_news[i].Id">
 
-                                            </div>
-                                            <div class="newsTitle">
-                                                @if (en)
-                                                {
-                                                    <a href="/Home/NewsDetails/@_news[i].Id">
+                                                            @_news[i].TitleArabic
 
-                                                        @_news[i].TitleEnglish
-
-                                                    </a>
-                                                }
-                                                else
-                                                {
-
-                                                    <a href="/Home/NewsDetails/@_news[i].Id">
-
-                                                        @_news[i].TitleArabic
-
-                                                    </a>
-                                                }
+                                                        </a>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            }
+                            else
+                            {
+                                <div class=" othercol">
+                                    <div class="newsItem newsItemBig">
+                                        @*<div class="imags" style="background-image: url(@_news[i].MainImage)"></div>*@
+
+                                        <div class="Images">
+                                            @if (!string.IsNullOrEmpty(@_news[i].MainHomeImage))
+                                            {
+                                                <img src="@_news[i].MainHomeImage" />
+
+                                            }
+                                            else
+                                            {
+                                                <img src="@_news[i].MainImage" />
+                                                @*<img src="~/assets_NewPublic/images/f14.jpeg" />*@
+                                                @*<img src="@_news[i].MainImage" />*@
+                                            }
+
+                                        </div>
+                                        <div class="newsDetails">
+                                            <div class="newdtcont">
+                                                <div class="marknew">
+                                                    @if (en)
+                                                    {
+
+                                                        if (!string.IsNullOrEmpty(@_news[i].NotsEnglish))
+                                                        {
+                                                            <span>@_news[i].NotsEnglish</span>
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        if (!string.IsNullOrEmpty(@_news[i].NotsArabic))
+                                                        {
+                                                            <span>@_news[i].NotsArabic</span>
+                                                        }
+
+                                                    }
+
+                                                </div>
+                                                <div class="newsTitle">
+                                                    @if (en)
+                                                    {
+                                                        <a href="/Home/NewsDetails/@_news[i].Id">
+
+                                                            @_news[i].TitleEnglish
+
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+
+                                                        <a href="/Home/NewsDetails/@_news[i].Id">
+
+                                                            @_news[i].TitleArabic
+
+                                                        </a>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
 
                             if (i == 6)
                             {

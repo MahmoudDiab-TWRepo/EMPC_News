@@ -189,7 +189,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
             {
 
                 RequestStatus requestStatus;
-                if (uploadattachments == null || uploadattachments.ContentLength == 0 || ! uploadattachments.ContentType.CheckImageExtention())
+                if (uploadattachments == null || uploadattachments.ContentLength == 0 || ! uploadattachments.ContentType.CheckImageExtention() || uploadattachmentsHomeMain == null || uploadattachmentsHomeMain.ContentLength == 0 || !uploadattachmentsHomeMain.ContentType.CheckImageExtention())
                 {
                     requestStatus = new ManageRequestStatus().GetStatus(Status.GeneralError, "Attachment not supported ,Plz Upload Image Only");
                 }
@@ -217,8 +217,8 @@ namespace Eagles.LMS.Areas.Admission.Controllers
 
                         _new.MainImage = $"/attachments/{fileName}";
 
-                        if (uploadattachmentsHomeMain != null)
-                        {
+                        //if (uploadattachmentsHomeMain == null)
+                        //{
 
 
 
@@ -237,7 +237,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
 
                             _new.MainHomeImage = $"/attachments/{fileNameTwo}";
 
-                        }
+                        //}
 
 
 

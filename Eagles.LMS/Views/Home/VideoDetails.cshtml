@@ -14,7 +14,7 @@
     //var albumId = Model.Id;
 
     List<Galary> videos;
-    if ( Model.Id != 0)
+    if (Model.Id != 0)
     {
         videos = ctx.GalaryManager.GetAll().Where(s => !s.IsImage && s.AlbumId == Model.Id).OrderBy(s => s.Order).ToList();
     }
@@ -39,7 +39,8 @@
 @if (en)
 {
     @section PageTitle{
-        <title>@SEO.VideoPageTitleEnglish</title>
+        @*<title>@SEO.VideoPageTitleEnglish</title>*@
+        <title>Album Details</title>
     }
     @section metatags{
         <meta name="keywords" content="@SEO.VideoPageMetaKeywordsEnglish " />
@@ -50,7 +51,8 @@
 else
 {
     @section PageTitle{
-        <title>@SEO.VideoPageTitleArabic</title>
+        @*<title>@SEO.VideoPageTitleArabic</title>*@
+        <title>تفاصيل الالبوم</title>
     }
     @section metatags{
         <meta name="keywords" content="@SEO.VideoPageMetaKeywordsArabic " />
