@@ -44,6 +44,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
         {
             var _maxOrder = new UnitOfWork().NewImagesMnager.MaxOrder();
             ViewBag.MaxOrder = _maxOrder;
+            _new.Status = EntityStatus.Pending;
             ActionResult result = View(_new);
 
             //byte[] bytes;
