@@ -133,54 +133,60 @@ else
                 if (slider.IsImage)
                 {
 
-                    <div class="slider-item" style="background-image: url(@slider.Image);">
-                        <div class="overlay">
-                            <div class="container">
-                                <div class="row no-gutters slider-text align-items-center justify-content-center">
-                                    <div class="col-md-12 ftco-animate">
-                                        <div class="text w-100 ">
+                    <div class="slider-item">
+                        <div class="SliderItem_ImagesType">
+                            <div class="imagessBGSlider">
+                                <img src="@slider.Image" alt="slider Image" />
+                            </div>
+                            <div class="overlay">
 
-                                            @if (en)
-                                            {
-                                                if (!string.IsNullOrEmpty(slider.TitleEnglish))
+                                <div class="container">
+                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                        <div class="col-md-12 ftco-animate">
+                                            <div class="text w-100 ">
+
+                                                @if (en)
                                                 {
-                                                    <div class="overflowtext">
-                                                        <h1 class="mb-3">@Html.Raw(@slider.TitleEnglish)</h1>
-                                                    </div>
+                                                    if (!string.IsNullOrEmpty(slider.TitleEnglish))
+                                                    {
+                                                        <div class="overflowtext">
+                                                            <h1 class="mb-3">@Html.Raw(@slider.TitleEnglish)</h1>
+                                                        </div>
+                                                    }
+                                                    if (!string.IsNullOrEmpty(slider.DescriptionEnglish))
+                                                    {
+                                                        <div class="overflowtext">
+                                                            <h2>@slider.DescriptionEnglish</h2>
+                                                        </div>
+                                                    }
+                                                    if (!string.IsNullOrEmpty(slider.Link))
+                                                    {
+                                                        <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
+                                                    }
                                                 }
-                                                if (!string.IsNullOrEmpty(slider.DescriptionEnglish))
+                                                else
                                                 {
-                                                    <div class="overflowtext">
-                                                        <h2>@slider.DescriptionEnglish</h2>
-                                                    </div>
-                                                }
-                                                if (!string.IsNullOrEmpty(slider.Link))
-                                                {
-                                                    <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
-                                                }
-                                            }
-                                            else
-                                            {
-                                                if (!string.IsNullOrEmpty(slider.TitleArabic))
-                                                {
-                                                    <div class="overflowtext">
-                                                        <h1 class="mb-3">@Html.Raw(@slider.TitleArabic)</h1>
-                                                    </div>
-                                                }
-                                                if (!string.IsNullOrEmpty(slider.DescriptionArabic))
-                                                {
-                                                    <div class="overflowtext">
-                                                        <h2>@slider.DescriptionArabic</h2>
-                                                    </div>
+                                                    if (!string.IsNullOrEmpty(slider.TitleArabic))
+                                                    {
+                                                        <div class="overflowtext">
+                                                            <h1 class="mb-3">@Html.Raw(@slider.TitleArabic)</h1>
+                                                        </div>
+                                                    }
+                                                    if (!string.IsNullOrEmpty(slider.DescriptionArabic))
+                                                    {
+                                                        <div class="overflowtext">
+                                                            <h2>@slider.DescriptionArabic</h2>
+                                                        </div>
 
 
 
+                                                    }
+                                                    if (!string.IsNullOrEmpty(slider.Link))
+                                                    {
+                                                        <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
+                                                    }
                                                 }
-                                                if (!string.IsNullOrEmpty(slider.Link))
-                                                {
-                                                    <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
-                                                }
-                                            }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -376,12 +382,12 @@ else
                                         <div class="Images">
                                             @if (!string.IsNullOrEmpty(@_news[i].MainHomeImage))
                                             {
-                                                <img src="@_news[i].MainHomeImage" />
+                                                <img src="@_news[i].MainHomeImage" alt="Main Home Page"/>
 
                                             }
                                             else
                                             {
-                                                <img src="@_news[i].MainImage" />
+                                                <img src="@_news[i].MainImage" alt="main Home Page" />
                                                 @*<img src="~/assets_NewPublic/images/f14.jpeg" />*@
                                                 @*<img src="@_news[i].MainImage" />*@
                                             }
@@ -598,12 +604,12 @@ else
                                         <div class="icon">
                                             @if (!string.IsNullOrEmpty(location.MainImage))
                                             {
-                                                <img src="@location.IconImage">
+                                                <img src="@location.IconImage" alt="Location Icom">
 
                                             }
                                             else
                                             {
-                                                <img src="~/assets_NewPublic/images/f14.jpeg" />
+                                                <img src="~/assets_NewPublic/images/f14.jpeg" alt="Location Icom" />
                                             }
 
                                         </div>
@@ -873,7 +879,7 @@ else
                         <div class="item">
                             <div class="CustomerItem">
                                 <div class="images">
-                                    <img src="@Client.Image" />
+                                    <img src="@Client.Image"  alt="Client Icom" />
                                 </div>
                             </div>
                         </div>

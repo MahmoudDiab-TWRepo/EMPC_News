@@ -900,6 +900,7 @@
     <Content Include="assets_NewDash\Vedios\1.mp4" />
     <Content Include="assets_NewPublic\css\bootstrab-last.css" />
     <Content Include="assets_NewPublic\css\bootstrap.min.css" />
+    <Content Include="assets_NewPublic\css\bootstrape.min.two.css" />
     <Content Include="assets_NewPublic\css\font-awesome.min.css" />
     <Content Include="assets_NewPublic\css\gallery-demo.css" />
     <Content Include="assets_NewPublic\css\gallery-jquery.flipster.min.css" />
@@ -1049,6 +1050,7 @@
     <Content Include="assets_NewPublic\images\Social\twitter.jpg" />
     <Content Include="assets_NewPublic\images\Social\youtube.jpg" />
     <Content Include="assets_NewPublic\images\Test.mp4" />
+    <Content Include="assets_NewPublic\js\7ecf8dac4e.js" />
     <Content Include="assets_NewPublic\js\animate\animate.css" />
     <Content Include="assets_NewPublic\js\animate\wow.min.js" />
     <Content Include="assets_NewPublic\js\bootstrap-datepicker.min.js" />
@@ -1081,6 +1083,13 @@
     <Content Include="assets_NewPublic\js\jquery.min.js" />
     <Content Include="assets_NewPublic\js\jquery.stellar.min.js" />
     <Content Include="assets_NewPublic\js\jquery.waypoints.min.js" />
+    <Content Include="assets_NewPublic\js\lightbox\lg-autoplay.js" />
+    <Content Include="assets_NewPublic\js\lightbox\lg-fullscreen.js" />
+    <Content Include="assets_NewPublic\js\lightbox\lg-hash.js" />
+    <Content Include="assets_NewPublic\js\lightbox\lg-pager.js" />
+    <Content Include="assets_NewPublic\js\lightbox\lg-share.js" />
+    <Content Include="assets_NewPublic\js\lightbox\lg-zoom.js" />
+    <Content Include="assets_NewPublic\js\lightbox\lightgallery.js" />
     <Content Include="assets_NewPublic\js\main.js" />
     <Content Include="assets_NewPublic\js\nacscript.js" />
     <Content Include="assets_NewPublic\js\number\bootstrap-datepicker.min.js" />
@@ -1096,6 +1105,8 @@
     <Content Include="assets_NewPublic\js\script.js" />
     <Content Include="assets_NewPublic\js\scrollax.min.js" />
     <Content Include="assets_NewPublic\js\simple-lightbox.js" />
+    <Content Include="assets_NewPublic\js\Swiper\swiper.css" />
+    <Content Include="assets_NewPublic\js\Swiper\swiper.js" />
     <Content Include="assets_NewPublic\libs\app.js" />
     <Content Include="assets_NewPublic\libs\bootstrap.bundle.min.js" />
     <Content Include="assets_NewPublic\libs\bootstrap.min.css" />

@@ -1295,7 +1295,7 @@ p.details {
 
     .owl-carousel.home-slider {
         position: relative;
-        height: 700px;
+        height: 600px;
         z-index: 0;
     }
 
@@ -1303,7 +1303,7 @@ p.details {
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
-            height: 700px;
+            height: 600px;
             position: relative;
             z-index: 0;
             overflow: hidden;
@@ -1314,7 +1314,7 @@ p.details {
                 top: 0;
                 bottom: 0;
                 right: 0;
-                background: #1d1f4fc2;
+            background: #1d1f4f00;
                 opacity: 1;
                 width: 40%;
                 padding: 0 0px 0 70px;
@@ -7536,3 +7536,26 @@ a:focus {
                 font-size: 25px;
                 margin: 0;
             }
+
+
+
+
+.owl-carousel.home-slider {
+    height: auto;
+}
+    .owl-carousel.home-slider .slider-item {
+       
+        height: auto;
+    }
+.SliderItem_ImagesType {
+    height: 100%;
+}
+    .SliderItem_ImagesType .imagessBGSlider {
+        height: 100%;
+    }
+        .SliderItem_ImagesType .imagessBGSlider img {
+            height: 100%;
+        }
+
+
+

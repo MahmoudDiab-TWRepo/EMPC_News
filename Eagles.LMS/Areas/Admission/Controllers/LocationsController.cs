@@ -65,7 +65,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                     if (mainImage != null)
                     {
 
-                        _rendom = new Random().Next(1, 99999999).ToString();
+                        _rendom = System.Guid.NewGuid().ToString();
 
                         //fileName = _rendom + Path.GetFileName(mainImage.FileName);
                         string extention = System.IO.Path.GetExtension(mainImage.FileName);
@@ -81,7 +81,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                     if (iconImage != null)
                     {
 
-                        _rendom = new Random().Next(1, 99999999).ToString();
+                        _rendom = System.Guid.NewGuid().ToString();
 
                         fileName = _rendom + Path.GetFileName(iconImage.FileName);
 
@@ -119,7 +119,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                     {
                         foreach (var item in uploadattachments_multi)
                         {
-                            _rendom = new Random().Next(1, 99999999).ToString();
+                            _rendom = System.Guid.NewGuid().ToString();
 
                             //fileName = _rendom + Path.GetFileName(item.FileName);
                             string extention = System.IO.Path.GetExtension(item.FileName);
@@ -204,7 +204,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                         {
 
                             // icon
-                            string _rendom = new Random().Next(1, 99999999).ToString();
+                            string _rendom = System.Guid.NewGuid().ToString();
 
                             var fileName = _rendom + Path.GetFileName(iconImage.FileName);
 
@@ -214,7 +214,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
 
                             // main
 
-                            _rendom = new Random().Next(1, 99999999).ToString();
+                            _rendom = System.Guid.NewGuid().ToString();
                             //fileName = _rendom + Path.GetFileName(mainImage.FileName);
                             string extention = System.IO.Path.GetExtension(mainImage.FileName);
                             fileName = _rendom + extention;
@@ -263,7 +263,7 @@ namespace Eagles.LMS.Areas.Admission.Controllers
                             {
                                 foreach (var item in uploadattachments_multi)
                                 {
-                                    _rendom = new Random().Next(1, 99999999).ToString();
+                                    _rendom = System.Guid.NewGuid().ToString();
 
                                     //fileName = _rendom + Path.GetFileName(item.FileName);
                                      extention = System.IO.Path.GetExtension(item.FileName);

@@ -48,11 +48,12 @@ else
 @section EndHeader{
 
 
-    <script src="https://kit.fontawesome.com/7ecf8dac4e.js" crossorigin="anonymous"></script>
+    @*<script src="https://kit.fontawesome.com/7ecf8dac4e.js" crossorigin="anonymous"></script>*@
+    <script src="~/assets_NewPublic/js/7ecf8dac4e.js"></script>
 
 
-    <link rel="stylesheet"
-          href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    @*<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />*@
+    <link href="~/assets_NewPublic/js/Swiper/swiper.css" rel="stylesheet" />
     <link href="~/assets_NewPublic/libs/magnific-popup/magnific-popup.css" rel="stylesheet" />
 
     <style>
@@ -147,7 +148,7 @@ else
 
 <div class="header-bc">
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" />
+        <img src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" alt="NewNewsGBIN.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -176,24 +177,13 @@ else
                                 </li>
                             </ul>
                         </div>
-                        <!--end breadcrumb-->
-
                     </div>
-                    <!--end title-header-->
-
                 </div>
-                <!--end col-6-->
-
-
-
             </div>
-            <!--end row-->
         </div>
-        <!--end container-->
-
     </div>
 </div>
-<!--end header-bc-->
+
 
 
 
@@ -210,7 +200,6 @@ else
                 </div>
 
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="display:none">
-                    <!-- Indicators -->
                     <ol class="carousel-indicators">
                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                         @if (Model.NewImages != null && Model.NewImages.Any())
@@ -244,8 +233,6 @@ else
                                     </a>
 
                                 }
-
-
 
                             </div>
                         </div>
@@ -315,9 +302,6 @@ else
 
 
                 </div>
-                <!--end data-new-->
-
-
                 @if (Model.NewImages != null && Model.NewImages.Any())
                 {
                     <div class="mainImgGallary">
@@ -345,162 +329,6 @@ else
             <!--end new-description-->
 
 
-            <div style="display:none">
-                <div class="cleaner-h3"></div>
-
-
-                <div class="col-md-6">
-                    <h3>More News</h3>
-                </div>
-
-
-                <div class="col-md-6 hidden-xs seeall">
-                    <h5 class="pull-right"><a href="#">See ALl </a></h5>
-                </div>
-
-                <div class="cleaner-h2"></div>
-
-                <div class="col-md-4">
-
-                    <div class="new-des">
-                        <a class="but-new" href="/Home/NewsDetails">
-                            <img src="~/assets_NewPublic/images/bg_2.jpg" class="img-responsive" />
-                        </a>
-
-
-                        <div class="share">
-
-                            <div class="lef">
-                                <p><i class="fa fa-calendar"></i> 30 Noveber</p>
-                            </div>
-
-                            <div class="righ">
-                                <a href="#">
-                                    <p><i class="fa fa-share-alt"></i> Share</p>
-                                </a>
-                            </div>
-
-                        </div>
-                        <!--end share-->
-
-                        <div class="description">
-                            <a class="but-new" href="/Home/NewsDetails">
-                                <h4>Lebanese Minister of Information Visits EMPC</h4>
-
-
-                                <p>
-                                    H.E professor Majid Abdullah El.Khasabi, the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation,
-                                    in the presence of H.E Mr. Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.H.E professor Majid Abdullah El.Khasabi,
-                                    the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation, in the presence of H.E Mr.
-                                    Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.
-                                </p>
-
-                            </a>
-                        </div>
-                        <!--end description-->
-
-
-                    </div>
-                    <!--end new-desc-->
-
-                </div>
-                <!--end col-4-->
-
-
-
-                <div class="col-md-4">
-
-                    <div class="new-des">
-                        <a class="but-new" href="/Home/NewsDetails">
-                            <img src="~/assets_NewPublic/images/bg_2.jpg" class="img-responsive" />
-                        </a>
-
-
-                        <div class="share">
-
-                            <div class="lef">
-                                <p><i class="fa fa-calendar"></i> 30 Noveber</p>
-                            </div>
-
-                            <div class="righ">
-                                <a href="#">
-                                    <p><i class="fa fa-share-alt"></i> Share</p>
-                                </a>
-                            </div>
-
-                        </div>
-                        <!--end share-->
-
-                        <div class="description">
-                            <a class="but-new" href="/Home/NewsDetails">
-                                <h4>Lebanese Minister of Information Visits EMPC</h4>
-
-
-                                <p>
-                                    H.E professor Majid Abdullah El.Khasabi, the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation,
-                                    in the presence of H.E Mr. Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.H.E professor Majid Abdullah El.Khasabi,
-                                    the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation, in the presence of H.E Mr.
-                                    Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.
-                                </p>
-
-                            </a>
-                        </div>
-                        <!--end description-->
-
-
-                    </div>
-                    <!--end new-desc-->
-
-                </div>
-                <!--end col-4-->
-
-
-                <div class="col-md-4">
-
-                    <div class="new-des">
-                        <a class="but-new" href="/Home/NewsDetails">
-                            <img src="~/assets_NewPublic/images/bg_2.jpg" class="img-responsive" />
-                        </a>
-
-
-                        <div class="share">
-
-                            <div class="lef">
-                                <p><i class="fa fa-calendar"></i> 30 Noveber</p>
-                            </div>
-
-                            <div class="righ">
-                                <a href="#">
-                                    <p><i class="fa fa-share-alt"></i> Share</p>
-                                </a>
-                            </div>
-
-                        </div>
-                        <!--end share-->
-
-                        <div class="description">
-                            <a class="but-new" href="/Home/NewsDetails">
-                                <h4>Lebanese Minister of Information Visits EMPC</h4>
-
-
-                                <p>
-                                    H.E professor Majid Abdullah El.Khasabi, the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation,
-                                    in the presence of H.E Mr. Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.H.E professor Majid Abdullah El.Khasabi,
-                                    the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation, in the presence of H.E Mr.
-                                    Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.
-                                </p>
-
-                            </a>
-                        </div>
-                        <!--end description-->
-
-
-                    </div>
-                    <!--end new-desc-->
-
-                </div>
-            </div>
-            <!--end col-4-->
 
 
         </div>
@@ -510,70 +338,6 @@ else
 </div>
 <!--end news-->
 
-
-<div class="modal fade bd-example-modal-lg showEwsModael" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="sliderswiberimages">
-                    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                         class="swiper mySwiper2 bigSlider">
-                        <div class="swiper-wrapper">
-
-                            @if (Model.NewImages != null && Model.NewImages.Any())
-                            {
-                                foreach (var item in Model.NewImages)
-                                {
-
-                                    <div class="swiper-slide">
-                                        <div class="imagesss">
-
-                                            <img src="@item.Path" />
-                                        </div>
-                                    </div>
-                                }
-                            }
-
-
-
-
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                    <div thumbsSlider="" class="swiper mySwiper smallSlider">
-                        <div class="swiper-wrapper">
-
-
-                            @if (Model.NewImages != null && Model.NewImages.Any())
-                            {
-                                foreach (var item in Model.NewImages)
-                                {
-
-                                    <div class="swiper-slide">
-                                        <div class="imagesss">
-
-                                            <img src="@item.Path" />
-                                        </div>
-                                    </div>
-                                }
-                            }
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 @section EndBody{
@@ -586,7 +350,8 @@ else
 
 
     <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    @*<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>*@
+    <script src="~/assets_NewPublic/js/Swiper/swiper.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
