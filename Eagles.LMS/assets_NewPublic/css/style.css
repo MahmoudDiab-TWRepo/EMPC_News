@@ -132,7 +132,7 @@ ul.social li {
 .strip p {
     line-height: 24px;
     text-align: center;
-    color: white;
+    color: #fff;
     margin-top: 7px;
     font-size: 15px;
     display: inline-block;
@@ -1314,7 +1314,7 @@ p.details {
                 top: 0;
                 bottom: 0;
                 right: 0;
-            background: #1d1f4f00;
+                background: #1d1f4f00;
                 opacity: 1;
                 width: 40%;
                 padding: 0 0px 0 70px;
@@ -3442,7 +3442,7 @@ a:hover {
 }
 
     .has-user-dropdown::before {
-        content: "";
+        content: "ï„‡";
         font-family: "FontAwesome";
         position: absolute;
         top: calc(50%);
@@ -7541,21 +7541,21 @@ a:focus {
 
 
 .owl-carousel.home-slider {
-    height: auto;
+    height: auto
 }
+
     .owl-carousel.home-slider .slider-item {
-       
-        height: auto;
+        height: auto
     }
+
 .SliderItem_ImagesType {
     height: 100%;
 }
+
     .SliderItem_ImagesType .imagessBGSlider {
         height: 100%;
     }
+
         .SliderItem_ImagesType .imagessBGSlider img {
             height: 100%;
         }
-
-
-

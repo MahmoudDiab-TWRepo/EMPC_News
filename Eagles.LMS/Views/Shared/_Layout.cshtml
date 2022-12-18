@@ -1,6 +1,5 @@
 ﻿@using Eagles.LMS.BLL
 @using Eagles.LMS.App_GlobalResources
-
 @{
     UnitOfWork ctx = new UnitOfWork();
     var setting = ctx.SettingsManager.GetAll().FirstOrDefault();
@@ -11,18 +10,13 @@
     {
         UserID = Session["User_Key"].ToString();
         user = ctx.UserManager.GetBy(int.Parse(UserID));
-
     }
-
-
     bool en = true;
     var url = Context.Request.CurrentExecutionFilePath;
     if (Request.Cookies["Language"] != null)
     {
         en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
-
     }
-
     string SEOLang;
     if (en)
     {
@@ -32,15 +26,11 @@
     {
         SEOLang = "ar";
     }
-
-
     var _contactUs = ctx.ContactUsManager.GetAll().FirstOrDefault();
     var _services = ctx.ServiceManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).ToList();
     var _galaries = ctx.GalaryManager.GetAll().Where(s => s.IsImage).OrderByDescending(s => s.Order).ToList();
     var allSocialMedia = ctx.SocialMediaManager.GetAll().ToList();
-
 }
-
 <!DOCTYPE HTML>
 <html lang="@SEOLang">
 
@@ -50,10 +40,6 @@
     <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-
-
-
     @RenderSection("PageTitle", required: false)
     @RenderSection("metatags", required: false)
     @if (!string.IsNullOrEmpty(setting.MegaTags))
@@ -61,29 +47,14 @@
         <meta name="viewport" content="@setting.MegaTags">
     }
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
-
-
     <link rel="stylesheet" href="~/assets_NewPublic/css/gallery-jquery.flipster.min.css">
     <link rel="stylesheet" type="text/css" href="~/assets_NewPublic/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/assets_NewPublic/css/ionicons.min.css">
     <link href="~/assets_NewPublic/css/bootstrape.min.two.css" rel="stylesheet" />
-    @*
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">*@
     <link rel="stylesheet" type="text/css" href="~/assets_NewPublic/css/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="~/assets_NewPublic/css/font-awesome.min.css" />
-    @*
-        <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">*@
     <link rel="stylesheet" type="text/css" href="~/assets_NewPublic/css/style.css" />
-    @*
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>*@
-    @*
-        <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">*@
-
     <script src="~/assets_NewPublic/js/7ecf8dac4e.js"></script>
-    @*
-        <script src="https://kit.fontawesome.com/7ecf8dac4e.js" crossorigin="anonymous"></script>*@
     <link href="~/assets_NewPublic/libs/VideoPopUp/css/jquery.fancybox.css" rel="stylesheet" />
     @if (en)
     {
@@ -94,27 +65,17 @@
     {
         <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,700,900" rel="stylesheet">
         <link href="~/assets_NewPublic/css/Style_RTL.css" rel="stylesheet" />
-
     }
-
     <link href="~/assets_NewPublic/css/ResponsivePublic.css" rel="stylesheet" />
     <link rel="icon" href="~/assets_NewDash/images/NewImg/logoIcon.png">
     @RenderSection("EndHeader", required: false)
-
-
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     @Html.Raw(@SEO.GoogleTageAnalitics)
-
-
 </head>
-
 <body>
     @Html.Raw(@SEO.GoogleTageSearch)
-
     <nav class="navbar visible-xs">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -124,11 +85,8 @@
                 </button>
                 <a class="navbar-brand" href="/"><img class="img-responsive logo" src="@_contactUs.Logo" alt="logo-b" /></a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-
                     <li><a class="active-a" href="/"> @Resources.Global.Home </a></li>
                     @if (setting.ShowAboutUs)
                     {
@@ -137,15 +95,11 @@
                     @if (setting.ShowLocations)
                     {
                         <li><a href="/Home/Locations"> @Resources.Global.Locations  </a></li>
-
                     }
                     @if (setting.ShowServices)
                     {
                         <li><a href="/Home/Services">  @Resources.Global.services </a></li>
-
                     }
-
-
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.NewsEvents  </a>
                         <ul class="dropdown-menu dropmenuNew">
@@ -159,14 +113,10 @@
                             }
                             @if (setting.ShowCitizen)
                             {
-
                                 <li><a href="/Home/Citizen"> @Resources.Global.Citizen</a></li>
                             }
-
-
                         </ul>
                     </li>
-
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.Gallery  </a>
                         <ul class="dropdown-menu">
@@ -177,16 +127,12 @@
                             @if (setting.ShowGalaryPhotos)
                             {
                                 <li><a href="/Home/Albums"> @Resources.Global.Picture</a></li>
-
                             }
-
-
                         </ul>
                     </li>
                     @if (setting.ShowContactUs)
                     {
                         <li><a href="/Home/ContactUsHome">@Resources.Global.ContactUs</a></li>
-
                     }
                     <li><a href="/Home/Booking">@Resources.Global.Booking</a></li>
                     @if (en)
@@ -197,36 +143,18 @@
                     {
                         <li><a href="/Home/ChangeLanguage?SelectedLanguage=en&redirect=@url">@Resources.Global.English</a></li>
                     }
-
                 </ul>
-
-
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
-
-
-
     @if (setting.ShowSocialMedias)
     {
         <div class="position-1">
             <ul>
-                @*
-                    <li>
-                        <a style="background: #af7a2c;width: 40px;display: block;height: 40px;">1</a>
-                    </li>
-                    <li>
-                        <a style="background: #1d1f4f;width: 40px;display: block;height: 40px;">1</a>
-                    </li>*@
-
                 @if (allSocialMedia != null && allSocialMedia.Any())
                 {
                     foreach (var social in allSocialMedia)
                     {
-
-
                         if (@social.Link.ToLower().Contains("facebook"))
                         {
                             <li>
@@ -291,60 +219,15 @@
                                 </a>
                             </li>
                         }
-
-
                     }
-
                 }
-
-                @*
-                    <li>
-                        <a href="#" style="background: #3d53aa;" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #03A9F4;" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #0077B5;" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #29A71A;" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #af7a2c;" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #dc3545;" target="_blank">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" style="background: #000;" target="_blank">
-                            <i class="fab fa-dailymotion"></i>
-                        </a>
-                    </li>*@
-
             </ul>
         </div>
-        <!--end position-->
     }
     <div class="strip visible-lg">
         <div class="container">
-
             <div class="row">
-
                 <div class="cleaner-h1-1"></div>
-
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="search-input" style="display:none">
                         <input type="text" placeholder="Search" />
@@ -352,14 +235,10 @@
                     @if (setting.ShowSocialMedias)
                     {
                         <ul class="buttons">
-
                             @if (allSocialMedia != null && allSocialMedia.Any())
                             {
-
                                 foreach (var social in allSocialMedia)
                                 {
-
-
                                     if (@social.Link.ToLower().Contains("facebook"))
                                     {
                                         <li>
@@ -424,105 +303,44 @@
                                             </a>
                                         </li>
                                     }
-
-
                                 }
-
-
                             }
-
-
-
-
                         </ul>
                     }
                 </div>
-                <!--end col-3-->
-
-
-
-
-
-
-
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-
-
-                    <!--end Search-input-->
-                    @*<div class="language">
-
-
-                            <a class="img_lang" href="/Home/ChangeLanguage?SelectedLanguage=en&redirect=@url">@Resources.Global.English</a>
-                            <a class="img_lang" href="/Home/ChangeLanguage?SelectedLanguage=ar-EG&redirect=@url">@Resources.Global.Arabic</a>
-                        </div>*@
                     <div class="language">
                         @if (en)
                         {
-                            @*<a href="/Home/ChangeLanguage?SelectedLanguage=en&redirect=@url"><img class="img_lang" src="~/assets_NewPublic/images/buying4.png" /> <p> EN</p></a>*@
                             <a href="/Home/ChangeLanguage?SelectedLanguage=ar-EG&redirect=@url"><img class="img_lang" src="~/assets_NewPublic/images/buying4.png" alt="buying4.png" /> <p> @Resources.Global.Arabic</p></a>
                         }
                         else
                         {
                             <a href="/Home/ChangeLanguage?SelectedLanguage=en&redirect=@url"><img class="img_lang" src="~/assets_NewPublic/images/buying4.png" alt="buying4.png" /> <p> @Resources.Global.English</p></a>
-                            @*<a href="/Home/ChangeLanguage?SelectedLanguage=ar-EG&redirect=@url"><img class="img_lang" src="~/assets_NewPublic/images/buying4.png" /> <p> AR</p></a>*@
-
                         }
-
-
                     </div>
-
-
-
-
-
-
-                    <!--end language-->
-
                     <div class="strip-white"></div>
-
                     <div class="language lefr">
                         <a href="/Home/Booking">
                             <p> @Resources.Global.Booking</p>
                         </a>
                     </div>
-                    <!--end language-->
-
-
-
-
-
                 </div>
-
-
-
-
             </div>
-            <!--end row-->
-
         </div>
-        <!--end container-->
     </div>
-    <!--end strip-->
     <div class="header hidden-xs">
         <div class="container">
             <div class="row">
-
-
                 <div class="col-lg-3 col-md-2">
                     <div class="LogoHader">
                         <a href="/">
                             <img src="@_contactUs.Logo" class="img-responsive logo wow fadeInRight" alt="Logo" />
                         </a>
-
                     </div>
                 </div>
-                <!--end logo-->
-
                 <div class="col-lg-9 col-md-10">
-
                     <div class="cleaner-h4"></div>
-
                     <ul class="menu pull-right wow fadeInLeft">
                         <li><a class="active-a1" href="/"> @Resources.Global.Home </a></li>
                         @if (setting.ShowAboutUs)
@@ -532,14 +350,11 @@
                         @if (setting.ShowLocations)
                         {
                             <li><a class="active-a3" href="/Home/Locations"> @Resources.Global.Locations  </a></li>
-
                         }
                         @if (setting.ShowServices)
                         {
                             <li><a class="active-a4" href="/Home/Services">  @Resources.Global.services </a></li>
-
                         }
-
                         <li class="dropdown">
                             <a class="dropdown-toggle active-a5" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.NewsEvents  </a>
                             <ul class="dropdown-menu dropmenuNew">
@@ -557,7 +372,6 @@
                                 }
                             </ul>
                         </li>
-
                         <li class="dropdown">
                             <a class="dropdown-toggle active-a6" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.Gallery  </a>
                             <ul class="dropdown-menu dropmenuNew">
@@ -568,61 +382,23 @@
                                 @if (setting.ShowGalaryPhotos)
                                 {
                                     <li><a href="/Home/Albums"> @Resources.Global.Picture</a></li>
-
                                 }
-
                             </ul>
                         </li>
                         @if (setting.ShowContactUs)
                         {
                             <li><a class="active-a7" href="/Home/ContactUsHome">@Resources.Global.ContactUs</a></li>
-
                         }
                     </ul>
                 </div>
-                <!--end col-8-->
-
-
             </div>
-            <!--end row-->
         </div>
-        <!--end container-->
     </div>
-    <!--end header-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="pageCOntentdd">
         @RenderBody()
     </div>
-
     @if (setting.ShowContactUs)
     {
-
-        <!-- start of wpo-site-footer-section -->
         <footer class="wpo-site-footer" style="">
             <div class="wpo-upper-footer">
                 <div class="container">
@@ -639,17 +415,12 @@
                                 else
                                 {
                                     <p>@_contactUs.CompanyTitleArabic</p>
-
                                 }
                                 <ul>
-
-
                                     @if (allSocialMedia != null && allSocialMedia.Any())
                                     {
                                         foreach (var social in allSocialMedia)
                                         {
-
-
                                             if (@social.Link.ToLower().Contains("facebook"))
                                             {
                                                 <li>
@@ -714,58 +485,8 @@
                                                     </a>
                                                 </li>
                                             }
-
-
                                         }
-
                                     }
-
-
-                                    @*
-                                        <li>
-                                            <a href="#" style="background: #3d53aa;" target="_blank">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" style="background: #03A9F4;" target="_blank">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" style="background: #0077B5;" target="_blank">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" style="background: #29A71A;" target="_blank">
-                                                <i class="fab fa-whatsapp"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" style="background: #af7a2c;" target="_blank">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" style="background: #dc3545;" target="_blank">
-                                                <i class="fab fa-youtube"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" style="background: #000;" target="_blank">
-                                                <i class="fab fa-dailymotion"></i>
-                                            </a>
-                                        </li>*@
-
-
-                                    @*
-                                        <li>
-                                            <a href="">
-                                                <img src="~/assets_NewPublic/images/newimg/Social/instgram.jpg" />
-                                            </a>
-                                        </li>*@
-
                                 </ul>
                             </div>
                         </div>
@@ -779,10 +500,7 @@
                                     <ul>
                                         @for (int i = 0; i < _services.Count; i++)
                                         {
-
-
                                             <li><a href="/Home/ServicesDetails/@_services[i].Id">@_services[i].TitleEnglish</a></li>
-
                                             if (i == 3)
                                             {
                                                 break;
@@ -818,10 +536,7 @@
                                     <ul>
                                         @for (int i = 0; i < _services.Count; i++)
                                         {
-
-
                                             <li><a href="/home/ServicesDetails/@_services[i].Id">@_services[i].TitleArabic</a></li>
-
                                             if (i == 3)
                                             {
                                                 break;
@@ -856,14 +571,7 @@
                                 <ul class="d-flex">
                                     @for (int i = 0; i < _galaries.Count; i++)
                                     {
-
-
-                                        <li>
-                                            <a href="/home/picture/@_galaries[i].Id">
-                                                <img src="@_galaries[i].Image"
-                                                     alt="Gallary Item">
-                                            </a>
-                                        </li>
+                                        <li><a href="/home/picture/@_galaries[i].Id"><img src="@_galaries[i].Image" alt="Gallary Item"></a></li>
                                         if (i == 5)
                                         {
                                             break;
@@ -873,7 +581,7 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- end container -->
+                </div>
             </div>
             <div class="wpo-lower-footer">
                 <div class="container">
@@ -887,14 +595,9 @@
                 </div>
             </div>
         </footer>
-        <!-- end of wpo-site-footer-section -->
     }
-
     <script src="~/assets_NewPublic/js/gallery-jquery.min.js"></script>
     <script src="~/assets_NewPublic/js/gallery-jquery.flipster.min.js"></script>
-
-
-
     <script src="~/assets_NewPublic/js/jquery.min.js"></script>
     <script src="~/assets_NewPublic/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="~/assets_NewPublic/js/bootstrap.min.js"></script>
@@ -907,7 +610,5 @@
     <script src="~/assets_NewPublic/libs/VideoPopUp/js/jquery-plugin-collection.js"></script>
     <script src="~/assets_NewPublic/libs/VideoPopUp/js/script.js"></script>
     <script src="~/assets_NewPublic/js/nacscript.js"></script>
-
-
 </body>
 </html>
