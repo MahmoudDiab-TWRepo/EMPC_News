@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Eagles.LMS.Extensions;
 
 namespace Eagles.LMS.Areas.Admission.Controllers
 {
@@ -14,6 +15,8 @@ namespace Eagles.LMS.Areas.Admission.Controllers
     [AuthorizeFilterAttribute]
     public class NewsController : Controller
     {
+        public object Slugify { get; private set; }
+
         // GET: Admission/News
         public ActionResult Index()
         {
@@ -182,7 +185,9 @@ namespace Eagles.LMS.Areas.Admission.Controllers
             var _maxOrder = new UnitOfWork().NewImagesMnager.MaxOrder();
             ViewBag.MaxOrder = _maxOrder;
 
-          
+           
+
+
             _new.Status = EntityStatus.Approval;
             ActionResult result = View(_new);
 

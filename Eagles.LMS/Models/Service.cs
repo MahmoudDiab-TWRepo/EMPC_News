@@ -16,6 +16,7 @@ namespace Eagles.LMS.Models
         public string MainImage { get; set; }
         //[Required(ErrorMessage = "Title Arabic Is Required")]
 
+        public string Slug { get; set; }
         public string TitleArabic { get; set; }
         //[Required(ErrorMessage = "Title English Is Required")]
 

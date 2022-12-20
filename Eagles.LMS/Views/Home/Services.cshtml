@@ -3,7 +3,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     UnitOfWork ctx = new UnitOfWork();
     var SEO = ctx.SEOManager.GetAll().FirstOrDefault();
-    var services = ctx.ServiceManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).ToList();
+    //var services = ctx.ServiceManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).ToList();
+
+
+    var services = ViewBag.ServData;
+
+
     bool en = true;
 
     if (Request.Cookies["Language"] != null)
@@ -13,11 +18,11 @@
     }
     if (en == true)
     {
-        services = services.Where(s => s.TitleEnglish != null).ToList();
+        //services = services.Where(s => s.TitleEnglish != null).ToList();
     }
     else
     {
-        services = services.Where(s => s.TitleArabic != null).ToList();
+        //services = services.Where(s => s.TitleArabic != null).ToList();
 
     }
 }
@@ -153,7 +158,7 @@ else
                                     </div>
 
                                 }
-                                <a href="/Home/ServicesDetails/@service.Id"> @Resources.Global.ReadMore</a>
+                                <a href="/Home/ServicesDetails/@service.Id?slug=@service.Slug"> @Resources.Global.ReadMore</a>
                             </div>
                         </div>
                     </div>

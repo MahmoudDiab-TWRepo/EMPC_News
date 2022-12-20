@@ -9,10 +9,13 @@ using Eagles.LMS.BLL;
 using Eagles.LMS.DTO;
 using Eagles.LMS.Models;
 
-
 using System.IO;
 using System.ComponentModel.DataAnnotations.Schema;
 using Eagles.LMS.Helper;
+using System.Web.Services.Description;
+using Service = Eagles.LMS.Models.Service;
+using System.Drawing.Printing;
+
 namespace Eagles.LMS.Controllers
 {
     public class HomeController : Controller
@@ -21,6 +24,78 @@ namespace Eagles.LMS.Controllers
         // GET: Home
         public ActionResult Index()
         {
+
+            bool en = true;
+            if (Request.Cookies["Language"] != null)
+            {
+                en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+            }
+            if (en == true)
+            {
+                List<Location> LocationData = ctx.LocationManager.GetAll().Where(s => s.Status == EntityStatus.Approval && s.TitleEnglish != null).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in LocationData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleEnglish);
+                }
+                ViewBag.LocData = LocationData;
+
+                List<Service> ServiceData = ctx.ServiceManager.GetAll().Where(s => s.Status == EntityStatus.Approval && s.TitleEnglish != null).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in ServiceData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleEnglish);
+                }
+                ViewBag.ServData = ServiceData;
+
+
+                List<New> NewsData = ctx.NewManager.GetAll().Where(s => s.ShowInHomePage && s.Status == EntityStatus.Approval && s.TitleEnglish != null).OrderByDescending(s => s.Order).ToList();
+                foreach (var item in NewsData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleEnglish);
+                }
+                ViewBag.NewsData = NewsData;
+
+                //var allPictures = ctx.GalaryManager.GetAll().Select(s => s.AlbumId).Distinct();
+                //List<Album> albumsData = ctx.AlbumManager.GetAll().Where(s => allPictures.Contains(s.Id) && s.TitleEnglish != null).OrderByDescending(s => s.Id).ToList();
+                //foreach (var item in albumsData)
+                //{
+                //    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleEnglish);
+                //}
+                //ViewBag.AlllBumData = albumsData;
+            }
+            else
+            {
+                List<Location> LocationData = ctx.LocationManager.GetAll().Where(s => s.Status == EntityStatus.Approval && s.TitleArabic != null).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in LocationData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleArabic);
+                }
+                ViewBag.LocData = LocationData;
+
+                List<Service> ServiceData = ctx.ServiceManager.GetAll().Where(s => s.Status == EntityStatus.Approval && s.TitleArabic != null).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in ServiceData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleArabic);
+                }
+                ViewBag.ServData = ServiceData;
+
+
+                List<New> NewsData = ctx.NewManager.GetAll().Where(s => s.ShowInHomePage && s.Status == EntityStatus.Approval && s.TitleArabic != null).OrderByDescending(s => s.Order).ToList();
+                foreach (var item in NewsData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleArabic);
+                }
+                ViewBag.NewsData = NewsData;
+
+
+                //var allPictures = ctx.GalaryManager.GetAll().Select(s => s.AlbumId).Distinct();
+                //List<Album> albumsData = ctx.AlbumManager.GetAll().Where(s => allPictures.Contains(s.Id) && s.TitleArabic != null).OrderByDescending(s => s.Id).ToList();
+                //foreach (var item in albumsData)
+                //{
+                //    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleArabic);
+                //}
+                //ViewBag.AlllBumData = albumsData;
+            }
+
 
             //return Redirect("/Admission");
             return View();
@@ -40,6 +115,36 @@ namespace Eagles.LMS.Controllers
                 return View("NotFound");
             if (id != null)
                 ViewBag.Id = id;
+
+
+            bool en = true;
+            if (Request.Cookies["Language"] != null)
+            {
+                en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+            }
+            if (en == true)
+            {
+                List<Location> LocationData = ctx.LocationManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in LocationData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleEnglish);
+                }
+                ViewBag.LocData = LocationData;
+                //return View(ServiceData);
+            }
+            else
+            {
+                List<Location> LocationData = ctx.LocationManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in LocationData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleArabic);
+                }
+                ViewBag.LocData = LocationData;
+                //return View(ServiceData);
+            }
+
+
+
             //return Redirect("/Admission");
             return View();
         }
@@ -83,9 +188,38 @@ namespace Eagles.LMS.Controllers
         }
         public ActionResult Services()
         {
+
+
+            bool en = true;
+            if (Request.Cookies["Language"] != null)
+            {
+                en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+            }
+            if (en == true)
+            {
+                List<Service> ServiceData = ctx.ServiceManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in ServiceData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleEnglish);
+
+                }
+                ViewBag.ServData = ServiceData;
+                //return View(ServiceData);
+            }
+            else
+            {
+                List<Service> ServiceData = ctx.ServiceManager.GetAll().Where(s => s.Status == EntityStatus.Approval ).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in ServiceData)
+                {
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleArabic);
+                }
+                ViewBag.ServData = ServiceData;
+                //return View(ServiceData);
+            }
             //return Redirect("/Admission");
             return View();
         }
+
 
         public ActionResult ServicesDetails(int? id)
         {
@@ -127,6 +261,41 @@ namespace Eagles.LMS.Controllers
             //return Redirect("/Admission");
             return View();
         }
+        public ActionResult GetNewsPageData(int pageNumber = 1, int pageSize = 9)
+        {
+            bool en = true;
+            if (Request.Cookies["Language"] != null)
+            {
+                en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+            }
+            if (en == true)
+            {
+                List<New> NewsData = ctx.NewManager.GetAll().Where(s => s.Status == EntityStatus.Approval ).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in NewsData)
+                {
+                    item.StringDate = item.NewsDate.ToShortDateString();
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleEnglish);
+                   
+                }
+                var pagedData = Pagination.PagedResult(NewsData, pageNumber, pageSize);
+                return Json(pagedData, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                List<New> NewsData = ctx.NewManager.GetAll().Where(s => s.Status == EntityStatus.Approval ).OrderByDescending(s => s.Id).ToList();
+                foreach (var item in NewsData)
+                {
+                    item.StringDate = item.NewsDate.ToShortDateString();
+                    item.TitleEnglish = item.TitleArabic;
+                    item.ShortDescriptionEnglish = item.ShortDescriptionArabic;
+                    item.DescriptionEnglish = item.DescriptionArabic;
+                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleArabic);
+                }
+                var pagedData = Pagination.PagedResult(NewsData, pageNumber, pageSize);
+                return Json(pagedData, JsonRequestBehavior.AllowGet);
+            }
+            
+        }
         public ActionResult NewsDetails(int? id)
         {
             //var _new = new UnitOfWork().NewManager.GetAll().FirstOrDefault(s => s.Id == id);
@@ -134,9 +303,7 @@ namespace Eagles.LMS.Controllers
 
             if (id == null)
             {
-               
-                    return View("NotFound");
-
+                return View("NotFound");
             }
 
             if (id == 0)
@@ -149,17 +316,14 @@ namespace Eagles.LMS.Controllers
             if (Request.Cookies["Language"] != null)
             {
                 en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
-
             }
             if (en == true)
             {
                 _new = new UnitOfWork().NewManager.GetAll().Where(s => s.TitleEnglish != null).FirstOrDefault(s => s.Id == id);
-
             }
             else
             {
                 _new = new UnitOfWork().NewManager.GetAll().Where(s => s.TitleArabic != null).FirstOrDefault(s => s.Id == id);
-
             }
             if (_new == null)
                 return View("NotFound");

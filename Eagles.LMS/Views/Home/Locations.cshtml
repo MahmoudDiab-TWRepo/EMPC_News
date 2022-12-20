@@ -10,14 +10,14 @@
         en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
 
     }
-    var locations = new List<Location>();
+    var locations = ViewBag.LocData;
     if (en == true)
     {
-        locations = ctx.LocationManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleEnglish != null).ToList();
+        //locations = ctx.LocationManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleEnglish != null).ToList();
     }
     else
     {
-        locations = ctx.LocationManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
+        //locations = ctx.LocationManager.GetAll().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
 
     }
 
@@ -131,19 +131,12 @@ else
             </a>
                             </div>
             -->
-            @if (Id != null)
+            @*@if (Id != null)
             {
                 var active_location = locations.FirstOrDefault(s => s.Id == Convert.ToInt32(Id));
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="new location-new">
                         <img src="@active_location.MainImage" class="img-responsive img-services" alt="Location Img" />
-                        @*<div class="vediobutton">
-                                <button type="button" class="vediobtn" data-toggle="modal" data-target="#VedioPopup">
-                                    <i class="fas fa-play"></i>
-                                </button>
-                            </div>*@
-
-                    </div>
                 </div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="locationDesicription">
                         <div class="ford_flex">
@@ -165,38 +158,8 @@ else
                         </div>
                     </div>
                 </div>
-            }
-            <!--end col-6-->
-            <!--end col-6-->
-            <!--
-                            <div class="col-md-4">
-                                <div class="new new-small small-location location-new">
-                                    <img src="images/bg_2.jpg" class="img-responsive img-services"/>
-                                    <button data-toggle="modal" data-target=".Imgtitlemodal"> <span>Lebanese
-                                     Visits EMPC </span> <p>></p></button>
+            }*@
 
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="cleaner-h3 visible-xs"></div>
-
-
-
-                            <div class="col-md-4">
-                                <div class="new new-small small-location location-new">
-                                    <img src="images/Mask_Group_32@2x.png" class="img-responsive img-services"/>
-                                    <button data-toggle="modal" data-target=".vediotitlemodal"> <span>Lebanese
-                                     Visits EMPC </span> <p>></p></button>
-
-
-                                </div>
-
-                            </div>
-            -->
-            <!--end col-4-->
 
             <div class="cleaner-h3 visible-xs"></div>
 
@@ -206,7 +169,7 @@ else
 
 
                 <Div class="col-md-4">
-                    <a class="new new-small small-location location-new" href="/Home/LocationDetails/@location.Id">
+                    <a class="new new-small small-location location-new" href="/Home/LocationDetails/@location.Id?slug=@location.Slug">
                         @*<img src="@location.MainImage" class="img-responsive img-services" />*@
                         <div class="imgLocationItem">
 

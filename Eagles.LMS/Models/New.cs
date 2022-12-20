@@ -17,6 +17,7 @@ namespace Eagles.LMS.Models
         //[Required(ErrorMessage = "Title Arabic Is Required")]
         public string MainHomeImage { get; set; }
 
+        public string Slug { get; set; }
         public string TitleArabic { get; set; }
         //[Required(ErrorMessage = "Title English Is Required")]
 
@@ -35,7 +36,8 @@ namespace Eagles.LMS.Models
         public string DescriptionEnglish { get; set; }
         [Required(ErrorMessage = "News Date Is Required")]
 
-
+        [NotMapped]
+        public string StringDate { get; set; }
         public DateTime NewsDate { get; set; }
 
         public bool ShowInHomePage { get; set; }

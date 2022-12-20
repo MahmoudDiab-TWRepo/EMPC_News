@@ -411,6 +411,10 @@
     <Compile Include="Migrations\202208301343153_AddMainHomeImgNews.designer.cs">
       <DependentUpon>202208301343153_AddMainHomeImgNews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212201010180_AddSlug.cs" />
+    <Compile Include="Migrations\202212201010180_AddSlug.designer.cs">
+      <DependentUpon>202212201010180_AddSlug.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Booking.cs" />
@@ -491,6 +495,8 @@
     <Compile Include="Models\LOGTEST.cs" />
     <Compile Include="Models\New.cs" />
     <Compile Include="Models\NewImages.cs" />
+    <Compile Include="Models\PageData.cs" />
+    <Compile Include="Models\Pagination.cs" />
     <Compile Include="Models\Privilage.cs" />
     <Compile Include="Models\PrivilageRoute.cs" />
     <Compile Include="Models\RelatedWebSite.cs" />
@@ -2162,6 +2168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208301343153_AddMainHomeImgNews.resx">
       <DependentUpon>202208301343153_AddMainHomeImgNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201010180_AddSlug.resx">
+      <DependentUpon>202212201010180_AddSlug.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

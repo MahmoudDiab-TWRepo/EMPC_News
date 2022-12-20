@@ -3,9 +3,12 @@ using Eagles.LMS.Helper;
 using Eagles.LMS.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -197,7 +200,6 @@ namespace Eagles.LMS.Web_Services
 
         [HttpPost]
         [Route("api/GlobalServices/AddBooking")]
-
         public async Task<IHttpActionResult> AddBooking([FromBody] Booking booking)
         {
             var ctx = new UnitOfWork();
@@ -229,6 +231,11 @@ namespace Eagles.LMS.Web_Services
             }
             return Ok();
         }
+
+
+
+
+
 
 
 

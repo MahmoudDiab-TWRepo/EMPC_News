@@ -68,9 +68,9 @@ namespace Eagles.LMS.Data
         public DbSet<Client> Clients { get; set; }
 
 
+        
 
-
-
+       
 
 
 

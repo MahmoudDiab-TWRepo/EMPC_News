@@ -136,67 +136,77 @@ else
                         <A href="#" class="btn btn-black">Search</A>
                     </div>
                 </div>
-                <div class="row otherrooow">
-                    @foreach (var _new in _news)
-                    {
-                        <div class="NewsCoool">
-                            <div class="SmallImg images">
-                                <a href="/Home/NewsDetails/@_new.Id">
-                                    @*<img src="@_new.MainImage">*@
-                                    <div class="NewsItemImg">
-                                        @if (!string.IsNullOrEmpty(_new.MainImage))
-                                        {
-
-                                            <div class=" imagsBG" style="background-image: url(@_new.MainImage)"></div>
-
-                                        }
-                                        else
-                                        {
-
-                                            <div class=" imagsBG" style="background-image: url(/assets_NewPublic/images/f14.jpeg)"></div>
+                <div class="row otherrooow" id="tblData">
 
 
-                                        }
-                                    </div>
-                                </a>
-                                <div class="discription">
-                                    <a href="/Home/NewsDetails/@_new.Id">
-                                        @if (en)
-                                        {
-                                            <h2>@_new.TitleEnglish</h2>
-                                            if (_new.CreatedTime != null)
-                                            {
-                                                <h1 class="Date"><span><i class="far fa-calendar-alt"></i></span>@_new.NewsDate.ToShortDateString()</h1>
 
-                                            }
-                                            @*<h1 class="Date"><span><i class="far fa-calendar-alt"></i></span>@_new.NewsDate.ToShortDateString()</h1>*@
 
-                                            <div class="ContentPargraph">
-                                                <p>@Html.Raw(@_new.ShortDescriptionEnglish)</p>
-                                            </div>
 
-                                        }
-                                        else
-                                        {
-                                            <h2>@_new.TitleArabic</h2>
-                                            if (_new.CreatedTime != null)
-                                            {
-                                                <h1 class="Date"><span><i class="far fa-calendar-alt"></i></span>@_new.NewsDate.ToShortDateString()</h1>
 
-                                            }
-                                            @*<h1 class="Date"><span><i class="far fa-calendar-alt"></i></span>@_new.NewsDate.ToShortDateString()</h1>*@
+                    @*@foreach (var _new in _news)
+            {
+                <div class="NewsCoool">
+                    <div class="SmallImg images">
+                        <a href="/Home/NewsDetails/@_new.Id">
+                            <div class="NewsItemImg">
+                                @if (!string.IsNullOrEmpty(_new.MainImage))
+                                {
 
-                                            <div class="ContentPargraph">
-                                                <p>@Html.Raw(@_new.ShortDescriptionArabic)</p>
-                                            </div>
+                                    <div class=" imagsBG" style="background-image: url(@_new.MainImage)"></div>
 
-                                        }
-                                    </a>
-                                </div>
+                                }
+                                else
+                                {
+
+                                    <div class=" imagsBG" style="background-image: url(/assets_NewPublic/images/f14.jpeg)"></div>
+
+
+                                }
                             </div>
-                        </div>
-                    }
+                        </a>
+                        <div class="discription">
+                            <a href="/Home/NewsDetails/@_new.Id">
+                                @if (en)
+                                {
+                                    <h2>@_new.TitleEnglish</h2>
+                                    if (_new.CreatedTime != null)
+                                    {
+                                        <h1 class="Date"><span><i class="far fa-calendar-alt"></i></span>@_new.NewsDate.ToShortDateString()</h1>
 
+                                    }
+
+                                    <div class="ContentPargraph">
+                                        <p>@Html.Raw(@_new.ShortDescriptionEnglish)</p>
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <h2>@_new.TitleArabic</h2>
+                                    if (_new.CreatedTime != null)
+                                    {
+                                        <h1 class="Date"><span><i class="far fa-calendar-alt"></i></span>@_new.NewsDate.ToShortDateString()</h1>
+
+                                    }
+
+                                    <div class="ContentPargraph">
+                                        <p>@Html.Raw(@_new.ShortDescriptionArabic)</p>
+                                    </div>
+
+                                }
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }*@
+
+                </div>
+
+                <div class="row">
+                    
+                    <div class="col-lg-12" data-aos="fade-up" data-aos-duration="1500" id="paged">
+                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -217,333 +227,77 @@ else
 
 
 
-@*<div class="news newspag" style="display:none">
-    <div class="container">
-        <div class="row">
-
-            <div class="top-position">
-
-
-
-
-            </div>
-
-
-            <div class="cleaner-h2"></div>
-
-            <div class="col-md-4">
-
-                <div class="new-des">
-                    <a class="but-new" href="/Home/NewsDetails">
-                        <img src="~/assets_NewPublic/images/bg_2.jpg" class="img-responsive"  alt="bg_2.jpg"/>
-                    </a>
-
-
-                    <div class="share">
-
-                        <div class="lef">
-                            <p><i class="fa fa-calendar"></i> 30 Noveber</p>
-                        </div>
-
-                        <div class="righ">
-                            <a href="#">
-                                <p><i class="fa fa-share-alt"></i> Share</p>
-                            </a>
-                        </div>
-
-                    </div>
-
-
-                    <div class="description">
-                        <a class="but-new" href="/Home/NewsDetails">
-                            <h4>Lebanese Minister of Information Visits EMPC</h4>
-
-
-                            <p>
-                                H.E professor Majid Abdullah El.Khasabi, the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation,
-                                in the presence of H.E Mr. Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.H.E professor Majid Abdullah El.Khasabi,
-                                the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation, in the presence of H.E Mr.
-                                Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.
-                            </p>
-
-                        </a>
-                    </div>
-
-
-
-                </div>
-
-
-            </div>
-
-            <div class="cleaner-h2 visible-xs"></div>
-
-            <div class="col-md-4">
-
-                <div class="new-des">
-                    <a class="but-new" href="/Home/NewsDetails">
-                        <img src="~/assets_NewPublic/images/bg_2.jpg" class="img-responsive" alt="bg_2.jpg"/>
-                    </a>
-
-
-                    <div class="share">
-
-                        <div class="lef">
-                            <p><i class="fa fa-calendar"></i> 30 Noveber</p>
-                        </div>
-
-                        <div class="righ">
-                            <a href="#">
-                                <p><i class="fa fa-share-alt"></i> Share</p>
-                            </a>
-                        </div>
-
-                    </div>
-
-
-                    <div class="description">
-                        <a class="but-new" href="/Home/NewsDetails">
-                            <h4>Lebanese Minister of Information Visits EMPC</h4>
-
-
-                            <p>
-                                H.E professor Majid Abdullah El.Khasabi, the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation,
-                                in the presence of H.E Mr. Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.H.E professor Majid Abdullah El.Khasabi,
-                                the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation, in the presence of H.E Mr.
-                                Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.
-                            </p>
-
-                        </a>
-                    </div>
-           
-
-
-                </div>
-      
-
-            </div>
-
-
-
-
-            <div class="col-md-4">
-
-                <div class="new-des">
-                    <a class="but-new" href="/Home/NewsDetails">
-                        <img src="~/assets_NewPublic/images/bg_2.jpg" class="img-responsive" alt="bg_2.jpg" />
-                    </a>
-
-
-                    <div class="share">
-
-                        <div class="lef">
-                            <p><i class="fa fa-calendar"></i> 30 Noveber</p>
-                        </div>
-
-                        <div class="righ">
-                            <a href="#">
-                                <p><i class="fa fa-share-alt"></i> Share</p>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="description">
-                        <a class="but-new" href="/Home/NewsDetails">
-                            <h4>Lebanese Minister of Information Visits EMPC</h4>
-
-
-                            <p>
-                                H.E professor Majid Abdullah El.Khasabi, the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation,
-                                in the presence of H.E Mr. Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.H.E professor Majid Abdullah El.Khasabi,
-                                the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation, in the presence of H.E Mr.
-                                Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.
-                            </p>
-
-                        </a>
-                    </div>
-     
-
-
-                </div>
-       
-
-            </div>
-
-
-
-
-            <div class="col-md-4">
-
-                <div class="new-des">
-                    <a class="but-new" href="/Home/NewsDetails">
-                        <img src="~/assets_NewPublic/images/bg_2.jpg" class="img-responsive" alt="bg_2.jpg" />
-                    </a>
-
-
-                    <div class="share">
-
-                        <div class="lef">
-                            <p><i class="fa fa-calendar"></i> 30 Noveber</p>
-                        </div>
-
-                        <div class="righ">
-                            <a href="#">
-                                <p><i class="fa fa-share-alt"></i> Share</p>
-                            </a>
-                        </div>
-
-                    </div>
-               
-
-                    <div class="description">
-                        <a class="but-new" href="/Home/NewsDetails">
-                            <h4>Lebanese Minister of Information Visits EMPC</h4>
-
-
-                            <p>
-                                H.E professor Majid Abdullah El.Khasabi, the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation,
-                                in the presence of H.E Mr. Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.H.E professor Majid Abdullah El.Khasabi,
-                                the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation, in the presence of H.E Mr.
-                                Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.
-                            </p>
-
-                        </a>
-                    </div>
-           
-
-
-                </div>
-    
-
-            </div>
-
-
-            <div class="col-md-4">
-
-                <div class="new-des">
-                    <a class="but-new" href="/Home/NewsDetails">
-                        <img src="~/assets_NewPublic/images/bg_2.jpg" class="img-responsive" alt="bg_2.jpg"/>
-                    </a>
-
-
-                    <div class="share">
-
-                        <div class="lef">
-                            <p><i class="fa fa-calendar"></i> 30 Noveber</p>
-                        </div>
-
-                        <div class="righ">
-                            <a href="#">
-                                <p><i class="fa fa-share-alt"></i> Share</p>
-                            </a>
-                        </div>
-
-                    </div>
-             
-
-                    <div class="description">
-                        <a class="but-new" href="/Home/NewsDetails">
-                            <h4>Lebanese Minister of Information Visits EMPC</h4>
-
-
-                            <p>
-                                H.E professor Majid Abdullah El.Khasabi, the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation,
-                                in the presence of H.E Mr. Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.H.E professor Majid Abdullah El.Khasabi,
-                                the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation, in the presence of H.E Mr.
-                                Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.
-                            </p>
-
-                        </a>
-                    </div>
-      
-
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="col-md-4">
-
-                <div class="new-des">
-                    <a class="but-new" href="/Home/NewsDetails">
-                        <img src="~/assets_NewPublic/images/bg_2.jpg" class="img-responsive" alt="bg_2.jpg" />
-                    </a>
-
-
-                    <div class="share">
-
-                        <div class="lef">
-                            <p><i class="fa fa-calendar"></i> 30 Noveber</p>
-                        </div>
-
-                        <div class="righ">
-                            <a href="#">
-                                <p><i class="fa fa-share-alt"></i> Share</p>
-                            </a>
-                        </div>
-
-                    </div>
-   
-
-                    <div class="description">
-                        <a class="but-new" href="/Home/NewsDetails">
-                            <h4>Lebanese Minister of Information Visits EMPC</h4>
-
-
-                            <p>
-                                H.E professor Majid Abdullah El.Khasabi, the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation,
-                                in the presence of H.E Mr. Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.H.E professor Majid Abdullah El.Khasabi,
-                                the Saudi minister of commerce and the appointed minister of information visited EMPC this evening. Osama Heikal, EMPC chairman welcomed the Saudi minister and the accompanying delegation, in the presence of H.E Mr.
-                                Osama Nokhali, the Saudi Ambassador in Cairo, General Ahmed Anis, Nile Sat chairman and Mr. Hussein Zein, president of the National Authority of Information.
-                            </p>
-
-                        </a>
-                    </div>
-                
-
-
-                </div>
-       
-
-            </div>
-   
-
-
-            <Div class="cleaner-h2"></Div>
-
-            <nav aria-label="...">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <span class="page-link">Previous</span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active">
-                        <span class="page-link">
-                            2
-                            <span class="sr-only">(current)</span>
-                        </span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-
-
-        </div>
-
-    </div>
-
-</div>*@
-
 
 
 
 @section EndBody{
+
+
+
+    <script>
+        $(document).ready(function () {
+            //Initially load pagenumber=1
+            GetPageData(1, 9);
+        });
+
+        function GetPageData(pageNum, pageSize) {
+            //After every trigger remove previous data and paging
+            $("#tblData").empty();
+            $("#paged").empty();
+            $.getJSON("/Home/GetNewsPageData", { pageNumber: pageNum, pageSize: pageSize }, function (response) {
+                var rowData = "";
+                for (var i = 0; i < response.Data.length; i++) {
+                    rowData = rowData + '  <div class="NewsCoool"><div class="SmallImg images"><a href="/Home/NewsDetails/' + response.Data[i].Id + '?slug=' + response.Data[i].Slug + '"><div class="NewsItemImg"><div class=" imagsBG" style="background-image: url(' + response.Data[i].MainImage + ')"></div></div></a><div class="discription"><a href="/Home/NewsDetails/' + response.Data[i].Id + '?slug=' + response.Data[i].Slug + '"><h2>' + response.Data[i].TitleEnglish + '</h2><h1 class="Date"><span><i class="far fa-calendar-alt"></i></span>' + response.Data[i].StringDate + '</h1><div class="ContentPargraph"><p>' + response.Data[i].ShortDescriptionEnglish + '</p></div></a></div></div></div>  ';
+                }
+                $("#tblData").append(rowData);
+                PaggingTemplate(response.TotalPages, response.CurrentPage);
+            });
+        }
+        //This is paging temlpate ,you should just copy paste
+        function PaggingTemplate(totalPage, currentPage) {
+            var template = "";
+            var TotalPages = totalPage;
+            var CurrentPage = currentPage;
+            var PageNumberArray = Array();
+
+
+            var countIncr = 1;
+            for (var i = currentPage; i <= totalPage; i++) {
+                PageNumberArray[0] = currentPage;
+                if (totalPage != currentPage && PageNumberArray[countIncr - 1] != totalPage) {
+                    PageNumberArray[countIncr] = i + 1;
+                }
+                countIncr++;
+            };
+            PageNumberArray = PageNumberArray.slice(0, 5);
+            var FirstPage = 1;
+            var LastPage = totalPage;
+            if (totalPage != currentPage) {
+                var ForwardOne = currentPage + 1;
+            }
+            var BackwardOne = 1;
+            if (currentPage > 1) {
+                BackwardOne = currentPage - 1;
+            }
+
+            /* template = "<p>" + CurrentPage + " of " + TotalPages + " pages</p>"*/
+            template = template + '<ul class="pagination m-b30" >' +
+                '<li><a class="" href="#" onclick="GetPageData(' + FirstPage + ')"><i class="fa fa-fast-backward"></i></a></li>' +
+                '<li><a class="" href="#" onclick="GetPageData(' + BackwardOne + ')"><i class="fa fa-backward"></i></a></li>';
+
+            var numberingLoop = "";
+            for (var i = 0; i < PageNumberArray.length; i++) {
+                numberingLoop = numberingLoop + '<li><a class=" " onclick="GetPageData(' + PageNumberArray[i] + ')" href="#">' + PageNumberArray[i] + '</a></li>'
+            }
+            template = template + numberingLoop + '<li><a class=" " href="#" onclick="GetPageData(' + ForwardOne + ')" ><i class="fa fa-forward"></i></a></li>' +
+                '<li class="next"><a class="" href="#" onclick="GetPageData(' + LastPage + ')"><i class="fa fa-fast-forward"></i></a></li></ul>';
+            $("#paged").append(template);
+            $('#selectedId').change(function () {
+                GetPageData(1, $(this).val());
+            });
+        }
+    </script>
+
+
 
 }

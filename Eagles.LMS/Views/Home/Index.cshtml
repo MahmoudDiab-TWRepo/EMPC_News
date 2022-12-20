@@ -27,21 +27,25 @@
     var aboutUs = ctx.AboutUsManager.GetAll().FirstOrDefault();
     var _contactUs = ctx.ContactUsManager.GetAll().FirstOrDefault();
     var allSliders = new List<Slider>();
-    var services = new List<Service>();
+    //var services = new List<Service>();
+    var services = ViewBag.ServData;
     var _relatedWerbsites = new List<RelatedWebSite>();
     var _Clients = new List<Client>();
     var _galaries = new List<Album>();
-    var _locations = new List<Location>();
-    var _news = new List<New>();
+    //var _galaries = ViewBag.AlllBumData;
+    //var _locations = new List<Location>();
+    var _locations = ViewBag.LocData;
+    //var _news = new List<New>();
+    var _news = ViewBag.NewsData;
 
     var allPictures = ctx.GalaryManager.GetAll().Select(s => s.AlbumId).Distinct();
 
     if (en == true)
     {
         allSliders = ctx.SliderManager.GetAllBind().OrderBy(S => S.Order).Where(s => s.TitleEnglish != null).ToList();
-        services = ctx.ServiceManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleEnglish != null).ToList();
-        _news = ctx.NewManager.GetAll().Where(s => s.ShowInHomePage && s.Status == EntityStatus.Approval).OrderByDescending(S => S.Order).Where(s => s.TitleEnglish != null).ToList();
-        _locations = ctx.LocationManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleEnglish != null).ToList();
+        //services = ctx.ServiceManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleEnglish != null).ToList();
+        //_news = ctx.NewManager.GetAll().Where(s => s.ShowInHomePage && s.Status == EntityStatus.Approval).OrderByDescending(S => S.Order).Where(s => s.TitleEnglish != null).ToList();
+        //_locations = ctx.LocationManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleEnglish != null).ToList();
         //var _galaries = ctx.GalaryManager.GetAllBind().OrderBy(S => S.Order).ToList();
 
         _galaries = _galaries = ctx.AlbumManager.GetAll().OrderByDescending(s => s.Id).Where(s => allPictures.Contains(s.Id) && s.TitleEnglish != null).ToList();
@@ -52,9 +56,9 @@
     else
     {
         allSliders = ctx.SliderManager.GetAllBind().OrderBy(S => S.Order).Where(s => s.TitleArabic != null).ToList();
-        services = ctx.ServiceManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
-        _news = ctx.NewManager.GetAll().Where(s => s.ShowInHomePage && s.Status == EntityStatus.Approval).OrderByDescending(S => S.Order).Where(s => s.TitleArabic != null).ToList();
-        _locations = ctx.LocationManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
+        //services = ctx.ServiceManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
+        //_news = ctx.NewManager.GetAll().Where(s => s.ShowInHomePage && s.Status == EntityStatus.Approval).OrderByDescending(S => S.Order).Where(s => s.TitleArabic != null).ToList();
+        //_locations = ctx.LocationManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
         //var _galaries = ctx.GalaryManager.GetAllBind().OrderBy(S => S.Order).ToList();
         _galaries = _galaries = ctx.AlbumManager.GetAll().OrderByDescending(s => s.Id).Where(s => allPictures.Contains(s.Id) && s.TitleArabic != null).ToList();
         _Clients = ctx.ClientsManager.GetAllBind().OrderByDescending(s => s.Id).Where(s => s.NameArabic != null).ToList();
@@ -325,13 +329,13 @@ else
                                                 <div class="newsTitle">
                                                     @if (en)
                                                     {
-                                                        <a href="/Home/NewsDetails/@_news[i].Id">
+                                                        <a href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
                                                             @_news[i].TitleEnglish
                                                         </a>
                                                     }
                                                     else
                                                     {
-                                                        <a href="/Home/NewsDetails/@_news[i].Id">
+                                                        <a href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
                                                             @_news[i].TitleArabic
                                                         </a>
                                                     }
@@ -377,13 +381,13 @@ else
                                                 <div class="newsTitle">
                                                     @if (en)
                                                     {
-                                                        <a href="/Home/NewsDetails/@_news[i].Id">
+                                                        <a href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
                                                             @_news[i].TitleEnglish
                                                         </a>
                                                     }
                                                     else
                                                     {
-                                                        <a href="/Home/NewsDetails/@_news[i].Id">
+                                                        <a href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
                                                             @_news[i].TitleArabic
                                                         </a>
                                                     }
@@ -439,7 +443,7 @@ else
                                             {
                                                 <div class="imags" style="background-image: url(/assets_NewPublic/images/f14.jpeg)"></div>
                                             }
-                                            <a class="linkServ" href="/Home/ServicesDetails/@service.Id">
+                                            <a class="linkServ" href="/Home/ServicesDetails/@service.Id?slug=@service.Slug">
                                             </a>
                                         </div>
                                         @*<a href="/Home/ServicesDetails/@service.Id">
@@ -448,7 +452,7 @@ else
                                     </div>
                                     <div class="contlocation">
                                         <div class="forflex">
-                                            <a href="/Home/ServicesDetails/@service.Id">
+                                            <a href="/Home/ServicesDetails/@service.Id?slug=@service.Slug">
                                                 @if (en)
                                                 {
                                                     <h4>@service.TitleEnglish</h4>
@@ -526,7 +530,7 @@ else
                                             </div>
                                         }
                                         <div class="lingoto">
-                                            <a href="/Home/LocationDetails/@location.Id">
+                                            <a href="/Home/LocationDetails/@location.Id?slug=@location.Slug">
                                                 <i class="ion-ios-arrow-forward"></i>
                                             </a>
                                         </div>

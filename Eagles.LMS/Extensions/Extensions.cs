@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,5 +15,9 @@ using System.Web.Mvc;
                 return 0;
             return number % 1 == 0 ? Convert.ToInt32(number) : Math.Round((decimal)number, 2);
         }
-    
+
+
+
+
+
 }

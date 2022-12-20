@@ -5669,10 +5669,20 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination li {
 
 
 
+.LableTextSEO {
+    padding: 5px;
+    display: block;
+    color: #939393;
+    font-size: 14px;
+
+}
 
 
-
-
+.LableTextSEOTitleAR {
+    text-align: left;
+    direction: rtl;
+    font-family: cairo
+}
 
 
 
