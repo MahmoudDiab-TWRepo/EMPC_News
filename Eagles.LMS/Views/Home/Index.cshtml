@@ -59,8 +59,8 @@
         //services = ctx.ServiceManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
         //_news = ctx.NewManager.GetAll().Where(s => s.ShowInHomePage && s.Status == EntityStatus.Approval).OrderByDescending(S => S.Order).Where(s => s.TitleArabic != null).ToList();
         //_locations = ctx.LocationManager.GetAllBind().Where(s => s.Status == EntityStatus.Approval).OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
-        //var _galaries = ctx.GalaryManager.GetAllBind().OrderBy(S => S.Order).ToList();
         _galaries = _galaries = ctx.AlbumManager.GetAll().OrderByDescending(s => s.Id).Where(s => allPictures.Contains(s.Id) && s.TitleArabic != null).ToList();
+        //var _galaries = ctx.GalaryManager.GetAllBind().OrderBy(S => S.Order).ToList();
         _Clients = ctx.ClientsManager.GetAllBind().OrderByDescending(s => s.Id).Where(s => s.NameArabic != null).ToList();
         _relatedWerbsites = ctx.RelatedWebSiteManager.GetAllBind().OrderByDescending(s => s.Id).Where(s => s.TitleArabic != null).ToList();
     }
