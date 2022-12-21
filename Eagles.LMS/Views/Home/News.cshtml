@@ -136,14 +136,14 @@ else
                         <A href="#" class="btn btn-black">Search</A>
                     </div>
                 </div>
-                <div class="row otherrooow" id="tblData">
+                <div class="row otherrooow" >
 
 
 
 
 
 
-                    @*@foreach (var _new in _news)
+                    @foreach (var _new in _news)
             {
                 <div class="NewsCoool">
                     <div class="SmallImg images">
@@ -198,16 +198,16 @@ else
                         </div>
                     </div>
                 </div>
-            }*@
+            }
 
                 </div>
 
-                <div class="row">
+                @*<div class="row">
                     
                     <div class="col-lg-12" data-aos="fade-up" data-aos-duration="1500" id="paged">
                     
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
@@ -234,7 +234,7 @@ else
 
 
 
-    <script>
+    @*<script>
         $(document).ready(function () {
             //Initially load pagenumber=1
             GetPageData(1, 9);
@@ -296,7 +296,7 @@ else
                 GetPageData(1, $(this).val());
             });
         }
-    </script>
+    </script>*@
 
 
 

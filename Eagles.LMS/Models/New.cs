@@ -36,10 +36,10 @@ namespace Eagles.LMS.Models
         public string DescriptionEnglish { get; set; }
         [Required(ErrorMessage = "News Date Is Required")]
 
+       
+        public DateTime NewsDate { get; set; }
         [NotMapped]
         public string StringDate { get; set; }
-        public DateTime NewsDate { get; set; }
-
         public bool ShowInHomePage { get; set; }
         public List<NewImages> NewImages { get; set; }
 

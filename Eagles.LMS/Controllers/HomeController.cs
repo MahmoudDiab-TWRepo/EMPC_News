@@ -261,41 +261,41 @@ namespace Eagles.LMS.Controllers
             //return Redirect("/Admission");
             return View();
         }
-        public ActionResult GetNewsPageData(int pageNumber = 1, int pageSize = 9)
-        {
-            bool en = true;
-            if (Request.Cookies["Language"] != null)
-            {
-                en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
-            }
-            if (en == true)
-            {
-                List<New> NewsData = ctx.NewManager.GetAll().Where(s => s.Status == EntityStatus.Approval ).OrderByDescending(s => s.Id).ToList();
-                foreach (var item in NewsData)
-                {
-                    item.StringDate = item.NewsDate.ToShortDateString();
-                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleEnglish);
-                   
-                }
-                var pagedData = Pagination.PagedResult(NewsData, pageNumber, pageSize);
-                return Json(pagedData, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                List<New> NewsData = ctx.NewManager.GetAll().Where(s => s.Status == EntityStatus.Approval ).OrderByDescending(s => s.Id).ToList();
-                foreach (var item in NewsData)
-                {
-                    item.StringDate = item.NewsDate.ToShortDateString();
-                    item.TitleEnglish = item.TitleArabic;
-                    item.ShortDescriptionEnglish = item.ShortDescriptionArabic;
-                    item.DescriptionEnglish = item.DescriptionArabic;
-                    item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleArabic);
-                }
-                var pagedData = Pagination.PagedResult(NewsData, pageNumber, pageSize);
-                return Json(pagedData, JsonRequestBehavior.AllowGet);
-            }
-            
-        }
+        //public ActionResult GetNewsPageData(int pageNumber = 1, int pageSize = 9)
+        //{
+        //    bool en = true;
+        //    if (Request.Cookies["Language"] != null)
+        //    {
+        //        en = (Request.Cookies["Language"].Value.ToString() == "en") ? true : false;
+        //    }
+        //    if (en == true)
+        //    {
+        //        List<New> NewsData = ctx.NewManager.GetAll().Where(s => s.Status == EntityStatus.Approval ).OrderByDescending(s => s.Order).ToList();
+        //        foreach (var item in NewsData)
+        //        {
+        //            item.StringDate = item.NewsDate.ToShortDateString();
+        //            item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleEnglish);
+
+        //        }
+        //        var pagedData = Pagination.PagedResult(NewsData, pageNumber, pageSize);
+        //        return Json(pagedData, JsonRequestBehavior.AllowGet);
+        //    }
+        //    else
+        //    {
+        //        List<New> NewsData = ctx.NewManager.GetAll().Where(s => s.Status == EntityStatus.Approval ).OrderByDescending(s => s.Order).ToList();
+        //        foreach (var item in NewsData)
+        //        {
+        //            item.StringDate = item.NewsDate.ToShortDateString();
+        //            item.TitleEnglish = item.TitleArabic;
+        //            item.ShortDescriptionEnglish = item.ShortDescriptionArabic;
+        //            item.DescriptionEnglish = item.DescriptionArabic;
+        //            item.Slug = Extensions.AdmissionMenue.Slugify(item.TitleArabic);
+        //        }
+        //        var pagedData = Pagination.PagedResult(NewsData, pageNumber, pageSize);
+        //        return Json(pagedData, JsonRequestBehavior.AllowGet);
+        //    }
+
+        //}
         public ActionResult NewsDetails(int? id)
         {
             //var _new = new UnitOfWork().NewManager.GetAll().FirstOrDefault(s => s.Id == id);

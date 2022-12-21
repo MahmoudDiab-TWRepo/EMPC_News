@@ -185,8 +185,10 @@ namespace Eagles.LMS.Areas.Admission.Controllers
             var _maxOrder = new UnitOfWork().NewImagesMnager.MaxOrder();
             ViewBag.MaxOrder = _maxOrder;
 
-           
 
+
+            _new.Slug = _new.TitleEnglish != ""? Extensions.AdmissionMenue.Slugify(_new.TitleEnglish) : Extensions.AdmissionMenue.Slugify(_new.TitleArabic);
+            _new.StringDate = _new.NewsDate.ToShortDateString();
 
             _new.Status = EntityStatus.Approval;
             ActionResult result = View(_new);
