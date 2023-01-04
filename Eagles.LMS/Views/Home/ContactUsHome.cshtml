@@ -56,7 +56,7 @@ else
 
     <style>
         .menu li a.active-a7 {
-            color: #af7a2c;
+            color: #5a5a5a;
             border-bottom: 1px solid #fff0;
             font-weight: 500;
         }
@@ -75,7 +75,7 @@ else
 
 <div class="header-bc">
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/CONTACT US .jpg" alt="CONTACT US .jpg" />
+        <img title="Banner Image" src="~/assets_NewPublic/images/bg/CONTACT US .jpg" alt="CONTACT US .jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -85,11 +85,11 @@ else
 
                     <div class="title-header">
 
-                        <h3>@Resources.Global.ContactUs</h3>
+                        <h3 title="@Resources.Global.ContactUs">@Resources.Global.ContactUs</h3>
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="/Home">@Resources.Global.Home</a> > </li>
+                                <li><a title="@Resources.Global.Home" href="/Home">@Resources.Global.Home</a> > </li>
                                 <li>@Resources.Global.ContactUs</li>
                             </ul>
                         </div>
@@ -121,8 +121,8 @@ else
             <div class="col-md-4">
                 <div class="address">
 
-                    <h3><i class="fa fa-map-marker"></i></h3>
-                    <h4>@Resources.Global.address</h4>
+                    <h3 title="@Resources.Global.address"><i class="fa fa-map-marker"></i></h3>
+                    <h4 title="@Resources.Global.address">@Resources.Global.address</h4>
                     @if (en)
                     {
                         <p>@_contactUs.AddressEnglish</p>
@@ -146,8 +146,8 @@ else
             <div class="col-md-4">
                 <div class="address">
 
-                    <h3><i class="fa fa-phone"></i></h3>
-                    <h4>@Resources.Global.HatefPhone</h4>
+                    <h3 title="@Resources.Global.HatefPhone"><i class="fa fa-phone"></i></h3>
+                    <h4 title="@Resources.Global.HatefPhone">@Resources.Global.HatefPhone</h4>
                     <p style="direction:ltr">@_contactUs.Phone</p>
 
 
@@ -157,15 +157,15 @@ else
             </div>
             <!--end col-4-->
 
-            <Div class="cleaner-h2 visible-xs"></Div>
+            <div class="cleaner-h2 visible-xs"></div>
 
 
 
             <div class="col-md-4">
                 <div class="address">
 
-                    <h3><i class="fa fa-envelope"></i></h3>
-                    <h4>@Resources.Global.Email</h4>
+                    <h3 title="@Resources.Global.Email"><i class="fa fa-envelope"></i></h3>
+                    <h4 title="@Resources.Global.Email">@Resources.Global.Email</h4>
                     <p>@_contactUs.Email</p>
 
 
@@ -187,7 +187,7 @@ else
 
         <div class="col-md-12">
 
-            <h3>@Resources.Global.SendYourmessage</h3>
+            <h3 title="@Resources.Global.SendYourmessage">@Resources.Global.SendYourmessage</h3>
         </div>
 
         <div class="cleaner-h2"></div>
@@ -261,7 +261,7 @@ else
                         <div class="col-lg-12">
                             @*<a id="BTN_SendMessage_Old" class="btn btn-black " style="color:#fff">@Resources.Global.Send</a>*@
 
-                            <button type="submit" class="btn btn-black" style="color:#fff" id="Text_BTNSubmit_old">@Resources.Global.Send</button>
+                            <button title="@Resources.Global.Send" type="submit" class="btn btn-black" style="color:#fff" id="Text_BTNSubmit_old">@Resources.Global.Send</button>
 
                         </div>
                     </div>
@@ -281,7 +281,7 @@ else
 <!--end container-->
 
 
-<Div class="cleaner-h3 hidden-xs"></Div>
+<div class="cleaner-h3 hidden-xs"></div>
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13822.334720113951!2d31.43418945!3d29.9913924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1635321981691!5m2!1sar!2seg" width="100%" height="450" style="border:0;" allowfullscreen=""></iframe>
 

@@ -68,7 +68,7 @@ else
 @section EndHeader{
     <style>
         .menu li a.active-a2 {
-            color: #af7a2c;
+            color: #5a5a5a;
             border-bottom: 1px solid #fff0;
             font-weight: 500;
         }
@@ -80,7 +80,7 @@ else
 <div class="header-bc">
 
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/NEWBG/cam.jpg" alt="cam.jpg" />
+        <img title="Banner Images" src="~/assets_NewPublic/images/bg/NEWBG/cam.jpg" alt="cam.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -90,11 +90,11 @@ else
 
                     <div class="title-header">
 
-                        <h3>@Resources.Global.Aboutus</h3>
+                        <h3 title="@Resources.Global.Aboutus">@Resources.Global.Aboutus</h3>
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="/Home">@Resources.Global.Home</a> > </li>
+                                <li><a title="@Resources.Global.Home" href="/Home">@Resources.Global.Home</a> > </li>
                                 <li>@Resources.Global.Aboutus</li>
                             </ul>
                         </div>
@@ -119,20 +119,7 @@ else
 
 <div class="news">
     <div class="container">
-        <Div class="row">
-
-            <!--
-                            <div class="col-md-6">
-                                <img src="images/bg_2.jpg" class="img-responsive img-about" />
-                            </div>
-            -->
-            <!--end col-6-->
-            <!--
-                            <div class="col-md-6">
-                                <img src="images/bg_2.jpg" class="img-responsive img-about" />
-                            </div>
-            -->
-            <!--end col-6-->
+        <div class="row">
 
 
             <div class="col-md-2 hidden-xs">
@@ -142,7 +129,7 @@ else
 
             <div class="col-md-8 col-xs-12">
                 <Div class="data-about">
-                    <h2>@Resources.Global.AboutCreate</h2>
+                    <h2 title="t_title">@Resources.Global.AboutCreate</h2>
                     @if (en)
                     {
                         @*<h2>
@@ -178,89 +165,13 @@ else
             </div>
             <!--end col-2-->
 
-        </Div>
+        </div>
         <!--end row-->
     </div>
     <!--end continer-->
 </div>
 
 
-
-@*<div class="about-bk" style="display:none">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-2">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active first-li">
-                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-
-                            @Resources.Global.MISSION
-                        </a>
-                    </li>
-                    <li class="second-li" role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">@Resources.Global.VISSION</a></li>
-                    <li class="third-li" role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">@Resources.Global.Value</a></li>
-                </ul>
-            </div>
-
-
-            <div class="col-md-10">
-                <div class="tab-content">
-
-                    @if (en)
-                    {
-                        <div role="tabpanel" class="tab-pane active" id="home">
-                            <p>
-                                @Html.Raw(@aboutUs.HomeTapDescriptionEnglish)
-                            </p>
-                        </div>
-
-
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            <p>
-                                @Html.Raw(@aboutUs.ProfileDescriptionEnglish)
-                            </p>
-                        </div>
-
-
-                        <div role="tabpanel" class="tab-pane" id="messages">
-                            <p>
-                                @Html.Raw(@aboutUs.MessageTapDescriptionEnglish)
-                            </p>
-                        </div>
-                    }
-                    else
-                    {
-                        <div role="tabpanel" class="tab-pane active" id="home">
-                            <p>
-                                @Html.Raw(@aboutUs.HomeTapDescriptionArabic)
-                            </p>
-                        </div>
-
-
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            <p>
-                                @Html.Raw(@aboutUs.ProfileDescriptionArabic)
-                            </p>
-                        </div>
-
-
-                        <div role="tabpanel" class="tab-pane" id="messages">
-                            <p>
-                                @Html.Raw(@aboutUs.MessageTapDescriptionArabic)
-                            </p>
-                        </div>
-                    }
-
-
-                </div>
-
-
-            </div>
-            <div class="cleaner-h4"></div>
-        </div>
-    </div>
-</div>*@
 
 
 
@@ -274,10 +185,11 @@ else
                     <div class="col-lg-4 ol-md-4 col-sm-4 col-xs-12 ">
                         <div class="ServiceItem">
                             <div class="imagesIcon">
-                                <img src="~/assets_NewPublic/images/icons/NewsIcons/icon-about-1.png" alt="icon-about-1.png">
+                               
+                                <img title="@Resources.Global.MISSION" src="~/assets_NewPublic/images/image4_1/icon-about-1.png" alt="icon-about-1.png">
                             </div>
                             <div class="Title">
-                                <h2>@Resources.Global.MISSION</h2>
+                                <h2 title="@Resources.Global.MISSION">@Resources.Global.MISSION</h2>
                             </div>
                             <div class="Discription">
                                 @if (en)
@@ -303,10 +215,11 @@ else
                     <div class="col-lg-4 ol-md-4 col-sm-4 col-xs-12 ">
                         <div class="ServiceItem">
                             <div class="imagesIcon">
-                                <img src="~/assets_NewPublic/images/icons/NewsIcons/vision.png" alt="vision.png">
+                          
+                                <img title="@Resources.Global.VISSION" src="~/assets_NewPublic/images/image4_1/vision.png" alt="vision.png">
                             </div>
                             <div class="Title">
-                                <h2>@Resources.Global.VISSION</h2>
+                                <h2 title="@Resources.Global.VISSION">@Resources.Global.VISSION</h2>
                             </div>
                             <div class="Discription">
                                 @if (en)
@@ -327,10 +240,11 @@ else
                     <div class="col-lg-4 ol-md-4 col-sm-4 col-xs-12 ">
                         <div class="ServiceItem">
                             <div class="imagesIcon">
-                                <img src="~/assets_NewPublic/images/icons/NewsIcons/03.png" alt="03.png">
+                               
+                                <img title="@Resources.Global.Value" src="~/assets_NewPublic/images/image4_1/Icon 3.png" alt="03.png">
                             </div>
                             <div class="Title">
-                                <h2>@Resources.Global.Value</h2>
+                                <h2 title="@Resources.Global.Value">@Resources.Global.Value</h2>
                             </div>
                             <div class="Discription">
                                 @if (en)
@@ -373,7 +287,7 @@ else
                                 <div class="item">
                                     <div class="testimony-wrap teamItem">
                                         <div>
-                                            <img src="@team.Image" class="img-responsive" alt="@team.NameEnglish" />
+                                            <img title="@team.NameEnglish" src="@team.Image" class="img-responsive" alt="@team.NameEnglish" />
                                             <div class="text">
                                                 @if (en)
                                                 {
@@ -410,7 +324,7 @@ else
             <div class="secvedcont">
                 <div class="fordflex">
                     <div class="title">
-                        <h2>@Resources.Global.DesignAbout</h2>
+                        <h2 title="@Resources.Global.DesignAbout">@Resources.Global.DesignAbout</h2>
                         <br />
                         @*@if (en)
                             {
@@ -425,7 +339,7 @@ else
                         @*<button type="button" class="vediobtn btnvediopopup" data-toggle="modal" data-target="#VedioPopup">
                                 <i class="fas fa-play"></i>
                             </button>*@
-                        <a href="@aboutUs.YouTubeFrame" class="vediobtn btnvediopopup" data-type="iframe" tabindex="0">
+                        <a title="Play Video" href="@aboutUs.YouTubeFrame" class="vediobtn btnvediopopup" data-type="iframe" tabindex="0">
                             <i class="fas fa-play"></i>
                         </a>
                     </div>
@@ -438,22 +352,6 @@ else
 
 
 
-@*<div class="modal fade Vediomodal" id="VedioPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-
-            <div class="modal-body">
-                <div class="vedioIframe">
-                    <iframe width="560" height="315" src="@aboutUs.YouTubeFrame" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>*@
 
 
 

@@ -81,7 +81,7 @@ else
 
     <style>
         .menu li a.active-a6 {
-            color: #af7a2c;
+            color: #5a5a5a;
             border-bottom: 1px solid #fff0;
             font-weight: 500;
         }
@@ -95,7 +95,7 @@ else
 
 <div class="header-bc">
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/NEWBG/NewGallaryBGIN.jpg" alt="NewGallaryBGIN.jpg" />
+        <img title="Banner Image" src="~/assets_NewPublic/images/bg/NEWBG/NewGallaryBGIN.jpg" alt="NewGallaryBGIN.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -105,12 +105,12 @@ else
 
                     <div class="title-header">
 
-                        <h3>@Resources.Global.Videos</h3>
+                        <h3 title="@Resources.Global.Videos">@Resources.Global.Videos</h3>
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="/Home">Home</a> > </li>
-                                <li><a>@Resources.Global.Gallery</a> > </li>
+                                <li><a title="@Resources.Global.Home" href="/Home">@Resources.Global.Home</a> > </li>
+                                <li><a title="@Resources.Global.Gallery">@Resources.Global.Gallery</a> > </li>
                                 <li>@Resources.Global.Videos</li>
                             </ul>
                         </div>
@@ -149,13 +149,13 @@ else
 
             @foreach (var picture in albums_videos)
             {
-                <Div class="col-md-4">
-                    <a class="new new-small small-location location-new" href="/Home/VideoDetails/@picture.Id">
+                <div class="col-md-4">
+                    <a  title="@picture.TitleEnglish" class="new new-small small-location location-new" href="/Home/VideoDetails/@picture.Id">
                         @*<img src="@picture.Image" class="img-responsive img-services" />*@
                         <div class="AlbumImgItem">
                             <div class=" imagsBG" style="background-image: url(@picture.Image)"></div>
                         </div>
-                        <h3>
+                        <h3 title="@picture.TitleEnglish">
                             @if (en)
                             {
                                 <span>
@@ -172,7 +172,7 @@ else
                             <p>></p>
                         </h3>
                     </a>
-                </Div>
+                </div>
             }
             <!--end col-4-->
             <!--end col-4-->

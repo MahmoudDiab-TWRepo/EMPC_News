@@ -69,7 +69,7 @@ else
 
 <div class="header-bc">
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/GallaryBG.jpg" alt="GallaryBG.jpg" />
+        <img title="Banner Image" src="~/assets_NewPublic/images/bg/GallaryBG.jpg" alt="GallaryBG.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -79,11 +79,11 @@ else
 
                     <div class="title-header">
 
-                        <h3>@Resources.Global.vedios</h3>
+                        <h3 title="@Resources.Global.vedios">@Resources.Global.vedios</h3>
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="/Home">Home</a> > </li>
+                                <li><a title="@Resources.Global.Home" href="/Home">@Resources.Global.Home</a> > </li>
                                 <li>@Resources.Global.vedios</li>
                             </ul>
                         </div>
@@ -111,14 +111,14 @@ else
 
 <div class="news">
     <div class="container">
-        <Div class="row">
+        <div class="row">
             <div class="cleaner-h3 visible-xs"></div>
             @foreach (var vidoe in vidoes)
             {
-                <Div class="col-md-4">
-                    <a class="new new-small small-location location-new" href="/Home/VideoDetails/@vidoe.Id">
-                        <img src="~/assets_NewPublic/images/f14.jpeg" class="img-responsive img-services" alt="@vidoe.TitleEnglish" />
-                        <h3>
+                <div class="col-md-4">
+                    <a title="t_title" class="new new-small small-location location-new" href="/Home/VideoDetails/@vidoe.Id">
+                        <img title="@vidoe.TitleEnglish" src="~/assets_NewPublic/images/f14.jpeg" class="img-responsive img-services" alt="@vidoe.TitleEnglish" />
+                        <h3 title="@vidoe.TitleEnglish">
                             @if (en)
                             {
                                 <span>
@@ -134,9 +134,9 @@ else
                             <p>></p>
                         </h3>
                     </a>
-                </Div>
+                </div>
             }
-        </Div>
+        </div>
     </div>
 </div>
 
@@ -170,7 +170,7 @@ else
 
 
 
-<div class="vediosgallary" style="display:none">
+@*<div class="vediosgallary" style="display:none">
     <div class="container">
         <div class="row">
 
@@ -293,15 +293,15 @@ else
 
 
             </div>
-            <!--end row-->
+
         </div>
-        <!--end container-->
+
 
     </div>
-</div>
+</div>*@
 
 
-<div class="modal fade Vediomodal" id="VedioPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+@*<div class="modal fade Vediomodal" id="VedioPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -316,5 +316,5 @@ else
 
         </div>
     </div>
-</div>
+</div>*@
 

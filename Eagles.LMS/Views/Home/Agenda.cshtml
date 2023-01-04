@@ -77,7 +77,7 @@ else
 
     <style>
         .menu li a.active-a5 {
-            color: #af7a2c;
+            color: #5a5a5a;
             border-bottom: 1px solid #fff0;
             font-weight: 500;
         }
@@ -94,7 +94,7 @@ else
 
 <div class="header-bc">
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" alt="NewNewsGBIN.jpg" />
+        <img title="Banner Image" src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" alt="NewNewsGBIN.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -104,11 +104,11 @@ else
 
                     <div class="title-header">
 
-                        <h3>@Resources.Global.Agenda</h3>
+                        <h3 title="@Resources.Global.Agenda">@Resources.Global.Agenda</h3>
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="/Home">@Resources.Global.Home</a> > </li>
+                                <li><a title="@Resources.Global.Home" href="/Home">@Resources.Global.Home</a> > </li>
                                 <li>@Resources.Global.Agenda</li>
                             </ul>
                         </div>
@@ -208,7 +208,7 @@ else
                     </div>*@
 
                 <div class="col-lg-6 col-md-6">
-                    <button id="btn_submit" href="#" class="btn btn-black">Select</button>
+                    <button title="Select" id="btn_submit" href="#" class="btn btn-black">Select</button>
                 </div>
             </div>
         </div>
@@ -219,7 +219,7 @@ else
             {
                 <div class="col-md-4">
                     <div class="new-des">
-                        <a class="but-new" href="/Home/AgendaDetails/@_agenda.Id">
+                        <a  title="@_agenda.TitleEnglish" class="but-new" href="/Home/AgendaDetails/@_agenda.Id">
                             @*<img src="@_agenda.MainImage" class="img-responsive" />*@
                             <div class="AgendaItemImg">
 
@@ -249,7 +249,7 @@ else
 
                                 </div>
                                 <div class="righ">
-                                    <a href="#">
+                                    <a  title="@Resources.Global.Share" href="#">
                                         <p><i class="fa fa-share-alt"></i> @Resources.Global.Share</p>
                                     </a>
                                 </div>
@@ -264,17 +264,17 @@ else
 
                                 </div>
                                 <div class="righ">
-                                    <a href="#">
+                                    <a title="@Resources.Global.Share" href="#">
                                         <p><i class="fa fa-share-alt"></i> @Resources.Global.Share</p>
                                     </a>
                                 </div>
                             }
                         </div>
                         <div class="description">
-                            <a class="but-new" href="/Home/AgendaDetails/@_agenda.Id">
+                            <a title="@_agenda.TitleEnglish" class="but-new" href="/Home/AgendaDetails/@_agenda.Id">
                                 @if (en)
                                 {
-                                    <h4>@_agenda.TitleEnglish </h4>
+                                    <h4 title="@_agenda.TitleEnglish">@_agenda.TitleEnglish </h4>
                                     <div class="ContentPargraph">
                                         <p>
                                             @Html.Raw(@_agenda.ShortDescriptionEnglish)
@@ -283,7 +283,7 @@ else
                                 }
                                 else
                                 {
-                                    <h4>@_agenda.TitleArabic </h4>
+                                    <h4 title="@_agenda.TitleArabic">@_agenda.TitleArabic </h4>
                                     <div class="ContentPargraph">
                                         <p>
                                             @Html.Raw(@_agenda.ShortDescriptionArabic)

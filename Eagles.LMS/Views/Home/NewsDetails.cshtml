@@ -23,8 +23,8 @@
         <title>@Model.TitleEnglish</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.SEOMetaKeywordsEnglish, @Model.TitleArabic, @SEO.NewsPageMetaKeywordsEnglish " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.SEOMetaDescriptionEnglish @Model.TitleArabic, @SEO.NewsPageMetaDescriptionEnglish" />
+        <meta name="keywords" content="@Model.SEOMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@Model.SEOMetaDescriptionEnglish " />
         <link rel="canonical" id="canonicalUrl" href="@Model.SEOCanonicalUrl" />
     }
 }
@@ -35,8 +35,8 @@ else
         <title>@Model.TitleArabic</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaKeywordsArabic, @SEO.NewsPageMetaKeywordsArabic " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaDescriptionArabic, @SEO.NewsPageMetaDescriptionArabic" />
+        <meta name="keywords" content="@Model.SEOMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@Model.SEOMetaDescriptionArabic" />
         <link rel="canonical" id="canonicalUrl" href="@Model.SEOCanonicalUrl" />
     }
 }
@@ -58,7 +58,7 @@ else
 
     <style>
         .menu li a.active-a5 {
-            color: #af7a2c;
+            color: #5a5a5a;
             border-bottom: 1px solid #fff0;
             font-weight: 500;
         }
@@ -148,7 +148,7 @@ else
 
 <div class="header-bc">
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" alt="NewNewsGBIN.jpg" />
+        <img title="Banner Images" src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" alt="NewNewsGBIN.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -160,20 +160,20 @@ else
 
                         @if (en)
                         {
-                            <h3>@Model.TitleEnglish</h3>
+                            <h3 title="@Model.TitleEnglish">@Model.TitleEnglish</h3>
 
 
                         }
                         else
                         {
-                            <h3>@Model.TitleArabic</h3>
+                            <h3 title="@Model.TitleArabic">@Model.TitleArabic</h3>
                         }
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="/Home">@Resources.Global.Home</a> > </li>
+                                <li><a title="@Resources.Global.Home" href="/Home">@Resources.Global.Home</a> > </li>
                                 <li>
-                                    <A href="/Home/News">@Resources.Global.News</A>
+                                    <a title="@Resources.Global.News" href="/Home/News">@Resources.Global.News</a>
                                 </li>
                             </ul>
                         </div>
@@ -194,7 +194,7 @@ else
             <div class="new-description">
 
                 <div class="mainImagenews" style="">
-                    <a href="@Model.MainImage">
+                    <a title="@Model.TitleEnglish" href="@Model.MainImage">
                         <div class=" imagsBG" style="background-image: url(@Model.MainImage)"></div>
                     </a>
                 </div>
@@ -221,14 +221,14 @@ else
                                 @if (!string.IsNullOrEmpty(Model.MainImage))
                                 {
 
-                                    <a href="@Model.MainImage">
+                                    <a title="@Model.TitleEnglish" href="@Model.MainImage">
                                         <div class=" imagsBG" style="background-image: url(@Model.MainImage)"></div>
                                     </a>
                                 }
                                 else
                                 {
 
-                                    <a href="~/assets_NewPublic/images/f14.jpeg">
+                                    <a title="@Model.TitleEnglish" href="~/assets_NewPublic/images/f14.jpeg">
                                         <div class=" imagsBG" style="background-image: url(/assets_NewPublic/images/f14.jpeg)"></div>
                                     </a>
 
@@ -244,7 +244,7 @@ else
                                 <div class="item">
                                     @*<img src="@item.Path" alt="...">*@
                                     <div class="CauroselItemImg">
-                                        <a href="@item.Path">
+                                        <a title="@Model.TitleEnglish" href="@item.Path">
                                             <div class=" imagsBG" style="background-image: url(@item.Path)"></div>
                                         </a>
                                     </div>
@@ -268,10 +268,10 @@ else
                 <div class="data-new">
                     @if (en)
                     {
-                        <h3>@Model.TitleEnglish</h3>
+                        <h3 title="@Model.TitleEnglish">@Model.TitleEnglish</h3>
                         if (Model.CreatedTime != null)
                         {
-                            <h1 class="Date"><span><i class="far fa-calendar-alt"></i></span>@Model.NewsDate.ToShortDateString()</h1>
+                            <h1 title="@Model.NewsDate.ToShortDateString()" class="Date"><span><i class="far fa-calendar-alt"></i></span>@Model.NewsDate.ToShortDateString()</h1>
 
                         }
                         <p>@Html.Raw(@Model.DescriptionEnglish)</p>
@@ -279,10 +279,10 @@ else
                     }
                     else
                     {
-                        <h3>@Model.TitleArabic</h3>
+                        <h3 title="@Model.TitleArabic">@Model.TitleArabic</h3>
                         if (Model.CreatedTime != null)
                         {
-                            <h1 class="Date"><span><i class="far fa-calendar-alt"></i></span>@Model.NewsDate.ToShortDateString()</h1>
+                            <h1 title="@Model.NewsDate.ToShortDateString()" class="Date"><span><i class="far fa-calendar-alt"></i></span>@Model.NewsDate.ToShortDateString()</h1>
 
                         }
                         <p>@Html.Raw(@Model.DescriptionArabic)</p>
@@ -317,7 +317,7 @@ else
                             </div>
 
                             <div class="OVERLAYBUTTON">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><span><i class="fa fa-camera"></i></span> Show images </button>
+                                <button title="Show images" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><span><i class="fa fa-camera"></i></span> Show images </button>
                             </div>
 
                         </div>
@@ -344,7 +344,7 @@ else
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button title="t_title" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -362,7 +362,7 @@ else
                                     <div class="swiper-slide">
                                         <div class="imagesss">
 
-                                            <img src="@item.Path" />
+                                            <img title="@Model.TitleEnglish" src="@item.Path" alt="" />
                                         </div>
                                     </div>
                                 }
@@ -387,7 +387,7 @@ else
                                     <div class="swiper-slide">
                                         <div class="imagesss">
 
-                                            <img src="@item.Path" />
+                                            <img title="@Model.TitleEnglish" src="@item.Path" alt="" />
                                         </div>
                                     </div>
                                 }

@@ -100,6 +100,7 @@ else
     <style>
         .menu li a.active-a1 {
             color: #af7a2c;
+            color: #5a5a5a;
             border-bottom: 1px solid #fff0;
             font-weight: 500;
         }
@@ -132,7 +133,7 @@ else
                     <div class="slider-item">
                         <div class="SliderItem_ImagesType">
                             <div class="imagessBGSlider">
-                                <img src="@slider.Image" alt="slider Image" />
+                                <img title="@slider.TitleEnglish" src="@slider.Image" alt="slider Image" />
                             </div>
                             <div class="overlay">
 
@@ -146,18 +147,18 @@ else
                                                     if (!string.IsNullOrEmpty(slider.TitleEnglish))
                                                     {
                                                         <div class="overflowtext">
-                                                            <h1 class="mb-3">@Html.Raw(@slider.TitleEnglish)</h1>
+                                                            <h1 title="" class="mb-3">@Html.Raw(@slider.TitleEnglish)</h1>
                                                         </div>
                                                     }
                                                     if (!string.IsNullOrEmpty(slider.DescriptionEnglish))
                                                     {
                                                         <div class="overflowtext">
-                                                            <h2>@slider.DescriptionEnglish</h2>
+                                                            <h2 title="">@slider.DescriptionEnglish</h2>
                                                         </div>
                                                     }
                                                     if (!string.IsNullOrEmpty(slider.Link))
                                                     {
-                                                        <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
+                                                        <a title="@Resources.Global.ReadMore" href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
                                                     }
                                                 }
                                                 else
@@ -165,13 +166,13 @@ else
                                                     if (!string.IsNullOrEmpty(slider.TitleArabic))
                                                     {
                                                         <div class="overflowtext">
-                                                            <h1 class="mb-3">@Html.Raw(@slider.TitleArabic)</h1>
+                                                            <h1 title="@Html.Raw(@slider.TitleArabic)" class="mb-3">@Html.Raw(@slider.TitleArabic)</h1>
                                                         </div>
                                                     }
                                                     if (!string.IsNullOrEmpty(slider.DescriptionArabic))
                                                     {
                                                         <div class="overflowtext">
-                                                            <h2>@slider.DescriptionArabic</h2>
+                                                            <h2 title="@slider.DescriptionArabic">@slider.DescriptionArabic</h2>
                                                         </div>
 
 
@@ -179,7 +180,7 @@ else
                                                     }
                                                     if (!string.IsNullOrEmpty(slider.Link))
                                                     {
-                                                        <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
+                                                        <a title="@Resources.Global.ReadMore" href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.ReadMore</a>
                                                     }
                                                 }
                                             </div>
@@ -217,19 +218,19 @@ else
                                                 if (!string.IsNullOrEmpty(slider.TitleEnglish))
                                                 {
                                                     <div class="overflowtext">
-                                                        <h1 class="mb-3">@Html.Raw(@slider.TitleEnglish)</h1>
+                                                        <h1 title="@Html.Raw(@slider.TitleEnglish)" class="mb-3">@Html.Raw(@slider.TitleEnglish)</h1>
                                                     </div>
 
                                                 }
                                                 if (!string.IsNullOrEmpty(slider.DescriptionEnglish))
                                                 {
                                                     <div class="overflowtext">
-                                                        <h2>@slider.DescriptionEnglish</h2>
+                                                        <h2 title="@slider.DescriptionEnglish">@slider.DescriptionEnglish</h2>
                                                     </div>
                                                 }
                                                 if (!string.IsNullOrEmpty(slider.Link))
                                                 {
-                                                    <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.watchMore</a>
+                                                    <a title="@Resources.Global.watchMore" href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.watchMore</a>
                                                 }
                                             }
                                             else
@@ -237,18 +238,18 @@ else
                                                 if (!string.IsNullOrEmpty(slider.TitleArabic))
                                                 {
                                                     <div class="overflowtext">
-                                                        <h1 class="mb-3">@Html.Raw(@slider.TitleArabic)</h1>
+                                                        <h1 title="@Html.Raw(@slider.TitleArabic)" class="mb-3">@Html.Raw(@slider.TitleArabic)</h1>
                                                     </div>
                                                 }
                                                 if (!string.IsNullOrEmpty(slider.DescriptionArabic))
                                                 {
                                                     <div class="overflowtext">
-                                                        <h2>@slider.DescriptionArabic</h2>
+                                                        <h2 title="@slider.DescriptionArabic">@slider.DescriptionArabic</h2>
                                                     </div>
                                                 }
                                                 if (!string.IsNullOrEmpty(slider.Link))
                                                 {
-                                                    <a href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.watchMore</a>
+                                                    <a title="@Resources.Global.watchMore" href="@slider.Link" target="_blank" class="RerdrrdMore">@Resources.Global.watchMore</a>
                                                 }
                                             }
 
@@ -279,7 +280,7 @@ else
         <div class="overlay">
             <div class="container">
                 <div class="titile">
-                    <h2>@Html.ActionLink(@Resources.Global.Latestnews, "News", "Home")</h2>
+                    <h2 title="@Resources.Global.Latestnews">@Html.ActionLink(@Resources.Global.Latestnews, "News", "Home")</h2>
                     <div class="cubics">
                         <span class="cubicItem smallcub"></span>
                         <span class="cubicItem Bigcub"></span>
@@ -299,11 +300,11 @@ else
                                         <div class="Images">
                                             @if (!string.IsNullOrEmpty(@_news[i].MainHomeImage))
                                             {
-                                                <img src="@_news[i].MainImage" alt="first" />
+                                                <img title="@_news[i].TitleEnglish" src="@_news[i].MainImage" alt="first" />
                                             }
                                             else
                                             {
-                                                <img src="@_news[i].MainImage" alt="first2" />
+                                                <img title="@_news[i].TitleEnglish" src="@_news[i].MainImage" alt="first2" />
                                             }
 
                                         </div>
@@ -329,13 +330,13 @@ else
                                                 <div class="newsTitle">
                                                     @if (en)
                                                     {
-                                                        <a href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
+                                                        <a title="@_news[i].TitleEnglish" href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
                                                             @_news[i].TitleEnglish
                                                         </a>
                                                     }
                                                     else
                                                     {
-                                                        <a href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
+                                                        <a title="@_news[i].TitleArabic" href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
                                                             @_news[i].TitleArabic
                                                         </a>
                                                     }
@@ -352,11 +353,11 @@ else
                                         <div class="Images">
                                             @if (!string.IsNullOrEmpty(@_news[i].MainHomeImage))
                                             {
-                                                <img src="@_news[i].MainHomeImage" alt="Main Home Page" />
+                                                <img title="@_news[i].TitleEnglish" src="@_news[i].MainHomeImage" alt="Main Home Page" />
                                             }
                                             else
                                             {
-                                                <img src="@_news[i].MainImage" alt="main Home Page" />
+                                                <img title="@_news[i].TitleEnglish" src="@_news[i].MainImage" alt="main Home Page" />
                                             }
 
                                         </div>
@@ -381,13 +382,13 @@ else
                                                 <div class="newsTitle">
                                                     @if (en)
                                                     {
-                                                        <a href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
+                                                        <a title="@_news[i].TitleEnglish" href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
                                                             @_news[i].TitleEnglish
                                                         </a>
                                                     }
                                                     else
                                                     {
-                                                        <a href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
+                                                        <a title="@_news[i].TitleArabic" href="/Home/NewsDetails/@_news[i].Id?slug=@_news[i].Slug">
                                                             @_news[i].TitleArabic
                                                         </a>
                                                     }
@@ -421,7 +422,7 @@ else
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4 headh2">@Html.ActionLink(@Resources.Global.services, "Services", "Home")</h2>
+                    <h2 title="@Resources.Global.services" class="mb-4 headh2">@Html.ActionLink(@Resources.Global.services, "Services", "Home")</h2>
                     <p class="headp">
                         @Resources.Global.ServicesParg
                     </p>
@@ -443,7 +444,7 @@ else
                                             {
                                                 <div class="imags" style="background-image: url(/assets_NewPublic/images/f14.jpeg)"></div>
                                             }
-                                            <a class="linkServ" href="/Home/ServicesDetails/@service.Id?slug=@service.Slug">
+                                            <a title="@service.TitleEnglish" class="linkServ" href="/Home/ServicesDetails/@service.Id?slug=@service.Slug">
                                             </a>
                                         </div>
                                         @*<a href="/Home/ServicesDetails/@service.Id">
@@ -452,10 +453,10 @@ else
                                     </div>
                                     <div class="contlocation">
                                         <div class="forflex">
-                                            <a href="/Home/ServicesDetails/@service.Id?slug=@service.Slug">
+                                            <a title="@service.TitleEnglish" href="/Home/ServicesDetails/@service.Id?slug=@service.Slug">
                                                 @if (en)
                                                 {
-                                                    <h4>@service.TitleEnglish</h4>
+                                                    <h4 title="@service.TitleEnglish">@service.TitleEnglish</h4>
                                                     <div class="ContentPargraph">
                                                         <p>
                                                             @Html.Raw(@service.ShortDescriptionEnglish)
@@ -464,7 +465,7 @@ else
                                                 }
                                                 else
                                                 {
-                                                    <h4>@service.TitleArabic</h4>
+                                                    <h4 title="@service.TitleArabic">@service.TitleArabic</h4>
                                                     <div class="ContentPargraph">
                                                         <p>
                                                             @Html.Raw(@service.ShortDescriptionArabic)
@@ -491,7 +492,7 @@ else
         <div class="overlay">
             <div class="container">
                 <div class="titile">
-                    <h2>@Html.ActionLink(@Resources.Global.Locations, "Locations", "Home")</h2>
+                    <h2 title="@Resources.Global.Locations">@Html.ActionLink(@Resources.Global.Locations, "Locations", "Home")</h2>
                     <p>@Resources.Global.LocationParg</p>
                 </div>
                 <div class="newsrcont">
@@ -504,17 +505,17 @@ else
                                         <div class="icon">
                                             @if (!string.IsNullOrEmpty(location.MainImage))
                                             {
-                                                <img src="@location.IconImage" alt="Location Icom">
+                                                <img title="@location.TitleEnglish" src="@location.IconImage" alt="Location Icom">
                                             }
                                             else
                                             {
-                                                <img src="~/assets_NewPublic/images/f14.jpeg" alt="Location Icom" />
+                                                <img title="@location.TitleEnglish" src="~/assets_NewPublic/images/f14.jpeg" alt="Location Icom" />
                                             }
                                         </div>
                                         @if (en)
                                         {
                                             <div class="title">
-                                                <h2>@location.TitleEnglish</h2>
+                                                <h2 title="@location.TitleEnglish">@location.TitleEnglish</h2>
                                             </div>
                                             <div class="Discription">
                                                 <p>@Html.Raw(@location.ShortDescriptionEnglish)</p>
@@ -523,14 +524,14 @@ else
                                         else
                                         {
                                             <div class="title">
-                                                <h2>@location.TitleArabic</h2>
+                                                <h2 title="@location.TitleArabic">@location.TitleArabic</h2>
                                             </div>
                                             <div class="Discription">
                                                 <p>@Html.Raw(@location.ShortDescriptionArabic)</p>
                                             </div>
                                         }
                                         <div class="lingoto">
-                                            <a href="/Home/LocationDetails/@location.Id?slug=@location.Slug">
+                                            <a title="@location.TitleEnglish" href="/Home/LocationDetails/@location.Id?slug=@location.Slug">
                                                 <i class="ion-ios-arrow-forward"></i>
                                             </a>
                                         </div>
@@ -552,7 +553,7 @@ else
     <div class="newLatestNews" style="background-image:url(/assets_NewPublic/images/bg/GallaryBG.jpg)">
         <div class="overlay">
             <div class=" text-center ftco-animate">
-                <h2 class="mb-4 headh2">
+                <h2 title="@Resources.Global.Gallery" class="mb-4 headh2">
                     @Html.ActionLink(@Resources.Global.Gallery, "Albums", "Home")
                 </h2>
                 <p class="headp">@Resources.Global.GallaryParg</p>
@@ -566,17 +567,17 @@ else
                             {
                                 <div class=" othercoll">
                                     <div class="imagesmnewscont smallImages">
-                                        <a href="/Home/Picture/@_galaries[i].Id" class="imags " style=" cursor: crosshair;">
+                                        <a title="@_galaries[i].TitleEnglish" href="/Home/Picture/@_galaries[i].Id" class="imags " style=" cursor: crosshair;">
                                             <div class=" imagsBG" style="background-image: url(@_galaries[i].Image)"></div>
                                         </a>
                                         <div class="discription" style=" cursor: crosshair;">
                                             @if (en)
                                             {
-                                                <a href="/Home/Picture/@_galaries[i].Id">@_galaries[i].TitleEnglish</a>
+                                                <a title="@_galaries[i].TitleEnglish" href="/Home/Picture/@_galaries[i].Id">@_galaries[i].TitleEnglish</a>
                                             }
                                             else
                                             {
-                                                <a href="/Home/Picture/@_galaries[i].Id">@_galaries[i].TitleArabic</a>
+                                                <a title="@_galaries[i].TitleArabic" href="/Home/Picture/@_galaries[i].Id">@_galaries[i].TitleArabic</a>
                                             }
                                         </div>
                                     </div>
@@ -586,22 +587,22 @@ else
                             {
                                 <div class=" othercoll">
                                     <div class="imagesmnewscont smallImages videioGallaryItem">
-                                        <a href="/Home/VideoDetails/@_galaries[i].Id" class="imags ">
+                                        <a title="@_galaries[i].TitleEnglish" href="/Home/VideoDetails/@_galaries[i].Id" class="imags ">
                                             <div class=" imagsBG" style="background-image: url(@_galaries[i].Image)"></div>
                                         </a>
                                         <div class="iconVideooo">
-                                            <a href="/Home/VideoDetails/@_galaries[i].Id" class="">
+                                            <a title="@_galaries[i].TitleEnglish" href="/Home/VideoDetails/@_galaries[i].Id" class="">
                                                 <i class="fas fa-play" aria-hidden="true"></i>
                                             </a>
                                         </div>
                                         <div class="discription">
                                             @if (en)
                                             {
-                                                <a href="/Home/VideoDetails/@_galaries[i].Id">@_galaries[i].TitleEnglish</a>
+                                                <a title="@_galaries[i].TitleEnglish" href="/Home/VideoDetails/@_galaries[i].Id">@_galaries[i].TitleEnglish</a>
                                             }
                                             else
                                             {
-                                                <a href="/Home/VideoDetails/@_galaries[i].Id">@_galaries[i].TitleArabic</a>
+                                                <a title="@_galaries[i].TitleArabic" href="/Home/VideoDetails/@_galaries[i].Id">@_galaries[i].TitleArabic</a>
                                             }
                                         </div>
                                     </div>
@@ -633,7 +634,7 @@ else
                             <div class=" imagsBG" style="background-image: url(@aboutUs.Image)"></div>
                         </div>
                         <div class="buttonpopupvedio" style="display:none">
-                            <a href="@aboutUs.YouTubeFrame" class="btnvediopopup" data-type="iframe" tabindex="0">
+                            <a title="@aboutUs.TitleEnglish" href="@aboutUs.YouTubeFrame" class="btnvediopopup" data-type="iframe" tabindex="0">
                                 <i class="fas fa-play"></i>
                             </a>
                         </div>
@@ -643,21 +644,21 @@ else
                     <div class="overflowheightabout">
                         @if (en)
                         {
-                            <h2 class="headh2">@aboutUs.TitleEnglish</h2>
+                            <h2 title="@aboutUs.TitleEnglish" class="headh2">@aboutUs.TitleEnglish</h2>
                             <p class="headp1">
                                 @Html.Raw(@aboutUs.DescriptionEnglish)
                             </p>
                         }
                         else
                         {
-                            <h2 class="headh2">@aboutUs.TitleArabic</h2>
+                            <h2 title="@aboutUs.TitleArabic" class="headh2">@aboutUs.TitleArabic</h2>
                             <p class="headp1">
                                 @Html.Raw(@aboutUs.DescriptionArabic)
                             </p>
                         }
                     </div>
                     <div class="width-btn-who AboutBTNHOME">
-                        <a href="/Home/AboutUs" class="btn btn-danger btn-block btn-theme"> @Resources.Global.ReadMore</a>
+                        <a title="@Resources.Global.ReadMore" href="/Home/AboutUs" class="btn btn-danger btn-block btn-theme"> @Resources.Global.ReadMore</a>
                     </div>
                 </div>
             </div>
@@ -669,7 +670,7 @@ else
 <div class="Custommr" style="">
     <div class="overlay">
         <div class="titile">
-            <h2 class="mb-4 headh2">@Resources.Global.Clients</h2>
+            <h2 title="@Resources.Global.Clients" class="mb-4 headh2">@Resources.Global.Clients</h2>
             <p class="headp">@Resources.Global.ClientsPargrapgh</p>
         </div>
         <div class="container">
@@ -680,7 +681,7 @@ else
                         <div class="item">
                             <div class="CustomerItem">
                                 <div class="images">
-                                    <img src="@Client.Image" alt="Client Icom" />
+                                    <img title="@Client.NameEnglish" src="@Client.Image" alt="Client Icom" />
                                 </div>
                             </div>
                         </div>
@@ -696,7 +697,7 @@ else
     <div class="relatedwebsite" style="background-image: url(/assets_NewPublic/images/bg/ProductionCity.jpg);">
         <div class="overlay">
             <div class="TitleSec">
-                <h2>@Resources.Global.Relatedwebsites</h2>
+                <h2 title="@Resources.Global.Relatedwebsites">@Resources.Global.Relatedwebsites</h2>
             </div>
             <div class="container">
                 <div class="relatedCOntent">
@@ -715,16 +716,16 @@ else
                                             <div class="reldetright">
                                                 @if (en)
                                                 {
-                                                    <h2>@_relatedWerbsites[i].TitleEnglish</h2>
+                                                    <h2 title="@_relatedWerbsites[i].TitleEnglish">@_relatedWerbsites[i].TitleEnglish</h2>
                                                     <p>@Html.Raw(@_relatedWerbsites[i].DescriptionEnglish)</p>
                                                 }
                                                 else
                                                 {
-                                                    <h2>@_relatedWerbsites[i].TitleArabic</h2>
+                                                    <h2 title="@_relatedWerbsites[i].TitleArabic">@_relatedWerbsites[i].TitleArabic</h2>
                                                     <p>@Html.Raw(@_relatedWerbsites[i].DescriptionArabic)</p>
                                                 }
                                                 <div class="btns">
-                                                    <a target="_blank" href="@_relatedWerbsites[i].Link" class="theme-btn" tabindex="0"> @Resources.Global.MoreDetails</a>
+                                                    <a title="@Resources.Global.MoreDetails" target="_blank" href="@_relatedWerbsites[i].Link" class="theme-btn" tabindex="0"> @Resources.Global.MoreDetails</a>
                                                 </div>
                                             </div>
 
@@ -744,6 +745,7 @@ else
     </div>
 }
 
+
 @if (setting.ShowContactUs)
 {
     <section class="map-loading">
@@ -751,10 +753,10 @@ else
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="mb-4 headh2"> @Resources.Global.ContactUs</h2>
+                        <h2 title="@Resources.Global.ContactUs" class="mb-4 headh2"> @Resources.Global.ContactUs</h2>
                         <div class="location-map">
                             <i class="fa fa-map-marker"></i>
-                            <h3>@Resources.Global.address</h3>
+                            <h3 title="@Resources.Global.address">@Resources.Global.address</h3>
                             @if (en)
                             {
                                 <p>@_contactUs.AddressEnglish</p>
@@ -768,7 +770,7 @@ else
                         <div class="cleaner-h3"></div>
                         <div class="location-map">
                             <i class="fa fa-phone"></i>
-                            <h3>@Resources.Global.HatefPhone</h3>
+                            <h3 title="@Resources.Global.HatefPhone">@Resources.Global.HatefPhone</h3>
                             @if (en)
                             {
                                 <p>@_contactUs.Phone</p>
@@ -781,14 +783,14 @@ else
                         <div class="cleaner-h3"></div>
                         <div class="location-map">
                             <i class="fa fa-envelope"></i>
-                            <h3>@Resources.Global.Email</h3>
+                            <h3 title="@Resources.Global.Email">@Resources.Global.Email</h3>
                             <p>@_contactUs.Email</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1726.7709238441291!2d31.21595155872192!3d30.049999200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145841fe81fb8d79%3A0x7292c22730b866c5!2sMedia%20Services%20Center%20EMPC!5e0!3m2!1sen!2seg!4v1647522850851!5m2!1sen!2seg"
+        <iframe title="Map Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1726.7709238441291!2d31.21595155872192!3d30.049999200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145841fe81fb8d79%3A0x7292c22730b866c5!2sMedia%20Services%20Center%20EMPC!5e0!3m2!1sen!2seg!4v1647522850851!5m2!1sen!2seg"
                 width="100%" height="100%" style="border:0;" allowfullscreen=""></iframe>
     </section>
 }

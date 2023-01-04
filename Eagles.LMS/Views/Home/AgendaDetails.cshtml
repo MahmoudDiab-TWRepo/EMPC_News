@@ -22,8 +22,8 @@
         <title>@Model.TitleEnglish</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaKeywordsEnglish, @SEO.AgendaPageMetaKeywordsEnglish " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic,  @Model.SEOMetaDescriptionEnglish, @SEO.AgendaPageMetaDescriptionEnglish" />
+        <meta name="keywords" content="@Model.SEOMetaKeywordsEnglish" />
+        <meta name="description" id="metaDesc" content="@Model.SEOMetaDescriptionEnglish" />
         <link rel="canonical" id="canonicalUrl" href="@SEO.AgendaPageCanonicalUrl" />
     }
 }
@@ -33,8 +33,8 @@ else
         <title>@Model.TitleArabic</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaKeywordsArabic, @SEO.AgendaPageMetaKeywordsArabic " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic,  @Model.SEOMetaDescriptionArabic, @SEO.AgendaPageMetaDescriptionArabic" />
+        <meta name="keywords" content="@Model.SEOMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@Model.SEOMetaDescriptionArabic" />
         <link rel="canonical" id="canonicalUrl" href="@SEO.AgendaPageCanonicalUrl" />
     }
 }
@@ -48,7 +48,7 @@ else
 
     <style>
         .menu li a.active-a5 {
-            color: #af7a2c;
+            color: #5a5a5a;
             border-bottom: 1px solid #fff0;
             font-weight: 500;
         }
@@ -61,7 +61,7 @@ else
 
 <div class="header-bc">
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" alt="NewNewsGBIN.jpg" />
+        <img title="Banner Image" src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" alt="NewNewsGBIN.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -71,13 +71,13 @@ else
 
                     <div class="title-header">
 
-                        <h3>Agenda Details</h3>
+                        <h3 title="t_title">Agenda Details</h3>
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="#">@Resources.Global.Home</a> > </li>
+                                <li><a title="@Resources.Global.Home" href="#">@Resources.Global.Home</a> > </li>
                                 <li>
-                                    <A href="/Home/Agenda">@Resources.Global.Agenda</A> >
+                                    <a title="@Resources.Global.Agenda" href="/Home/Agenda">@Resources.Global.Agenda</a> >
                                 </li>
                             </ul>
                         </div>
@@ -129,13 +129,13 @@ else
                                 @if (!string.IsNullOrEmpty(Model.MainImage))
                                 {
 
-                                    <a href="@Model.MainImage">
+                                    <a title="@Model.TitleEnglish" href="@Model.MainImage">
                                         <div class=" imagsBG" style="background-image: url(@Model.MainImage)"></div>
                                     </a>
                                 }
                                 else
                                 {
-                                    <a href="~/assets_NewPublic/images/f14.jpeg">
+                                    <a title="@Model.TitleEnglish" href="~/assets_NewPublic/images/f14.jpeg">
                                         <div class=" imagsBG" style="background-image: url(/assets_NewPublic/images/f14.jpeg)"></div>
                                     </a>
 
@@ -153,7 +153,7 @@ else
                                 <div class="item">
                                     @*<img src="@item.Path" alt="...">*@
                                     <div class="CauroselItemImg">
-                                        <a href="@item.Path">
+                                        <a title="@Model.TitleEnglish" href="@item.Path">
                                             <div class=" imagsBG" style="background-image: url(@item.Path)"></div>
                                         </a>
                                     </div>
@@ -195,10 +195,10 @@ else
 
                     @if (en)
                     {
-                        <h3>@Model.TitleEnglish</h3>
+                        <h3 title="@Model.TitleEnglish">@Model.TitleEnglish</h3>
 
 
-                        <h1 class="Date"><span><i class="fa fa-calendar"></i></span> @Model.AgendaDate.ToShortDateString()</h1>
+                        <h1 title="@Model.TitleEnglish" class="Date"><span><i class="fa fa-calendar"></i></span> @Model.AgendaDate.ToShortDateString()</h1>
 
 
                         <p>
@@ -209,10 +209,10 @@ else
                     }
                     else
                     {
-                        <h3>@Model.TitleArabic</h3>
+                        <h3 title="@Model.TitleArabic">@Model.TitleArabic</h3>
 
 
-                        <h1 class="Date"><span><i class="fa fa-calendar"></i></span> @Model.AgendaDate.ToShortDateString()</h1>
+                        <h1 title="@Model.TitleArabic" class="Date"><span><i class="fa fa-calendar"></i></span> @Model.AgendaDate.ToShortDateString()</h1>
 
 
 

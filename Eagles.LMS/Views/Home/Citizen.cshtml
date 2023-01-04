@@ -89,7 +89,7 @@ else
 
 <div class="header-bc">
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" alt="NewNewsGBIN.jpg" />
+        <img title="Banner Image" src="~/assets_NewPublic/images/bg/NEWBG/NewNewsGBIN.jpg" alt="NewNewsGBIN.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -99,11 +99,11 @@ else
 
                     <div class="title-header">
 
-                        <h3>@Resources.Global.Citizen</h3>
+                        <h3 title="@Resources.Global.Citizen">@Resources.Global.Citizen</h3>
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="#">@Resources.Global.Home</a> > </li>
+                                <li><a title="@Resources.Global.Home" href="#">@Resources.Global.Home</a> > </li>
                                 <li>@Resources.Global.Citizen</li>
                             </ul>
                         </div>
@@ -142,14 +142,14 @@ else
                                 <div class="discription">
                                     @if (en)
                                     {
-                                        <h2>@_citizen.TitleEnglish </h2>
+                                        <h2 title="@_citizen.TitleEnglish">@_citizen.TitleEnglish </h2>
                                         <div class="ContentPargraph">
                                             <p>@Html.Raw(@_citizen.DescriptionEnglish)</p>
                                         </div>
                                     }
                                     else
                                     {
-                                        <h2>@_citizen.TitleArabic </h2>
+                                        <h2 title="@_citizen.TitleArabic">@_citizen.TitleArabic </h2>
                                         <div class="ContentPargraph">
                                             <p>@Html.Raw(@_citizen.DescriptionArabic)</p>
                                         </div>
@@ -196,8 +196,8 @@ else
             <div class="col-md-4">
                 <div class="address">
 
-                    <h3><i class="fa fa-envelope" aria-hidden="true"></i></h3>
-                    <h4>@Resources.Global.ContactUs</h4>
+                    <h3 title="@Resources.Global.ContactUs"><i class="fa fa-envelope" aria-hidden="true"></i></h3>
+                    <h4 title="@Resources.Global.ContactUs">@Resources.Global.ContactUs</h4>
                     <p>@_contactUs.CitizenEmail</p>
 
                 </div>
@@ -215,7 +215,7 @@ else
 
                                     <div class="col-md-12">
                                         <div class="TitleForm">
-                                            <h3>@Resources.Global.SendNews</h3>
+                                            <h3 title="@Resources.Global.SendNews">@Resources.Global.SendNews</h3>
                                         </div>
 
                                     </div>
@@ -319,7 +319,7 @@ else
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-black">@Resources.Global.SendNews</button>
+                                            <button title="@Resources.Global.SendNews" type="submit" class="btn btn-black">@Resources.Global.SendNews</button>
                                         </div>
                                     </div>
                                     <!--end col-12-->

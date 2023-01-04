@@ -24,8 +24,8 @@
         <title>@Model.TitleEnglish</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.SEOMetaKeywordsEnglish, @Model.TitleArabic, @SEO.ServicesPageMetaKeywordsEnglish " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaDescriptionEnglish @SEO.ServicesPageMetaDescriptionEnglish" />
+        <meta name="keywords" content=" @Model.SEOMetaKeywordsEnglish " />
+        <meta name="description" id="metaDesc" content="@Model.SEOMetaDescriptionEnglish " />
         <link rel="canonical" id="canonicalUrl" href="@Model.SEOCanonicalUrl" />
     }
 }
@@ -36,8 +36,8 @@ else
         <title>@Model.TitleArabic</title>
     }
     @section metatags{
-        <meta name="keywords" content="@Model.TitleEnglish, @Model.SEOMetaKeywordsArabic, @Model.TitleArabic, @SEO.ServicesPageMetaKeywordsArabic " />
-        <meta name="description" id="metaDesc" content="@Model.TitleEnglish, @Model.TitleArabic, @Model.SEOMetaDescriptionArabic @SEO.ServicesPageMetaDescriptionArabic" />
+        <meta name="keywords" content="@Model.SEOMetaKeywordsArabic " />
+        <meta name="description" id="metaDesc" content="@Model.SEOMetaDescriptionArabic" />
         <link rel="canonical" id="canonicalUrl" href="@Model.SEOCanonicalUrl" />
     }
 }
@@ -63,7 +63,7 @@ else
 
 
         .menu li a.active-a4 {
-            color: #af7a2c;
+            color: #5a5a5a;
             border-bottom: 1px solid #fff0;
             font-weight: 500;
         }
@@ -75,7 +75,7 @@ else
 <div class="header-bc">
 
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/NEWBG/ServiceNewGB.jpg"alt="ServiceNewGB.jpg" />
+        <img title="Banner Image" src="~/assets_NewPublic/images/bg/NEWBG/ServiceNewGB.jpg"alt="ServiceNewGB.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -90,18 +90,18 @@ else
                         {
 
 
-                            <h3>@Model.TitleEnglish</h3>
+                            <h3 title="@Model.TitleEnglish">@Model.TitleEnglish</h3>
                         }
                         else
                         {
 
-                            <h3>@Model.TitleArabic</h3>
+                            <h3 title="@Model.TitleArabic">@Model.TitleArabic</h3>
                         }
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="/Home">@Resources.Global.Home</a> > </li>
-                                <li><a href="/Home/Services">@Resources.Global.services</a></li>
+                                <li><a title="@Resources.Global.Home" href="/Home">@Resources.Global.Home</a> > </li>
+                                <li><a title="@Resources.Global.services" href="/Home/Services">@Resources.Global.services</a></li>
                             </ul>
                         </div>
                         <!--end breadcrumb-->
@@ -138,13 +138,13 @@ else
 
                                             @if (!string.IsNullOrEmpty(Model.MainImage))
                                             {
-                                                <a href="@Model.MainImage">
+                                                <a title="@Model.TitleEnglish" href="@Model.MainImage">
                                                     <div class=" imagsBG" style="background-image: url(@Model.MainImage)"></div>
                                                 </a>
                                             }
                                             else
                                             {
-                                                <a href="~/assets_NewPublic/images/f14.jpeg">
+                                                <a title="@Model.TitleEnglish" href="~/assets_NewPublic/images/f14.jpeg">
                                                     <div class=" imagsBG" style="background-image: url(/assets_NewPublic/images/f14.jpeg)"></div>
                                                 </a>
 
@@ -161,7 +161,7 @@ else
                                             <div class="item">
                                                 @*<img src="@item.Path" alt="...">*@
                                                 <div class="CauroselItemImg">
-                                                    <a href="@item.Path">
+                                                    <a title="@Model.TitleEnglish" href="@item.Path">
                                                         <div class=" imagsBG" style="background-image: url(@item.Path)"></div>
                                                     </a>
                                                 </div>
@@ -190,13 +190,13 @@ else
                                 {
 
 
-                                    <h2>@Model.TitleEnglish</h2>
+                                    <h2 title="@Model.TitleEnglish">@Model.TitleEnglish</h2>
                                     <p>@Html.Raw(@Model.DescriptionEnglish)</p>
                                 }
                                 else
                                 {
 
-                                    <h2>@Model.TitleArabic</h2>
+                                    <h2 title="@Model.TitleArabic">@Model.TitleArabic</h2>
                                     <p>@Html.Raw(@Model.DescriptionArabic)</p>
                                 }
                             </div>

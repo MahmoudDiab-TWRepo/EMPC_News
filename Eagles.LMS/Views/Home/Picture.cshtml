@@ -80,7 +80,7 @@ else
 
     <style>
         .menu li a.active-a6 {
-            color: #af7a2c;
+            color: #5a5a5a;
             border-bottom: 1px solid #fff0;
             font-weight: 500;
         }
@@ -92,7 +92,7 @@ else
 
 <div class="header-bc">
     <div class="ClassImaesBG">
-        <img src="~/assets_NewPublic/images/bg/NEWBG/NewGallaryBGIN.jpg" alt="NewGallaryBGIN.jpg" />
+        <img title="Banner Images" src="~/assets_NewPublic/images/bg/NEWBG/NewGallaryBGIN.jpg" alt="NewGallaryBGIN.jpg" />
     </div>
     <div class="PageTitleCOnt">
         <div class="container">
@@ -102,11 +102,11 @@ else
 
                     <div class="title-header">
 
-                        <h3>@Resources.Global.Picture</h3>
+                        <h3 title="@Resources.Global.Picture">@Resources.Global.Picture</h3>
 
                         <div class="breadcrumbs">
                             <ul>
-                                <li><a href="/Home">Home</a> > </li>
+                                <li><a title="@Resources.Global.Home" href="/Home">@Resources.Global.Home</a> > </li>
                                 <li><a>@Resources.Global.Picture</a> > </li>
                                 @*@if (en)
                                     {
@@ -169,7 +169,7 @@ else
                                     <p>@album.TitleArabic</p>
                                  }
                             ">
-                            <a href="" class="imagesitem">
+                            <a title="Album Item Image" href="" class="imagesitem">
 
                                 @*<img class="img-responsive" src="@album.Image" alt="Thumb-1">*@
                                 <div class=" imagsBG" style="background-image: url(@album.Image)"></div>
@@ -212,7 +212,7 @@ else
 
 
 
-<div class="news" style="display:none">
+<!--<div class="news" style="display:none">
     <div class="container">
         <Div class="row">
 
@@ -246,8 +246,8 @@ else
                     </a>
                 </Div>
             }
-            <!--end col-4-->
-            <!--end col-4-->
+
+
 
             <div class="cleaner-h3"></div>
 
@@ -259,11 +259,11 @@ else
 
 
 
-        </Div>
+        </Div>-->
         <!--end row-->
-    </div>
+    <!--</div>-->
     <!--end continer-->
-</div>
+<!--</div>-->
 
 
 

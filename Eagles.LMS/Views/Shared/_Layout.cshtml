@@ -67,7 +67,7 @@
         <link href="~/assets_NewPublic/css/Style_RTL.css" rel="stylesheet" />
     }
     <link href="~/assets_NewPublic/css/ResponsivePublic.css" rel="stylesheet" />
-    <link rel="icon" href="~/assets_NewDash/images/NewImg/logoIcon.png">
+    <link rel="icon" href="@_contactUs.Logo">
     @RenderSection("EndHeader", required: false)
     <!-- Global site tag (gtag.js) - Google Analytics -->
     @Html.Raw(@SEO.GoogleTageAnalitics)
@@ -87,33 +87,33 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a class="active-a" href="/"> @Resources.Global.Home </a></li>
+                    <li><a title=" @Resources.Global.Home" class="active-a" href="/"> @Resources.Global.Home </a></li>
                     @if (setting.ShowAboutUs)
                     {
-                        <li><a href="/Home/AboutUs"> @Resources.Global.Aboutus </a></li>
+                        <li><a title="@Resources.Global.Aboutus" href="/Home/AboutUs"> @Resources.Global.Aboutus </a></li>
                     }
                     @if (setting.ShowLocations)
                     {
-                        <li><a href="/Home/Locations"> @Resources.Global.Locations  </a></li>
+                        <li><a title="@Resources.Global.Locations" href="/Home/Locations"> @Resources.Global.Locations  </a></li>
                     }
                     @if (setting.ShowServices)
                     {
-                        <li><a href="/Home/Services">  @Resources.Global.services </a></li>
+                        <li><a title="@Resources.Global.services" href="/Home/Services">  @Resources.Global.services </a></li>
                     }
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.NewsEvents  </a>
                         <ul class="dropdown-menu dropmenuNew">
                             @if (setting.ShowNews)
                             {
-                                <li><a href="/Home/News">@Resources.Global.News</a></li>
+                                <li><a title="@Resources.Global.News" href="/Home/News">@Resources.Global.News</a></li>
                             }
                             @if (setting.ShowAgenda)
                             {
-                                <li><a href="/Home/Agenda"> @Resources.Global.Agenda</a></li>
+                                <li><a title="@Resources.Global.Agenda" href="/Home/Agenda"> @Resources.Global.Agenda</a></li>
                             }
                             @if (setting.ShowCitizen)
                             {
-                                <li><a href="/Home/Citizen"> @Resources.Global.Citizen</a></li>
+                                <li><a title="@Resources.Global.Citizen" href="/Home/Citizen"> @Resources.Global.Citizen</a></li>
                             }
                         </ul>
                     </li>
@@ -122,26 +122,26 @@
                         <ul class="dropdown-menu">
                             @if (setting.ShowGalarVideos)
                             {
-                                <li><a href="/Home/VideoAlbums">@Resources.Global.Video</a></li>
+                                <li><a title="@Resources.Global.Video" href="/Home/VideoAlbums">@Resources.Global.Video</a></li>
                             }
                             @if (setting.ShowGalaryPhotos)
                             {
-                                <li><a href="/Home/Albums"> @Resources.Global.Picture</a></li>
+                                <li><a title="@Resources.Global.Picture" href="/Home/Albums"> @Resources.Global.Picture</a></li>
                             }
                         </ul>
                     </li>
                     @if (setting.ShowContactUs)
                     {
-                        <li><a href="/Home/ContactUsHome">@Resources.Global.ContactUs</a></li>
+                        <li><a title="@Resources.Global.ContactUs" href="/Home/ContactUsHome">@Resources.Global.ContactUs</a></li>
                     }
-                    <li><a href="/Home/Booking">@Resources.Global.Booking</a></li>
+                    <li><a title="@Resources.Global.Booking" href="/Home/Booking">@Resources.Global.Booking</a></li>
                     @if (en)
                     {
-                        <li><a href="/Home/ChangeLanguage?SelectedLanguage=ar-EG&redirect=@url">@Resources.Global.Arabic</a></li>
+                        <li><a title="@Resources.Global.Arabic" href="/Home/ChangeLanguage?SelectedLanguage=ar-EG&redirect=@url">@Resources.Global.Arabic</a></li>
                     }
                     else
                     {
-                        <li><a href="/Home/ChangeLanguage?SelectedLanguage=en&redirect=@url">@Resources.Global.English</a></li>
+                        <li><a title="@Resources.Global.English" href="/Home/ChangeLanguage?SelectedLanguage=en&redirect=@url">@Resources.Global.English</a></li>
                     }
                 </ul>
             </div>
@@ -312,16 +312,16 @@
                     <div class="language">
                         @if (en)
                         {
-                            <a href="/Home/ChangeLanguage?SelectedLanguage=ar-EG&redirect=@url"><img class="img_lang" src="~/assets_NewPublic/images/buying4.png" alt="buying4.png" /> <p> @Resources.Global.Arabic</p></a>
+                            <a title="@Resources.Global.Arabic" href="/Home/ChangeLanguage?SelectedLanguage=ar-EG&redirect=@url"><img class="img_lang" src="~/assets_NewPublic/images/buying4.png" alt="buying4.png" /> <p> @Resources.Global.Arabic</p></a>
                         }
                         else
                         {
-                            <a href="/Home/ChangeLanguage?SelectedLanguage=en&redirect=@url"><img class="img_lang" src="~/assets_NewPublic/images/buying4.png" alt="buying4.png" /> <p> @Resources.Global.English</p></a>
+                            <a title="@Resources.Global.English" href="/Home/ChangeLanguage?SelectedLanguage=en&redirect=@url"><img class="img_lang" src="~/assets_NewPublic/images/buying4.png" alt="buying4.png" /> <p> @Resources.Global.English</p></a>
                         }
                     </div>
                     <div class="strip-white"></div>
                     <div class="language lefr">
-                        <a href="/Home/Booking">
+                        <a title="@Resources.Global.Booking" href="/Home/Booking">
                             <p> @Resources.Global.Booking</p>
                         </a>
                     </div>
@@ -334,7 +334,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-2">
                     <div class="LogoHader">
-                        <a href="/">
+                        <a title="EMPC News" href="/">
                             <img src="@_contactUs.Logo" class="img-responsive logo wow fadeInRight" alt="Logo" />
                         </a>
                     </div>
@@ -342,52 +342,52 @@
                 <div class="col-lg-9 col-md-10">
                     <div class="cleaner-h4"></div>
                     <ul class="menu pull-right wow fadeInLeft">
-                        <li><a class="active-a1" href="/"> @Resources.Global.Home </a></li>
+                        <li><a title="@Resources.Global.Home" class="active-a1" href="/"> @Resources.Global.Home </a></li>
                         @if (setting.ShowAboutUs)
                         {
-                            <li><a class="active-a2" href="/Home/AboutUs"> @Resources.Global.Aboutus </a></li>
+                            <li><a title="@Resources.Global.Aboutus" class="active-a2" href="/Home/AboutUs"> @Resources.Global.Aboutus </a></li>
                         }
                         @if (setting.ShowLocations)
                         {
-                            <li><a class="active-a3" href="/Home/Locations"> @Resources.Global.Locations  </a></li>
+                            <li><a title="@Resources.Global.Locations" class="active-a3" href="/Home/Locations"> @Resources.Global.Locations  </a></li>
                         }
                         @if (setting.ShowServices)
                         {
-                            <li><a class="active-a4" href="/Home/Services">  @Resources.Global.services </a></li>
+                            <li><a title="@Resources.Global.services" class="active-a4" href="/Home/Services">  @Resources.Global.services </a></li>
                         }
                         <li class="dropdown">
-                            <a class="dropdown-toggle active-a5" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.NewsEvents  </a>
+                            <a title="@Resources.Global.NewsEvents" class="dropdown-toggle active-a5" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.NewsEvents  </a>
                             <ul class="dropdown-menu dropmenuNew">
                                 @if (setting.ShowNews)
                                 {
-                                    <li><a href="/Home/News">@Resources.Global.News</a></li>
+                                    <li><a title="@Resources.Global.News" href="/Home/News">@Resources.Global.News</a></li>
                                 }
                                 @if (setting.ShowAgenda)
                                 {
-                                    <li><a href="/Home/Agenda"> @Resources.Global.Agenda</a></li>
+                                    <li><a title="@Resources.Global.Agenda" href="/Home/Agenda"> @Resources.Global.Agenda</a></li>
                                 }
                                 @if (setting.ShowCitizen)
                                 {
-                                    <li><a href="/Home/Citizen"> @Resources.Global.Citizen</a></li>
+                                    <li><a title="@Resources.Global.Citizen" href="/Home/Citizen"> @Resources.Global.Citizen</a></li>
                                 }
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle active-a6" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.Gallery  </a>
+                            <a title="@Resources.Global.Gallery" class="dropdown-toggle active-a6" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @Resources.Global.Gallery  </a>
                             <ul class="dropdown-menu dropmenuNew">
                                 @if (setting.ShowGalarVideos)
                                 {
-                                    <li><a href="/Home/VideoAlbums">@Resources.Global.Video</a></li>
+                                    <li><a title="@Resources.Global.Video" href="/Home/VideoAlbums">@Resources.Global.Video</a></li>
                                 }
                                 @if (setting.ShowGalaryPhotos)
                                 {
-                                    <li><a href="/Home/Albums"> @Resources.Global.Picture</a></li>
+                                    <li><a title="@Resources.Global.Picture" href="/Home/Albums"> @Resources.Global.Picture</a></li>
                                 }
                             </ul>
                         </li>
                         @if (setting.ShowContactUs)
                         {
-                            <li><a class="active-a7" href="/Home/ContactUsHome">@Resources.Global.ContactUs</a></li>
+                            <li><a title="@Resources.Global.ContactUs" class="active-a7" href="/Home/ContactUsHome">@Resources.Global.ContactUs</a></li>
                         }
                     </ul>
                 </div>
@@ -406,7 +406,7 @@
                         <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 footercol">
                             <div class="widget about-widget">
                                 <div class="logo widget-title">
-                                    <a class="logo" href="/Home"><img src="@_contactUs.Logo" alt="Logo"></a>
+                                    <a title="EMPC News" class="logo" href="/Home"><img src="@_contactUs.Logo" alt="Logo"></a>
                                 </div>
                                 @if (en)
                                 {
@@ -500,7 +500,7 @@
                                     <ul>
                                         @for (int i = 0; i < _services.Count; i++)
                                         {
-                                            <li><a href="/Home/ServicesDetails/@_services[i].Id">@_services[i].TitleEnglish</a></li>
+                                            <li><a title="@_services[i].TitleEnglish" href="/Home/ServicesDetails/@_services[i].Id">@_services[i].TitleEnglish</a></li>
                                             if (i == 3)
                                             {
                                                 break;
@@ -512,7 +512,7 @@
                             <div class="col col-xl-4  col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 ">
                                 <div class="widget wpo-service-link-widget">
                                     <div class="widget-title">
-                                        <h3>@Resources.Global.ContactUs </h3>
+                                        <h3 title="@Resources.Global.ContactUs">@Resources.Global.ContactUs </h3>
                                     </div>
                                     <div class="contact-ft">
                                         <ul>
@@ -531,12 +531,12 @@
                             <div class="col col-xl-4  col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 footercol">
                                 <div class="widget link-widget">
                                     <div class="widget-title">
-                                        <h3>@Resources.Global.OurServices</h3>
+                                        <h3 title="@Resources.Global.OurServices">@Resources.Global.OurServices</h3>
                                     </div>
                                     <ul>
                                         @for (int i = 0; i < _services.Count; i++)
                                         {
-                                            <li><a href="/home/ServicesDetails/@_services[i].Id">@_services[i].TitleArabic</a></li>
+                                            <li><a title="@_services[i].TitleArabic" href="/home/ServicesDetails/@_services[i].Id">@_services[i].TitleArabic</a></li>
                                             if (i == 3)
                                             {
                                                 break;
@@ -548,7 +548,7 @@
                             <div class="col col-xl-4  col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 ">
                                 <div class="widget wpo-service-link-widget">
                                     <div class="widget-title">
-                                        <h3>@Resources.Global.ContactUs </h3>
+                                        <h3 title="@Resources.Global.ContactUs">@Resources.Global.ContactUs </h3>
                                     </div>
                                     <div class="contact-ft">
                                         <ul>
@@ -566,7 +566,7 @@
                         <div class="col col-xl-4  col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 footercol" style="display:none;">
                             <div class="widget instagram">
                                 <div class="widget-title">
-                                    <h3>@Resources.Global.Gallery</h3>
+                                    <h3 title="@Resources.Global.Gallery">@Resources.Global.Gallery</h3>
                                 </div>
                                 <ul class="d-flex">
                                     @for (int i = 0; i < _galaries.Count; i++)
